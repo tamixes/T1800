@@ -6,10 +6,13 @@ public class Carteira {
 	private double valor; 
 	private String titulo; 
 	private String descriçao;
+	private static long geraId = 01;
+	private String idCarteira;
 	
 	
 	public Carteira(Pessoa pessoa, double valor, String titulo, String descriçao) {
-		super();
+		this.idCarteira = "Carteira" + geraId;
+		geraId++;
 		this.pessoa = pessoa;
 		this.valor = valor;
 		this.titulo = titulo;
@@ -54,6 +57,24 @@ public class Carteira {
 
 	public void setDescriçao(String descriçao) {
 		this.descriçao = descriçao;
+	}
+
+
+
+	public String getIdCarteira() {
+		return idCarteira;
+	}
+
+
+	@Override
+	public String toString() {
+		String resultado = "\t\tDados da Carteira\n"
+						+"\t Dono da Carteira: " + this.getPessoa().getNome() + "\n"
+						+"\t Nome da Carteira: " +this.getDescriçao() + "\n"
+						+"\t Id da Carteira: " + this.getIdCarteira()+ "\n"
+						+"\t Valor na Carteira: " + this.getValor()+ "\n";
+		
+		return resultado; 
 	}
 	
 	

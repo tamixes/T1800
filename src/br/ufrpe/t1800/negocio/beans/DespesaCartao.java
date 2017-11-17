@@ -13,7 +13,7 @@ public class DespesaCartao {
 	
 	
 	public DespesaCartao(CartaoCredito cartao, double valor, LocalDate dataCompra, String descriçao, String tipo, int parcela) {
-		super();
+		
 		this.cartao = cartao;
 		this.valor = valor;
 		this.dataCompra = dataCompra;
@@ -81,5 +81,21 @@ public class DespesaCartao {
 	public void setParcela(int parcela) {
 		this.parcela = parcela;
 	}
+
+
+	@Override
+	public String toString() {
+		String resultado = "\t\tDespesa do Cartao\n"
+						+"\t Cartão: " + this.getCartao().getDescriçao()+ "\n"
+						+"\t Valor da Compra: " + this.getValor()+ "\n"
+						+"\t Data da Compra: " + this.getDataCompra()+ "\n"
+						+"\t Descrição: " + this.getDescriçao()+ "\n"
+						+"\t Tipo: " + this.getTipo()+ "\n"
+						+"\t Parcelas: " + this.getParcela() + "\n";
+		
+		return resultado; 
+	}
+	
+	
 	
 }

@@ -50,6 +50,18 @@ public class Pessoa {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+
+
+
+	@Override
+	public String toString() {
+		String resultado = "\t\tDados Pessoais\n" 
+						+"\t Nome: " + this.getNome()+ "\n"
+						+"\t Email: " + this.getEmail()+ "\n"
+						+"\t Telefone: " +this.getTelefone() + "\n";
+		
+		return resultado; 
+	}
 	
 	
 

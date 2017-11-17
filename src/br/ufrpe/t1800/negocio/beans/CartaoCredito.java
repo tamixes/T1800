@@ -1,56 +1,61 @@
 package br.ufrpe.t1800.negocio.beans;
 
-import java.time.LocalDate;
+
 
 public class CartaoCredito {
 	
-	private Pessoa pessoa; 
-	private LocalDate fechamento;
-	private LocalDate pagamento;
+	private Carteira id; 
+	private int diaF;
+	private int diaP;	
 	private String descriçao; 
 	private double valor; 
 	private String bandeira;
 	
 	
-	public CartaoCredito(Pessoa pessoa, String descriçao, double valor, String bandeira, LocalDate fechamento, LocalDate pagamento) {
+	public CartaoCredito(Carteira id, String descriçao, double valor, String bandeira, int diaF, int diaP) {
 		
-		this.pessoa = pessoa; 
+		this.id = id; 
 		this.descriçao = descriçao;
 		this.valor = valor;
 		this.bandeira = bandeira; 
-		this.fechamento = fechamento;
-		this.pagamento = pagamento; 
+		this.diaF = diaF;
+		this.diaP = diaP;
 	}
 
 
-	public Pessoa getPessoa() {
-		return pessoa;
+
+	public Carteira getId() {
+		return id;
 	}
 
 
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
+	public void setId(Carteira id) {
+		this.id = id;
 	}
 
 
-	public LocalDate getFechamento() {
-		return fechamento;
+	public int getDiaF() {
+		return diaF;
 	}
 
 
-	public void setFechamento(LocalDate fechamento) {
-		this.fechamento = fechamento;
+
+	public void setDiaF(int diaF) {
+		this.diaF = diaF;
 	}
 
 
-	public LocalDate getPagamento() {
-		return pagamento;
+
+	public int getDiaP() {
+		return diaP;
 	}
 
 
-	public void setPagamento(LocalDate pagamento) {
-		this.pagamento = pagamento;
+
+	public void setDiaP(int diaP) {
+		this.diaP = diaP;
 	}
+
 
 
 	public String getDescriçao() {
@@ -80,6 +85,23 @@ public class CartaoCredito {
 
 	public void setBandeira(String bandeira) {
 		this.bandeira = bandeira;
+	}
+
+
+
+	@Override
+	public String toString() {
+		
+		String resultado = 
+							"\t\tDados do Cartão\n"
+							+ "\t Cartão: " + this.getDescriçao()+ "\n"
+							+ "\t Fechamento da Fatura: " + this.getDiaF() + "\n"
+							+ "\t Data de Vencimento do Cartão: " + this.getDiaP() + "\n"
+							+ "\t Valor: " + this.getValor()+ "\n"
+							+ "\t Bandeira: " + this.getBandeira() + "\n";
+						
+		
+		return resultado; 
 	}
 	
 	
