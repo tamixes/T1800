@@ -7,15 +7,15 @@ public class CartaoCredito {
 	private Carteira id; 
 	private int diaF;
 	private int diaP;	
-	private String descriçao; 
+	private String descricao; 
 	private double valor; 
 	private String bandeira;
 	
 	
-	public CartaoCredito(Carteira id, String descriçao, double valor, String bandeira, int diaF, int diaP) {
+	public CartaoCredito(Carteira id, String descricao, double valor, String bandeira, int diaF, int diaP) {
 		
 		this.id = id; 
-		this.descriçao = descriçao;
+		this.descricao = descricao;
 		this.valor = valor;
 		this.bandeira = bandeira; 
 		this.diaF = diaF;
@@ -58,13 +58,13 @@ public class CartaoCredito {
 
 
 
-	public String getDescriçao() {
-		return descriçao;
+	public String getDescricao() {
+		return descricao;
 	}
 
 
-	public void setDescriçao(String descriçao) {
-		this.descriçao = descriçao;
+	public void setDescriçao(String descricao) {
+		this.descricao = descricao;
 	}
 
 
@@ -94,7 +94,7 @@ public class CartaoCredito {
 		
 		String resultado = 
 							"\t\tDados do Cartão\n"
-							+ "\t Cartão: " + this.getDescriçao()+ "\n"
+							+ "\t Cartão: " + this.getDescricao()+ "\n"
 							+ "\t Fechamento da Fatura: " + this.getDiaF() + "\n"
 							+ "\t Data de Vencimento do Cartão: " + this.getDiaP() + "\n"
 							+ "\t Valor: " + this.getValor()+ "\n"
@@ -104,6 +104,15 @@ public class CartaoCredito {
 		return resultado; 
 	}
 	
-	
+	@Override
+	public boolean equals(Object obj) {
+		CartaoCredito c = (CartaoCredito) obj; 
+		
+		if(this.descricao.equalsIgnoreCase(c.getDescricao()) && this.diaF == c.getDiaF() && this.diaP == c.getDiaP()
+				&& this.bandeira.equals(c.getBandeira())) {
+			return true;
+		}
+		return false;
+	}
 	
 }

@@ -6,12 +6,12 @@ public class Carteira {
 	private double valor; 
 	private String titulo; 
 	private String descriçao;
-	private static long geraId = 01;
+	private static long geraId = 10;
 	private String idCarteira;
 	
 	
 	public Carteira(Pessoa pessoa, double valor, String titulo, String descriçao) {
-		this.idCarteira = "Carteira" + geraId;
+		this.idCarteira = "T"+ geraId + "WALLET";
 		geraId++;
 		this.pessoa = pessoa;
 		this.valor = valor;
@@ -70,11 +70,25 @@ public class Carteira {
 	public String toString() {
 		String resultado = "\t\tDados da Carteira\n"
 						+"\t Dono da Carteira: " + this.getPessoa().getNome() + "\n"
+						+"\t Titulo: " + this.getTitulo() + "\n"
 						+"\t Nome da Carteira: " +this.getDescriçao() + "\n"
 						+"\t Id da Carteira: " + this.getIdCarteira()+ "\n"
 						+"\t Valor na Carteira: " + this.getValor()+ "\n";
 		
 		return resultado; 
+	}
+
+
+	
+
+	@Override
+	public boolean equals(Object obj) {
+		Carteira c = (Carteira) obj;
+		if(this.descriçao.equalsIgnoreCase(c.getDescriçao()) && this.idCarteira.equals(c.getIdCarteira())) {
+			return true;
+		}
+		return false; 
+		
 	}
 	
 	

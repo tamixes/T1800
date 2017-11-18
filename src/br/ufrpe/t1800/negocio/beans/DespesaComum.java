@@ -94,8 +94,18 @@ public class DespesaComum {
 				+"\t Pago: " + this.isPago()+ "\n";
 		
 		return resultado; 
+		
+		//TODO colocar para nao imprimir o valor boolean (sim ou nao)
 	}
 	
-	
+	@Override
+	public boolean equals(Object obj) {
+		DespesaComum d = (DespesaComum) obj;
+		if(this.data.equals(d.getData()) && this.descriçao.equalsIgnoreCase(d.getDescriçao())
+				&& this.valor == d.getValor()) {
+			return true;
+		}
+		return false; 
+	}
 	
 }

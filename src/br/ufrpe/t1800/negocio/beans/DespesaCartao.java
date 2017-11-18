@@ -86,7 +86,7 @@ public class DespesaCartao {
 	@Override
 	public String toString() {
 		String resultado = "\t\tDespesa do Cartao\n"
-						+"\t Cartão: " + this.getCartao().getDescriçao()+ "\n"
+						+"\t Cartão: " + this.getCartao().getDescricao()+ "\n"
 						+"\t Valor da Compra: " + this.getValor()+ "\n"
 						+"\t Data da Compra: " + this.getDataCompra()+ "\n"
 						+"\t Descrição: " + this.getDescriçao()+ "\n"
@@ -94,6 +94,18 @@ public class DespesaCartao {
 						+"\t Parcelas: " + this.getParcela() + "\n";
 		
 		return resultado; 
+	}
+
+
+	
+	@Override
+	public boolean equals(Object obj) {
+		DespesaCartao d = (DespesaCartao) obj;
+		if(this.dataCompra.equals(d.getDataCompra()) && this.descriçao.equalsIgnoreCase(d.getDescriçao())
+				&& this.valor == d.getValor()) {
+			return true;
+		}
+		return false; 
 	}
 	
 	

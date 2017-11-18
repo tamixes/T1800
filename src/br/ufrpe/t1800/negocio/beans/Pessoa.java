@@ -62,6 +62,19 @@ public class Pessoa {
 		
 		return resultado; 
 	}
+
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		Pessoa p = (Pessoa) obj;
+		
+		if(this.nome.equalsIgnoreCase(p.getNome()) && this.email.equalsIgnoreCase(p.getEmail()) && this.telefone.equals(p.getTelefone())) {
+			return true;
+		}
+		return false;
+	}
 	
 	
 
