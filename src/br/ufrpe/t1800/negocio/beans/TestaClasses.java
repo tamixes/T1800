@@ -31,6 +31,7 @@ public class TestaClasses {
 		
 		System.out.println(a1);
 		System.out.println(b1);
+		System.out.println(f);
 
 	}
 
