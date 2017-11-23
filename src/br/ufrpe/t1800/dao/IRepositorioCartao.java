@@ -1,4 +1,4 @@
-package br.ufrpe.dao;
+package br.ufrpe.t1800.dao;
 
 import java.util.ArrayList;
 
