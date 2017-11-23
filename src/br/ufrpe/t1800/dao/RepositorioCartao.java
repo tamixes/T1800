@@ -82,4 +82,15 @@ public class RepositorioCartao implements IRepositorioCartao {
 		return cartoes;
 	}
 
+	@Override
+	public boolean existe(CartaoCredito cartao) {
+		boolean i = false;
+		for(CartaoCredito c : cartoes ) {
+			if(c.equals(cartao)) {
+				i = true;
+			}
+		}
+		return i;
+	}
+
 }

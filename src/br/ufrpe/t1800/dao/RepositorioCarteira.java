@@ -84,4 +84,16 @@ public class RepositorioCarteira implements IRepositorioCarteira{
 		return c;
 	}
 
+	@Override
+	public boolean existe(Carteira carteira) {
+		boolean i = false;
+		for(Carteira c : carteiras) {
+			if(c.equals(carteira)) {
+				i = true;
+			}
+			
+		}
+		return i;
+	}
+
 }

@@ -12,4 +12,5 @@ public interface IRepositorioCarteira {
 	ArrayList<Carteira> listarCarteira();
 	int procurarIndice(String id);
 	Carteira buscarCarteira(String id);
+	boolean existe(Carteira carteira);
 }

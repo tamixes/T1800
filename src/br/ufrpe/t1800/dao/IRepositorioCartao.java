@@ -13,5 +13,6 @@ public interface IRepositorioCartao {
 		CartaoCredito buscarCartao(String nome);
 		int buscarIndice(String nome);
 		ArrayList<CartaoCredito> listarCartao();
+		boolean existe(CartaoCredito cartao);
 		
 }

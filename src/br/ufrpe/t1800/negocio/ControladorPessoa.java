@@ -24,7 +24,9 @@ public class ControladorPessoa {
 	public void cadastrarPessoa(Pessoa pessoa) {
 		if (pessoa == null) {
 			throw new IllegalArgumentException("Invalido");
-		} else {
+		}else if(this.repositorio.existe(pessoa)){
+			
+		}else {
 			repositorio.cadastrarPessoa(pessoa);
 		}
 	}
