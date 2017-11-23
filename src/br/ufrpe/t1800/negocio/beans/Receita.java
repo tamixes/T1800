@@ -21,7 +21,9 @@ public class Receita {
 		this.categoria = categoria;
 		this.pago = pago;
 	}
-
+	public Receita() {
+		
+	}
 
 	public Carteira getId() {
 		return id;

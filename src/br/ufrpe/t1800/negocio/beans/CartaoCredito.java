@@ -21,7 +21,10 @@ public class CartaoCredito {
 		this.diaF = diaF;
 		this.diaP = diaP;
 	}
-
+	
+	public CartaoCredito() {
+		
+	}
 
 
 	public Carteira getId() {
