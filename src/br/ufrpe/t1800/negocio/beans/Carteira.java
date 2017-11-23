@@ -19,7 +19,9 @@ public class Carteira {
 		this.descriçao = descriçao;
 	}
 
-
+	public Carteira() {
+		
+	}
 	public Pessoa getPessoa() {
 		return pessoa;
 	}
