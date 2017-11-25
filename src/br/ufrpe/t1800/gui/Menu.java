@@ -14,28 +14,17 @@ public class Menu {
 		System.out.println("~~~~~~~~~~~~~Carteira Digital T1800~~~~~~~~~~~~~~~~\n\n");
 	}
 	
-	public void login() {
-		this.começo();
-		
-		System.out.println("Login: ");
-		String login = entrada.nextLine();
-		System.out.println("Senha: ");
-		String senha = entrada.nextLine();
-		
-		if(login.equalsIgnoreCase("tami") && senha.equals("1234")) {
-			this.menuPrincipal();
-		}
-	}
+	
 	
 	public void menuPrincipal() {
 		while(true) {
 			this.começo(); 
 			System.out.println("Menu Princial\n\n");
-			System.out.println("1 - Pessoa \n "
-					+ "2 - Carteira\n "
-					+ "3 - Receita\n "
-					+ "4 - Cartao\n "
-					+ "0 - Sair"
+			System.out.println("1 - Pessoa\n"
+					+ "2 - Carteira\n"
+					+ "3 - Receita\n"
+					+ "4 - Cartao\n"
+					+ "0 - Sair\n\n"
 					+ "Opção: ");
 			int op = entrada.nextInt();
 			

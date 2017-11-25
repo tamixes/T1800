@@ -7,7 +7,7 @@ public class Principal {
 		
 		
 		Menu tela = new Menu();
-		tela.login();
+		tela.menuPrincipal();
 		
 		
 	}

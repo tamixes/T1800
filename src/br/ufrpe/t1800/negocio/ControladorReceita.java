@@ -18,7 +18,7 @@ public class ControladorReceita {
 	
 	public static ControladorReceita getInstance() {
 		if(instance == null) {
-			instance = ControladorReceita.getInstance();
+			instance = new ControladorReceita();
 		}
 		
 		return instance;
