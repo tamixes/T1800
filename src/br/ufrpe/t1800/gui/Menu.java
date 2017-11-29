@@ -1,10 +1,13 @@
 package br.ufrpe.t1800.gui;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 import br.ufrpe.t1800.negocio.Fachada;
 import br.ufrpe.t1800.negocio.IFachada;
+import br.ufrpe.t1800.negocio.beans.Carteira;
 import br.ufrpe.t1800.negocio.beans.Pessoa;
+import br.ufrpe.t1800.negocio.beans.Receita;
 
 public class Menu {
 	private IFachada wallet = Fachada.getInstance();
@@ -25,12 +28,13 @@ public class Menu {
 					+ "3 - Receita\n"
 					+ "4 - Cartao\n"
 					+ "0 - Sair\n\n"
-					+ "Opção: ");
+					+ "Opção: \n");
+			
 			int op = entrada.nextInt();
 			
 			
 			switch(op) {
-				case 1:
+					case 1:
 					int muda = 6;
 					while(muda != 6) {
 						this.começo();
@@ -200,15 +204,351 @@ public class Menu {
 							case 1:{
 							boolean ok = false;
 							do {
+								entrada.nextLine();
+								System.out.println("Cadastro de Carteira\n\n");
+								System.out.println("Para cadastrar uma carteira é necessário ter cadastrado uma pessoa\n");
 								
-							} while (ok);
+								
+								Pessoa pessoaBusca = null;
+					
+								do {
+									
+									System.out.println("\nDigite o nome da pessoa: ");
+									String busca = entrada.nextLine();
+									
+									try {
+										pessoaBusca = wallet.buscarPessoa(busca);
+									} catch (Exception e) {
+										System.out.println(e.getMessage());
+										entrada.nextLine();
+									}
+									
+								} while (pessoaBusca == null);
+								
+								entrada.nextLine(); 
+								
+								System.out.println("\nDigite o nome da Carteira: ");
+								String descricao = entrada.nextLine();
+								System.out.println("\nDigite o titulo da Carteira: ");
+								String titulo = entrada.nextLine();
+								System.out.println("\nDigite o valor da Carteira: ");
+								double valor = entrada.nextDouble();
+								entrada.nextLine();
+								
+								Carteira carteira = new Carteira(pessoaBusca, valor, titulo, descricao);
+								
+								try {
+									wallet.cadastrarCarteira(carteira);
+									System.out.println("\nCarteira Cadastrada!!");
+									ok = true;
+									entrada.nextLine();
+								} catch (Exception e) {
+									System.out.println(e.getMessage());
+								}
+								
+													
+								
+								
+							} while (ok==false);
+							
+							break;
 							}
+							
+							case 2:{
+									entrada.nextLine();
+									System.out.println("\nAtualizar Carteira");
+									
+									System.out.println("\nInforme o ID da carteira que deseja atualizar");
+									String busca = entrada.nextLine();
+									
+									Carteira buscada = null;
+						
+									try {
+										buscada = wallet.buscarCarteira(busca);
+										
+										
+										
+										System.out.println("Informe os novos dados: \n\n");
+										
+										System.out.println("\nDescriçao: ");
+										String novaDesc = entrada.nextLine();
+										System.out.println("\nTitulo: ");
+										String novoTit = entrada.nextLine();
+										System.out.println("\nValor");
+										double  novoValor = entrada.nextDouble();
+										entrada.nextLine();
+										
+									
+										buscada.setDescriçao(novaDesc);
+										buscada.setTitulo(novoTit);
+										buscada.setValor(novoValor);
+										
+										try {
+											wallet.atualizarCarteira(buscada);
+											System.out.println("Carteira atualizada!");
+											entrada.nextLine();
+											
+										} catch (Exception e) {
+											System.out.println(e.getMessage());
+											entrada.nextLine();
+										}
+									} catch (Exception e) {
+										System.out.println(e.getMessage());
+										entrada.nextLine();
+									}
+									break;	
+							}
+							case 3:{
+								entrada.nextLine();
+								System.out.println("\nRemover Carteira\n\n");
+								System.out.println("Digite o id da carteira a ser removida\n");
+								String id = entrada.nextLine();
+								
+								Carteira carteira = null;
+								try {
+									carteira = wallet.buscarCarteira(id);
+									
+								} catch (Exception e) {
+									System.out.println(e.getMessage());
+									entrada.nextLine();
+								}
+								if(carteira != null) {
+									System.out.println("Você realmente quer remover esta carteira" + carteira.getDescriçao() +"?\n"
+											+ "1 - sim\n"
+											+ "2 - nao\n"
+											+ "Digite: \n");
+									int esc = entrada.nextInt();
+									switch(esc) {
+									case 1:
+										try {
+											wallet.removerCarteira(carteira);
+										} catch (Exception e) {
+											System.out.println(e.getMessage());
+											e.printStackTrace();
+										}
+										System.out.println("\nCarteira Removida!");
+									}	
+								}else {
+									System.out.println("\nCarteira nao existe!");
+								}
+								
 						}
-					}
+							break;
+							case 4: {
+								System.out.println("\nBuscar Carteira\n\n");
+								System.out.println("Digite o ID da Carteira a ser buscada");
+								String id = entrada.nextLine();
+								
+								Carteira busca = null;
+								try {
+									busca = wallet.buscarCarteira(id);
+								} catch (Exception e) {
+									System.out.println(e.getMessage());
+									e.printStackTrace();
+								}
+								if(busca != null) {
+									System.out.println("\nDados da Carteira" + busca.getDescriçao() +"\n");
+									System.out.println(busca);
+								}else {
+									System.out.println("\nCarteira nao existe!");
+								}
+								break;
+							}
+							case 5:{
+								break;
+							}
+							
+							case 6:{
+								System.out.println("Voltando ao menu...");
+								entrada.nextLine();
+								muda2 = 6;
+								break;
+						}
+					}	
+				}
 				
+			break;
 			
-			
-			
+				case 3:
+					int muda3 = 0;
+					while(muda3 != 6) {
+						this.começo();
+						System.out.println("\n\nMenu de Receita");
+						System.out.println("1 - Cadastrar Receita\n"
+								+ "2 - Atualizar Receita\n"
+								+ "3 - Remover Receita\n"
+								+ "4 - Buscar Receita\n"
+								+ "5 - Listar Receita\n"
+								+ "6 - Sair\n");
+							int esc = entrada.nextInt();
+							switch(esc) {
+							
+								case 1:{
+									boolean ok = false; 
+									do {
+																
+										
+										entrada.nextLine();
+										System.out.println("\nCadastro de Receita");
+										System.out.println("\nPara Cadastrar uma receita é necessário ter uma carteira\n");
+										
+										
+										Carteira busca = null;
+										do {
+											System.out.println("Digite o ID da carteira: \n");
+											String id = entrada.nextLine();
+											try {
+												busca = wallet.buscarCarteira(id);
+												
+											} catch (Exception e) {
+												// TODO: handle exception
+											}
+										} while (busca == null);
+										
+					
+										System.out.println("Descrição: \n");
+										String descricao = entrada.nextLine();
+										System.out.println("Categoria: \n");
+										String categoria = entrada.nextLine();
+										System.out.println("Valor: \n");
+										double valor = entrada.nextDouble();
+										System.out.println("O valor ja foi pago? sim-nao\n");
+										String pago = entrada.nextLine();
+										boolean isPago = false;
+										if(pago.equalsIgnoreCase("sim")) {
+											isPago = true;
+										}else {
+											System.out.println("Invalido!");
+										}
+										System.out.println("Data ano/mes/dia (digite sem espaços apenas os numeros): \n");
+										int dia = entrada.nextInt();
+										int mes = entrada.nextInt();
+										int ano = entrada.nextInt();
+										entrada.nextLine();
+										LocalDate data = LocalDate.of(ano, mes, dia);
+										
+										Receita receita = new Receita(busca, valor, data, descricao, categoria, isPago);
+										try {
+											wallet.cadastrarReceita(receita);
+											System.out.println("Receita cadastrada!\n");
+											ok = true;
+										} catch (Exception e) {
+											// TODO: handle exception
+										}
+									
+									} while (ok==false);
+									
+									break; 
+								}
+								case 2:{
+									entrada.nextLine();
+									System.out.println("\nAtualizar Receita\n");
+									System.out.println("Informe a descriçao da receita que deseja atualizar: \n");
+									String busca = entrada.nextLine();
+									
+									Receita atualiza = null;
+									
+									try {
+										atualiza = wallet.buscarReceita(busca);
+										
+										System.out.println("Digite os novos dados: \n");
+										System.out.println("Descriçao: \n");
+										String novaDesc = entrada.nextLine();
+										System.out.println("Categoria: \n");
+										String novaCateg = entrada.nextLine();
+										System.out.println("Valor: \n");
+										int novoValor = entrada.nextInt();
+										System.out.println("Data dia/mes/ano: \n");
+										String text = entrada.nextLine();
+										LocalDate novaData = LocalDate.parse(text);
+										System.out.println("O valor está pago? sim-nao\n");
+										String novoPago = entrada.nextLine();
+										boolean novoIsPago = false;
+										if(novoPago.equalsIgnoreCase("sim")) {
+											novoIsPago = true;
+										}else {
+											System.out.println("Invalido\n");
+										}
+										
+										atualiza.setCategoria(novaCateg);
+										atualiza.setData(novaData);
+										atualiza.setDescricao(novaDesc);
+										atualiza.setPago(novoIsPago);
+										atualiza.setValor(novoValor);
+										
+										try {
+											wallet.atualizarReceita(atualiza);
+											System.out.println("Receita atualizada!\n");
+											entrada.nextLine();
+										} catch (Exception e) {
+											System.out.println(e.getMessage());
+											entrada.nextLine();
+										}
+									} catch (Exception e) {
+										System.out.println(e.getMessage());
+										entrada.nextLine();
+									}
+									break;
+											
+								}
+								case 3:{
+									entrada.nextLine();
+									System.out.println("\nRemover Receita\n\n");
+									System.out.println("Informe a descrição da receita a ser removida");
+									String busca = entrada.nextLine();
+									
+									Receita remover = null;
+									try {
+										remover = wallet.buscarReceita(busca);
+										System.out.println("Você realmente quer remover  " + remover.getDescricao()+ "\n"
+												+ "1 - sim\n"
+												+ "2 - nao\n"
+												+ "Opção: \n");
+										int opc = entrada.nextInt();
+										switch(opc) {
+										case 1:
+											try {
+												wallet.removerReceita(remover);
+												System.out.println("Removido!\n");
+												entrada.nextLine();
+												
+											} catch (Exception e) {
+												// TODO: handle exception
+											}
+										}
+									} catch (Exception e) {
+										// TODO: handle exception
+									}
+									break; 
+								}
+								case 4:{
+									entrada.nextLine();
+									System.out.println("\nBuscar receita\n\n");
+									System.out.println("Digite a descrição da receita a ser buscada: \n");
+									String busca = entrada.nextLine();
+									
+									Receita buscada = null;
+									try {
+										buscada = wallet.buscarReceita(busca);
+										System.out.println("Dados da receita " + buscada.getDescricao() + "\n");
+										System.out.println(buscada);
+										
+									} catch (Exception e) {
+										System.out.println(e.getMessage());
+										entrada.nextLine();
+									}
+									break;
+								}
+								case 5: {
+									break;
+								}
+								case 6:{
+									System.out.println("Saindo...");
+									entrada.nextLine();
+									muda3 = 6;
+								}
+							}
+					}
 			
 			
 			
