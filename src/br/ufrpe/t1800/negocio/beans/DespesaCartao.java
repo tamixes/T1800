@@ -9,7 +9,7 @@ public class DespesaCartao {
 	private LocalDate dataCompra; 
 	private String descriçao; 
 	private String tipo; 
-	private int parcela;
+	private int numParcelas;
 	
 	
 	public DespesaCartao(CartaoCredito cartao, double valor, LocalDate dataCompra, String descriçao, String tipo, int parcela) {
@@ -19,7 +19,7 @@ public class DespesaCartao {
 		this.dataCompra = dataCompra;
 		this.descriçao = descriçao;
 		this.tipo = tipo; 
-		this.parcela = parcela;
+		this.numParcelas = parcela;
 	}
 
 
@@ -74,12 +74,12 @@ public class DespesaCartao {
 
 
 	public int getParcela() {
-		return parcela;
+		return numParcelas;
 	}
 
 
 	public void setParcela(int parcela) {
-		this.parcela = parcela;
+		this.numParcelas = parcela;
 	}
 
 

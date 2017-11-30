@@ -9,7 +9,7 @@ public class Receita {
 	private LocalDate data;
 	private String descricao;
 	private String categoria; 
-	private boolean pago = true;
+	private boolean isPago = true;
 	
 	
 	public Receita(Carteira id, double valor, LocalDate data, String descricao, String categoria, boolean pago) {
@@ -19,7 +19,7 @@ public class Receita {
 		this.data = data;
 		this.descricao = descricao;
 		this.categoria = categoria;
-		this.pago = pago;
+		this.isPago = pago;
 	}
 	public Receita() {
 		
@@ -77,12 +77,12 @@ public class Receita {
 
 
 	public boolean isPago() {
-		return pago;
+		return isPago;
 	}
 
 
 	public void setPago(boolean pago) {
-		this.pago = pago;
+		this.isPago = pago;
 	} 
 	
 	public String toString() {

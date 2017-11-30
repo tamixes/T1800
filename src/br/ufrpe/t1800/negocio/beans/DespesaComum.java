@@ -9,7 +9,7 @@ public class DespesaComum {
 	private LocalDate data;
 	private String descriçao;
 	private String tipo; 
-	private boolean pago = true;
+	private boolean isPago = true;
 	
 	
 	public DespesaComum(Carteira id, double valor, LocalDate data, String descriçao, String tipo, boolean pago) {
@@ -19,7 +19,7 @@ public class DespesaComum {
 		this.data = data;
 		this.descriçao = descriçao;
 		this.tipo = tipo;
-		this.pago = pago;
+		this.isPago = pago;
 	}
 
 
@@ -64,12 +64,12 @@ public class DespesaComum {
 
 
 	public boolean isPago() {
-		return pago;
+		return isPago;
 	}
 
 
 	public void setPago(boolean pago) {
-		this.pago = pago;
+		this.isPago = pago;
 	}
 
 
