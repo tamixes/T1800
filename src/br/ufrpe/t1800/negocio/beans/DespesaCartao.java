@@ -21,7 +21,10 @@ public class DespesaCartao {
 		this.tipo = tipo; 
 		this.numParcelas = parcela;
 	}
-
+	
+	public DespesaCartao() {
+		
+	}
 
 	public CartaoCredito getCartao() {
 		return cartao;

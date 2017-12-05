@@ -21,6 +21,10 @@ public class DespesaComum {
 		this.tipo = tipo;
 		this.isPago = pago;
 	}
+	
+	public DespesaComum() {
+		
+	}
 
 
 	public double getValor() {

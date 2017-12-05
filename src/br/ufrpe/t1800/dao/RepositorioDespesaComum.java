@@ -31,7 +31,13 @@ public class RepositorioDespesaComum implements IRepositorioDespesaComum{
 
 	@Override
 	public DespesaComum procurarDespesaC(String nome) {
-		return null; 
+		int i = procurarIndice(nome);
+		
+		DespesaComum d = new DespesaComum();
+		if(i >= 0) {
+			d = despesas.get(i);
+		}
+		return d;
 	}
 
 	@Override
