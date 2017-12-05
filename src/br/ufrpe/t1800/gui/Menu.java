@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import br.ufrpe.t1800.negocio.Fachada;
 import br.ufrpe.t1800.negocio.IFachada;
+import br.ufrpe.t1800.negocio.beans.CartaoCredito;
 import br.ufrpe.t1800.negocio.beans.Carteira;
 import br.ufrpe.t1800.negocio.beans.Pessoa;
 import br.ufrpe.t1800.negocio.beans.Receita;
@@ -546,10 +547,196 @@ public class Menu {
 									System.out.println("Saindo...");
 									entrada.nextLine();
 									muda3 = 6;
-								}
 							}
+						}
 					}
-			
+					break;
+					
+				case 4:
+					int muda4 = 0;
+					while(muda4 != 6) {
+						this.começo(); 
+						System.out.println("\n\nMenu de Cartao");
+						System.out.println("1 - Cadastrar Cartao\n"
+								+ "2 - Atualizar Cartao\n"
+								+ "3 - Remover Cartao\n"
+								+ "4 - Buscar Cartao\n"
+								+ "5 - Listar Cartao\n"
+								+ "6 - Sair\n");
+						int escolhe = entrada.nextInt();
+						switch(escolhe) {
+						case 1:{
+														
+							boolean ok = false;
+							do {
+								entrada.nextLine();
+								System.out.println("\nPara cadastrar um cartao é necessario uma carteira");
+								
+								Carteira buscada = null;
+								do {
+									System.out.println("\nInforme o ID da carteira");
+									String idBuscado = entrada.nextLine();
+									
+									try {
+										buscada = wallet.buscarCarteira(idBuscado);
+									} catch (Exception e) {
+										// TODO: handle exception
+									}
+								} while (buscada == null);		
+								
+								entrada.nextLine();
+								
+								System.out.println("\nDescrição: ");
+								String descricao = entrada.nextLine();
+								System.out.println("\nBandeira: ");
+								String bandeira = entrada.nextLine();
+								System.out.println("\nDia de fechamento: ");
+								int fechamento = entrada.nextInt();
+								entrada.nextLine();
+								System.out.println("\nDia de pagamento: ");
+								int pagamento = entrada.nextInt();
+								entrada.nextLine();
+								System.out.println("\nValor: ");
+								double valor = entrada.nextDouble();
+								entrada.nextLine();
+								
+								CartaoCredito cartao = new CartaoCredito(buscada, descricao, valor, bandeira, fechamento, pagamento);
+								
+								try {
+									wallet.cadastrarCartao(cartao);
+									System.out.println("\nCartao Cadastrado!\n");
+									ok = true;
+									
+								} catch (Exception e) {
+									// TODO: handle exception
+								}
+							} while (ok == false);
+							
+							break;
+						}
+						
+						case 2:{
+							entrada.nextLine();
+							System.out.println("\nAtualizar Cartão \n");
+							System.out.println("\nInforme a descrição do cartao: \n");
+							String busca = entrada.nextLine();
+							
+							CartaoCredito buscado = null;
+							
+							try {
+								buscado = wallet.buscarCartao(busca);
+								
+								System.out.println("\nInforme os novos dados para o cartao: \n");
+								
+								System.out.println("\nDescrição: ");
+								String nvDescricao = entrada.nextLine();
+								System.out.println("\nBandeira: ");
+								String nvBandeira = entrada.nextLine();
+								System.out.println("\nDia de fechamento: ");
+								int nvFechamento = entrada.nextInt();
+								entrada.nextLine();
+								System.out.println("\nDia de pagamento: ");
+								int nvPagamento = entrada.nextInt();
+								entrada.nextLine();
+								System.out.println("\nValor: ");
+								double nvValor = entrada.nextDouble();
+								entrada.nextLine();
+								
+								buscado.setDescriçao(nvDescricao);
+								buscado.setBandeira(nvBandeira);
+								buscado.setDiaF(nvFechamento);
+								buscado.setDiaP(nvPagamento);
+								buscado.setValor(nvValor);
+								
+								try {
+									wallet.atualizarCartao(buscado);
+									System.out.println("\n\nCartao atualizado!");
+									entrada.nextLine();
+									
+								} catch (Exception e) {
+									// TODO: handle exception
+								}
+							} catch (Exception e) {
+								// TODO: handle exception
+							}
+							
+							break;
+						}
+						
+						case 3:{
+							entrada.nextLine();
+							System.out.println("\nRemover Cartao");
+							System.out.println("\nInforme a descrição do cartao que deseja remover");
+							String busca = entrada.nextLine();
+							
+							CartaoCredito deleta = null;
+							
+							try {
+								deleta = wallet.buscarCartao(busca);
+								
+							} catch (Exception e) {
+								// TODO: handle exception
+							}
+							if(deleta != null) {
+								System.out.println("\nConfirme se deseja deletar o cartao"
+										+ "1 - sim\n"
+										+ "2 - nao\n"
+										+ "Opção: ");
+								int escolha = entrada.nextInt();
+								switch(escolha) {
+								case 1:
+									try {
+										wallet.removerCartao(deleta);
+										
+									} catch (Exception e) {
+										// TODO: handle exception
+									}
+									System.out.println("\nCartao Removido!\n");
+								}
+								
+							}else {
+								System.out.println("Cartao nao existe!\n");
+							}
+							
+						}
+						break;
+						case 4: {
+							entrada.nextLine();
+							System.out.println("\nBuscar Cartao\n");
+							System.out.println("Informe a descrição do cartao que deseja buscar: \n");
+							String busca = entrada.nextLine();
+							
+							CartaoCredito buscado = null;
+							
+							try {
+								buscado = wallet.buscarCartao(busca);
+								
+							} catch (Exception e) {
+								// TODO: handle exception
+							}
+							
+							if (buscado != null) {
+								System.out.println("\nDados do cartao " + buscado.getDescricao());
+								System.out.println(buscado);
+								
+							} else {
+								System.out.println("Cartao nao existe!\n");
+							}
+						break;
+						}
+						
+						case 5:{
+							break;
+						}
+						case 6:{
+							System.out.println("Voltando ao menu...");
+							entrada.nextLine();
+							muda4 = 6;
+							break;
+						}
+					}
+				}
+				break;	
 			
 			
 			
