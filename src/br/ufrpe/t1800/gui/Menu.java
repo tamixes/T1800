@@ -1,8 +1,7 @@
 package br.ufrpe.t1800.gui;
 
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+
+
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -466,14 +465,12 @@ public class Menu {
 										int opc = entrada.nextInt();
 										switch(opc) {
 										case 1:
-											try {
+											
 												wallet.removerReceita(remover);
 												System.out.println("Removido!\n");
 												entrada.nextLine();
 												
-											} catch (Exception e) {
-												// TODO: handle exception
-											}
+											
 										}
 									
 									break; 
@@ -687,61 +684,166 @@ public class Menu {
 						int escolha = entrada.nextInt();
 						switch(escolha) {
 						case 1:
-							this.começo();
-							System.out.println("\n1 - Cadastrar despesa Comum\n"
-									+ "2 - Remover desepesa comum\n"
-									+ "3 - Atualizar despesa comum\n"
-									+ "4 - Buscar despesa comum\n"
-									+ "5 - Sair\n");
-							int escolha2 = entrada.nextInt();
-							
-							switch(escolha2) {
-							case 1:{
-								boolean ok = false;
-								do {
-									entrada.nextLine();
-									
-									System.out.println("Para cadastrar uma despesa é necessario ter uma carteira cadastrada\n");
-									
-									Carteira carteira = null;
-									
+							int aux = 0;
+							while(aux != 5) {
+								this.começo();
+								System.out.println("\n1 - Cadastrar despesa Comum\n"
+										+ "2 - Remover desepesa comum\n"
+										+ "3 - Atualizar despesa comum\n"
+										+ "4 - Buscar despesa comum\n"
+										+ "5 - Sair\n");
+								int escolha2 = entrada.nextInt();
+								
+								switch(escolha2) {
+								case 1:{
+									boolean ok = false;
 									do {
-										System.out.println("Informe o id da carteira: \n");
-										String id = entrada.nextLine();
-									
-										carteira = wallet.buscarCarteira(id);
-									} while (carteira == null);
-									
-									System.out.println("\nDesccrição: \n");
+										entrada.nextLine();
+										
+										System.out.println("Para cadastrar uma despesa é necessario ter uma carteira cadastrada\n");
+										
+										Carteira carteira = null;
+										
+										do {
+											System.out.println("Informe o id da carteira: \n");
+											String id = entrada.nextLine();
+										
+											carteira = wallet.buscarCarteira(id);
+										} while (carteira == null);
+										
+										System.out.println("\nDesccrição: \n");
+										String descricao = entrada.nextLine();
+										System.out.println("Data da compra (apenas os numeros)dia/mes/ano\n");
+										int dia = entrada.nextInt();
+										entrada.nextLine();
+										int mes = entrada.nextInt();
+										entrada.nextLine();
+										int ano = entrada.nextInt();
+										entrada.nextLine();
+										LocalDate data = LocalDate.of(ano, mes, dia);
+										System.out.println("Valor: \n");
+										double valor = entrada.nextDouble();
+										entrada.nextLine();
+										System.out.println("Tipo: \n");
+										String tipo = entrada.nextLine();
+										System.out.println("Já foi pago? \n");
+										boolean isPago = entrada.nextBoolean();
+										entrada.nextLine();
+										
+										DespesaComum despesa = new DespesaComum(carteira, valor, data, descricao, tipo, isPago);
+										
+										if(wallet.existeDespesaComum(despesa)) {
+											System.out.println("Despesa já Cadastrada!\n");
+										}else {
+											wallet.cadastrarDespesaComum(despesa);
+											System.out.println("Despesa Cadastrada!\n");
+											ok = true;
+										}
+				
+										
+										
+									} while (ok==false);
+									break;
+								}
+								case 2:{
+									entrada.nextLine();
+									System.out.println("Remover despesa comum\n");
+									System.out.println("Informe a descrição da receita que deseja remover: \n");
 									String descricao = entrada.nextLine();
-									System.out.println("Data da compra (apenas os numeros)dia/mes/ano\n");
-									int dia = entrada.nextInt();
-									entrada.nextLine();
-									int mes = entrada.nextInt();
-									entrada.nextLine();
-									int ano = entrada.nextInt();
-									entrada.nextLine();
-									LocalDate data = LocalDate.of(ano, mes, dia);
-									System.out.println("Valor: \n");
-									double valor = entrada.nextDouble();
-									entrada.nextLine();
-									System.out.println("Tipo: \n");
-									String tipo = entrada.nextLine();
-									System.out.println("Já foi pago? \n");
-									boolean isPago = entrada.nextBoolean();
-									entrada.nextLine();
 									
-									DespesaComum despesa = new DespesaComum(carteira, valor, data, descricao, tipo, isPago);
+									DespesaComum remove = null;
+									remove = wallet.buscarDespesaComum(descricao);
+									if(remove != null) {
+										System.out.println("Deseja remover a despesa "+ remove.getDescriçao()+ "?\n"
+												+ "1 - sim \n"
+												+ "2 - nao \n"
+												+ "opçao: \n");
+										int opc = entrada.nextInt();
+										switch(opc) {
+										case 1:
+											if(wallet.existeDespesaComum(remove)) {
+												wallet.removerDespesaComum(remove);
+												System.out.println("Despesa removida");
+												entrada.nextLine();
+											}
+										}
+										
+									}else {
+										System.out.println("Despesa nao existe! \n");
+									}
 									
-									if(wallet)
-			
+									break;
+								}
+								case 3:{
+									entrada.nextLine();
+									System.out.println("Atualizar despesa comum\n");
+									System.out.println("Informe a descriçao da despesa: \n");
+									String descricao = entrada.nextLine();
 									
+									DespesaComum atualiza = null;
 									
-								} while (ok==false);
+									atualiza = wallet.buscarDespesaComum(descricao);
+									if(atualiza != null) {
+										System.out.println("Informe os novos dados\n");
+										System.out.println("Descrição: \n");
+										String nvDescricao = entrada.nextLine();
+										System.out.println("Tipo? \n");
+										String nvTipo = entrada.nextLine();
+										System.out.println("Despesa paga? sim-nao\n");
+										boolean nvIsPago = entrada.nextBoolean();
+										System.out.println("Data (apenas numeros dd/mm/aaaa) ");
+										int nvDia = entrada.nextInt();
+										int nvMes = entrada.nextInt();
+										int nvAno = entrada.nextInt();
+										LocalDate nvData = LocalDate.of(nvDia, nvMes, nvAno);
+										double nvValor = entrada.nextDouble();
+										
+										atualiza.setDescriçao(nvDescricao);
+										atualiza.setData(nvData);
+										atualiza.setPago(nvIsPago);
+										atualiza.setValor(nvValor);
+										atualiza.setTipo(nvTipo);
+										
+										wallet.atualizarDespesaComum(atualiza);
+										System.out.println("Despesa atualizada!\n");
+										entrada.nextLine();
+										
+									}else {
+										System.out.println("Despesa invalida!\n");
+									}
+									break;
+								}
+								case 4:{
+									entrada.nextLine();
+									System.out.println("Buscar despesa");
+									System.out.println("Informe a descricao da despesa: \n");
+									String busca = entrada.nextLine();
+									
+									DespesaComum buscada = null;
+									
+									buscada = wallet.buscarDespesaComum(busca);
+									
+									if(buscada != null) {
+										System.out.println("Informações sobre " +buscada.getDescriçao()+"\n");
+										System.out.println(buscada);
+										entrada.nextLine();
+									}else {
+										System.out.println("Despesa nao existe!\n");
+									}
+									break;
+								}
+								case 5:{
+									System.out.println("Saindo...");
+									entrada.nextLine();
+									aux = 5;
+									break;
+								}							
 							}
-							}
-						}
+							
+							
+						
 					}
+					
 				
 				case 0: 
 					entrada.close();
@@ -757,5 +859,8 @@ public class Menu {
 		}
 	}
 	
+	}
+		
+	}
 	}
 }
