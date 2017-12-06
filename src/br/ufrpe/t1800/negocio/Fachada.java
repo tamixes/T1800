@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import br.ufrpe.t1800.negocio.beans.CartaoCredito;
 import br.ufrpe.t1800.negocio.beans.Carteira;
+import br.ufrpe.t1800.negocio.beans.DespesaCartao;
+import br.ufrpe.t1800.negocio.beans.DespesaComum;
 import br.ufrpe.t1800.negocio.beans.Pessoa;
 import br.ufrpe.t1800.negocio.beans.Receita;
 
@@ -13,6 +15,8 @@ public class Fachada implements IFachada{
 	private ControladorCarteira controladorCarteira;
 	private ControladorReceita controladorReceita;
 	private ControladorCartao controladorCartao;
+	private ControladorDespesaCartao controladorDespesaCartao;
+	private ControladorDespesaComum controladorDespesaComum;
 	private static Fachada instance;
 	
 	private Fachada() {
@@ -20,6 +24,8 @@ public class Fachada implements IFachada{
 		this.controladorCarteira = ControladorCarteira.getInstance();
 		this.controladorPessoa = ControladorPessoa.getInstance();
 		this.controladorReceita = ControladorReceita.getInstance();
+		this.controladorDespesaCartao = ControladorDespesaCartao.getInstance();
+		this.controladorDespesaComum = ControladorDespesaComum.getInstance();
 	}
 	
 	public static Fachada getInstance() {
@@ -159,6 +165,74 @@ public class Fachada implements IFachada{
 	@Override
 	public boolean existeCarteira(Carteira carteira) {
 		return this.controladorCarteira.existe(carteira);
+	}
+
+	@Override
+	public void cadastrarDespesaComum(DespesaComum despesa) {
+		this.controladorDespesaComum.cadastrarDespesaC(despesa);
+		
+	}
+
+	@Override
+	public void removerDespesaComum(DespesaComum despesa) {
+		this.controladorDespesaComum.cadastrarDespesaC(despesa);
+		
+	}
+
+	@Override
+	public void atualizarDespesaComum(DespesaComum despesa) {
+		this.controladorDespesaComum.atualizarDespesaC(despesa);
+		
+	}
+
+	@Override
+	public ArrayList<DespesaComum> listarDespesaComum() {
+		return this.controladorDespesaComum.listar();
+	}
+
+	@Override
+	public DespesaComum buscarDespesaComum(String descricao) {
+		
+		return this.controladorDespesaComum.buscarDespesa(descricao);
+	}
+
+	@Override
+	public boolean existeDespesaComum(DespesaComum despesa) {
+		
+		return this.controladorDespesaComum.existe(despesa);
+	}
+
+	@Override
+	public void cadastrarDespesaCartao(DespesaCartao despesa) {
+		this.controladorDespesaCartao.cadastrarDespesaCartao(despesa);
+		
+	}
+
+	@Override
+	public void removerDespesaCartao(DespesaCartao despesa) {
+		this.controladorDespesaCartao.cadastrarDespesaCartao(despesa);
+		
+	}
+
+	@Override
+	public void atualizarDespesaCartao(DespesaCartao despesa) {
+		this.controladorDespesaCartao.atualizarDespesaCartao(despesa);
+		
+	}
+
+	@Override
+	public ArrayList<DespesaCartao> listarDespesaCartao() {
+		return this.controladorDespesaCartao.listar();
+	}
+
+	@Override
+	public DespesaCartao buscarDespesaCartao(String descricao) {
+		return this.controladorDespesaCartao.buscarDespesaCartao(descricao);
+	}
+
+	@Override
+	public boolean existeDespesaCartao(DespesaCartao despesa) {
+		return this.controladorDespesaCartao.existe(despesa);
 	}
 
 }

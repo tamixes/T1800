@@ -70,8 +70,7 @@ public class Carteira {
 
 	@Override
 	public String toString() {
-		String resultado = "\t\tDados da Carteira\n"
-						+"\t Dono da Carteira: " + this.getPessoa().getNome() + "\n"
+		String resultado = "\t\tDados da Carteira\n" 
 						+"\t Titulo: " + this.getTitulo() + "\n"
 						+"\t Nome da Carteira: " +this.getDescriçao() + "\n"
 						+"\t Id da Carteira: " + this.getIdCarteira()+ "\n"

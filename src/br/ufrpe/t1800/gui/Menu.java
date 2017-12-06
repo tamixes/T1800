@@ -1,5 +1,8 @@
 package br.ufrpe.t1800.gui;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -7,6 +10,7 @@ import br.ufrpe.t1800.negocio.Fachada;
 import br.ufrpe.t1800.negocio.IFachada;
 import br.ufrpe.t1800.negocio.beans.CartaoCredito;
 import br.ufrpe.t1800.negocio.beans.Carteira;
+import br.ufrpe.t1800.negocio.beans.DespesaComum;
 import br.ufrpe.t1800.negocio.beans.Pessoa;
 import br.ufrpe.t1800.negocio.beans.Receita;
 
@@ -28,6 +32,7 @@ public class Menu {
 					+ "2 - Carteira\n"
 					+ "3 - Receita\n"
 					+ "4 - Cartao\n"
+					+ "5 - Despesa"
 					+ "0 - Sair\n\n"
 					+ "Opção: \n");
 			
@@ -670,7 +675,73 @@ public class Menu {
 					}
 				}
 				break;	
+				
+				case 5:
+					int muda5 = 0;
+					while(muda5 != 3) {
+						this.começo();
+						System.out.println("\n\nMenu de Despesa\n");
+						System.out.println("1 - Despesa Comum\n"
+								+ "2 - Despesa Cartao\n"
+								+ "3 - Sair\n");
+						int escolha = entrada.nextInt();
+						switch(escolha) {
+						case 1:
+							this.começo();
+							System.out.println("\n1 - Cadastrar despesa Comum\n"
+									+ "2 - Remover desepesa comum\n"
+									+ "3 - Atualizar despesa comum\n"
+									+ "4 - Buscar despesa comum\n"
+									+ "5 - Sair\n");
+							int escolha2 = entrada.nextInt();
+							
+							switch(escolha2) {
+							case 1:{
+								boolean ok = false;
+								do {
+									entrada.nextLine();
+									
+									System.out.println("Para cadastrar uma despesa é necessario ter uma carteira cadastrada\n");
+									
+									Carteira carteira = null;
+									
+									do {
+										System.out.println("Informe o id da carteira: \n");
+										String id = entrada.nextLine();
+									
+										carteira = wallet.buscarCarteira(id);
+									} while (carteira == null);
+									
+									System.out.println("\nDesccrição: \n");
+									String descricao = entrada.nextLine();
+									System.out.println("Data da compra (apenas os numeros)dia/mes/ano\n");
+									int dia = entrada.nextInt();
+									entrada.nextLine();
+									int mes = entrada.nextInt();
+									entrada.nextLine();
+									int ano = entrada.nextInt();
+									entrada.nextLine();
+									LocalDate data = LocalDate.of(ano, mes, dia);
+									System.out.println("Valor: \n");
+									double valor = entrada.nextDouble();
+									entrada.nextLine();
+									System.out.println("Tipo: \n");
+									String tipo = entrada.nextLine();
+									System.out.println("Já foi pago? \n");
+									boolean isPago = entrada.nextBoolean();
+									entrada.nextLine();
+									
+									DespesaComum despesa = new DespesaComum(carteira, valor, data, descricao, tipo, isPago);
+									
+									if(wallet)
 			
+									
+									
+								} while (ok==false);
+							}
+							}
+						}
+					}
 				
 				case 0: 
 					entrada.close();
