@@ -1,22 +1,22 @@
 package br.ufrpe.t1800.negocio.beans;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class DespesaCartao {
 	
 	private CartaoCredito cartao;
 	private double valor; 
-	private LocalDate dataCompra; 
+	private Date dataCompra; 
 	private String descriçao; 
 	private String tipo; 
 	private int numParcelas;
 	
 	
-	public DespesaCartao(CartaoCredito cartao, double valor, LocalDate dataCompra, String descriçao, String tipo, int parcela) {
+	public DespesaCartao(CartaoCredito cartao, double valor, Date data, String descriçao, String tipo, int parcela) {
 		
 		this.cartao = cartao;
 		this.valor = valor;
-		this.dataCompra = dataCompra;
+		this.dataCompra = data;
 		this.descriçao = descriçao;
 		this.tipo = tipo; 
 		this.numParcelas = parcela;
@@ -56,12 +56,12 @@ public class DespesaCartao {
 	}
 
 
-	public LocalDate getDataCompra() {
+	public Date getDataCompra() {
 		return dataCompra;
 	}
 
 
-	public void setDataCompra(LocalDate dataCompra) {
+	public void setDataCompra(Date dataCompra) {
 		this.dataCompra = dataCompra;
 	}
 

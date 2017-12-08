@@ -2,7 +2,9 @@ package br.ufrpe.t1800.gui;
 
 
 
-import java.time.LocalDate;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 import br.ufrpe.t1800.exceptions.ErroAoAtualizarException;
@@ -110,18 +112,18 @@ public class Menu {
 									
 									try {
 										wallet.atualizarPessoa(atualiza);
-										System.out.println("Atualizado com sucesso!");
-									} catch (Exception e) {
-										// TODO: handle exception
+									} catch (ErroAoAtualizarException e) {
+										System.out.println(e.getMessage());
+										entrada.nextLine();
 									}
 									
 								} catch (ObjetoNaoExisteException e) {
 									System.out.println(e.getMessage());
 									entrada.nextLine();
 								}
-									
 								
-									
+								
+			
 								
 								break;
 								
@@ -184,7 +186,9 @@ public class Menu {
 						
 						case 5:{
 							entrada.nextLine();
+							
 							System.out.println("Lista de Pessoas");
+							
 						}
 						break;
 						
@@ -335,17 +339,19 @@ public class Menu {
 									
 									switch(esc) {
 										case 1:
-											/*try {
-												wallet.removerCarteira(carteira);
-												System.out.println("\nCarteira Removida!");
-												entrada.nextLine();
-											} catch (ErroAoRemoverException e) {
-												System.out.println(e.getMessage());
-												entrada.nextLine();*/
+												try {
+													wallet.removerCarteira(carteira);
+													System.out.println("\nCarteira Removida!");
+													entrada.nextLine();
+												} catch (ErroAoRemoverException e) {
+													System.out.println(e.getMessage());
+													entrada.nextLine();
+												}
+												
+											
 									}
 								}
-									
-								catch (ObjetoNaoExisteException e) {
+									catch (ObjetoNaoExisteException e) {
 									System.out.println(e.getMessage());
 									entrada.nextLine();
 								}
@@ -353,6 +359,7 @@ public class Menu {
 						}
 							
 							case 4: {
+								entrada.nextLine();
 								System.out.println("\nBuscar Carteira\n\n");
 								System.out.println("Digite o ID da Carteira a ser buscada");
 								String id = entrada.nextLine();
@@ -434,16 +441,20 @@ public class Menu {
 										String categoria = entrada.nextLine();
 										System.out.println("Valor: \n");
 										double valor = entrada.nextDouble();
-										System.out.println("O valor ja foi pago? sim-nao\n");
-										boolean isPago = entrada.nextBoolean();
-										
-										System.out.println("Data ano/mes/dia (digite sem espaços apenas os numeros): \n");
-										int dia = entrada.nextInt();
-										int mes = entrada.nextInt();
-										int ano = entrada.nextInt();
 										entrada.nextLine();
-										LocalDate data = LocalDate.of(ano, mes, dia);
+										System.out.println("O valor ja foi pago? true-false\n");
+										boolean isPago = entrada.nextBoolean();
+										entrada.nextLine();
+																			
 										
+										System.out.println("Data ano/mes/dia: \n");
+										String str = entrada.nextLine();
+										
+										SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+										Date data = formato.parse(str);
+										
+										
+	
 										Receita receita = new Receita(busca, valor, data, descricao, categoria, isPago);
 									
 											try {
@@ -477,33 +488,35 @@ public class Menu {
 										System.out.println("Categoria: \n");
 										String novaCateg = entrada.nextLine();
 										System.out.println("Valor: \n");
-										int novoValor = entrada.nextInt();
-										System.out.println("Data dia/mes/ano: \n");
-										String text = entrada.nextLine();
-										LocalDate novaData = LocalDate.parse(text);
-										System.out.println("O valor está pago? sim-nao\n");
-										String novoPago = entrada.nextLine();
-										boolean novoIsPago = false;
-										if(novoPago.equalsIgnoreCase("sim")) {
-											novoIsPago = true;
-										}else {
-											System.out.println("Invalido\n");
-										}
+										double novoValor = entrada.nextInt();
+										entrada.nextLine();
+										
+										System.out.println("Data ano/mes/dia: \n");
+										String dt = entrada.nextLine();
+										DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+										Date nvData = df.parse(dt);
+										
+										System.out.println("O valor está pago? true-false\n");
+										boolean novoIsPago = entrada.nextBoolean();
+										entrada.nextLine();
 										
 										atualiza.setCategoria(novaCateg);
-										atualiza.setData(novaData);
+										atualiza.setData(nvData);
 										atualiza.setDescricao(novaDesc);
 										atualiza.setPago(novoIsPago);
 										atualiza.setValor(novoValor);
 										
-										
-											try {
+										try {
 												wallet.atualizarReceita(atualiza);
 												System.out.println("Receita atualizada!\n");
 												entrada.nextLine();
-											} catch (ErroAoAtualizarException e) {
-												// TODO: handle exception
-											}
+										} catch (ErroAoAtualizarException e) {
+											System.out.println(e.getMessage());
+											entrada.nextLine();
+										}
+											
+												
+											
 										
 									break;
 											
@@ -709,7 +722,7 @@ public class Menu {
 								try {
 									deleta = wallet.buscarCartao(busca);
 									
-									if(deleta != null) {
+									
 								System.out.println("\nConfirme se deseja deletar " + deleta.getDescricao()
 										+ "1 - sim\n"
 										+ "2 - nao\n"
@@ -729,9 +742,7 @@ public class Menu {
 									System.out.println("\nCartao Removido!\n");
 								}
 								
-							}else {
-								System.out.println("Cartao nao existe!\n");
-							}
+							
 								} catch (ObjetoNaoExisteException e) {
 									System.out.println(e.getMessage());
 									entrada.nextLine();
@@ -817,14 +828,13 @@ public class Menu {
 												
 											System.out.println("\nDesccrição: \n");
 											String descricao = entrada.nextLine();
-											System.out.println("Data da compra (apenas os numeros)dia/mes/ano\n");
-											int dia = entrada.nextInt();
-											entrada.nextLine();
-											int mes = entrada.nextInt();
-											entrada.nextLine();
-											int ano = entrada.nextInt();
-											entrada.nextLine();
-											LocalDate data = LocalDate.of(ano, mes, dia);
+											System.out.println("Data da compra ano/mes/dia: \n");
+											String str = entrada.nextLine();
+											
+											SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+											Date data = formato.parse(str);
+											
+											
 											System.out.println("Valor: \n");
 											double valor = entrada.nextDouble();
 											entrada.nextLine();
@@ -866,7 +876,7 @@ public class Menu {
 									try {
 										remove = wallet.buscarDespesaComum(descricao);
 										
-										if(remove != null) {
+										
 										System.out.println("Deseja remover a despesa "+ remove.getDescriçao()+ "?\n"
 												+ "1 - sim \n"
 												+ "2 - nao \n"
@@ -874,22 +884,25 @@ public class Menu {
 										int opc = entrada.nextInt();
 										switch(opc) {
 										case 1:
-												try {
-													wallet.removerDespesaComum(remove);
+												
+													try {
+														wallet.removerDespesaComum(remove);
+														System.out.println("Removido com sucesso!");
+														entrada.nextLine();
+													} catch (ErroAoRemoverException e) {
+														System.out.println(e.getMessage());
+														entrada.nextLine();
+													}
 													
-												} catch (ErroAoRemoverException e) {
-													System.out.println(e.getMessage());
-													entrada.nextLine();
-												}
+												
 												
 											}
-										}else {
-											System.out.println("Despesa removida!");
+										
 										}
 										
 									
 									
-									} catch (ObjetoNaoExisteException e) {
+									 catch (ObjetoNaoExisteException e) {
 										System.out.println(e.getMessage());
 										entrada.nextLine();
 									}
@@ -910,16 +923,19 @@ public class Menu {
 										System.out.println("Informe os novos dados\n");
 										System.out.println("Descrição: \n");
 										String nvDescricao = entrada.nextLine();
-										System.out.println("Tipo? \n");
+										System.out.println("Tipo: \n");
 										String nvTipo = entrada.nextLine();
-										System.out.println("Despesa paga? sim-nao\n");
+										System.out.println("Despesa paga? true-false\n");
 										boolean nvIsPago = entrada.nextBoolean();
-										System.out.println("Data (apenas numeros dd/mm/aaaa) ");
-										int nvDia = entrada.nextInt();
-										int nvMes = entrada.nextInt();
-										int nvAno = entrada.nextInt();
-										LocalDate nvData = LocalDate.of(nvDia, nvMes, nvAno);
+										entrada.nextLine();
+										System.out.println("Data ano/mes/dia ");
+										String str = entrada.nextLine();
+										
+										SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+										Date nvData = formato.parse(str);
+										System.out.println("Valor: \n");
 										double nvValor = entrada.nextDouble();
+										entrada.nextLine();
 										
 										atualiza.setDescriçao(nvDescricao);
 										atualiza.setData(nvData);
@@ -1016,13 +1032,15 @@ public class Menu {
 										String tipo = entrada.nextLine();
 										System.out.println("Valor: \n");
 										double valor = entrada.nextDouble();
+										entrada.nextLine();
 										System.out.println("Numero de parcelas: \n");
 										int numParcelas = entrada.nextInt();
+										entrada.nextLine();
 										System.out.println("Data da compra (apenas numeros): \n");
-										int dia = entrada.nextInt();
-										int mes = entrada.nextInt();
-										int ano = entrada.nextInt();
-										LocalDate data = LocalDate.of(ano, mes, dia);
+										String str = entrada.nextLine();
+										
+										SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+										Date data = formato.parse(str);
 										
 										DespesaCartao despesa = new DespesaCartao(cartao, valor, data, descricao, tipo, numParcelas);
 										
@@ -1057,7 +1075,7 @@ public class Menu {
 									try {
 										remove = wallet.buscarDespesaCartao(busca);
 										
-										if(remove != null) {
+										
 										System.out.println("Você realmente deseja remover a despesa " + remove.getDescriçao() +"?\n");
 										System.out.println("1 - sim\n"
 												+ "2 - nao\n"
@@ -1065,21 +1083,23 @@ public class Menu {
 										int opc = entrada.nextInt();
 										switch(opc) {
 										case 1:
-												try {
-													wallet.removerDespesaCartao(remove);
-													System.out.println("Despesa removida! \n");
-													entrada.nextLine();
-												} catch (ErroAoRemoverException e) {
-													System.out.println(e.getMessage());
-													entrada.nextLine();
-												}
+												
+													try {
+														wallet.removerDespesaCartao(remove);
+														System.out.println("Despesa removida! \n");
+														entrada.nextLine();
+													} catch (ErroAoRemoverException e) {
+														System.out.println(e.getMessage());
+														entrada.nextLine();
+													}
+												
 												
 											
 											}
 										
 										}
 										
-									} catch (ObjetoNaoExisteException e) {
+									 catch (ObjetoNaoExisteException e) {
 										System.out.println(e.getMessage());
 										entrada.nextLine();
 									}
@@ -1107,13 +1127,15 @@ public class Menu {
 										String nvTipo = entrada.nextLine();
 										System.out.println("Valor: \n");
 										double nvValor = entrada.nextDouble();
+										entrada.nextLine();
 										System.out.println("Numero de parcelas: \n");
 										int nvNumParcelas = entrada.nextInt();
+										entrada.nextLine();
 										System.out.println("Data da compra (apenas numeros): \n");
-										int nvDia = entrada.nextInt();
-										int nvMes = entrada.nextInt();
-										int nvAno = entrada.nextInt();
-										LocalDate nvData = LocalDate.of(nvAno, nvMes, nvDia);
+										String str = entrada.nextLine();
+										
+										SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+										Date nvData = formato.parse(str);
 										
 										atualiza.setDataCompra(nvData);
 										atualiza.setDescriçao(nvDescricao);

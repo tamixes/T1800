@@ -17,7 +17,7 @@ public interface IFachada {
 	//Pessoa
 	void cadastrarPessoa(Pessoa pessoa) throws ObjetoJaExisteException;
 	void removerPessoa(Pessoa pessoa) throws ErroAoRemoverException, ObjetoNaoExisteException;
-	void atualizarPessoa(Pessoa pessoa) throws ErroAoRemoverException, ObjetoNaoExisteException;
+	void atualizarPessoa(Pessoa pessoa) throws ErroAoAtualizarException, ObjetoNaoExisteException;
 	ArrayList<Pessoa> listarPessoa();
 	Pessoa buscarPessoa(String nome) throws ObjetoNaoExisteException;
 	boolean existePessoa(Pessoa pessoa);
@@ -32,15 +32,15 @@ public interface IFachada {
 	
 	//Receita
 	void cadastrarReceita(Receita receita) throws ObjetoJaExisteException;
-	void removerReceita(Receita receita) throws ObjetoJaExisteException;
-	void atualizarReceita(Receita receita) throws ObjetoJaExisteException;
+	void removerReceita(Receita receita) throws ErroAoRemoverException, ObjetoNaoExisteException;
+	void atualizarReceita(Receita receita) throws ObjetoNaoExisteException, ErroAoAtualizarException;
 	ArrayList<Receita> listarReceita();
 	Receita buscarReceita(String nome) throws ObjetoNaoExisteException;
-	boolean existeReceita(Receita receita) throws ObjetoNaoExisteException;
+	boolean existeReceita(Receita receita);
 	
 	//Carteira
 	void cadastrarCarteira(Carteira carteira) throws ObjetoJaExisteException;
-	void removerCarteira(Carteira carteira) throws ObjetoJaExisteException;
+	void removerCarteira(Carteira carteira) throws ObjetoNaoExisteException, ErroAoRemoverException;
 	void atualizarCarteira(Carteira carteira) throws ObjetoNaoExisteException, ErroAoAtualizarException;
 	ArrayList<Carteira> listarCarteira();
 	Carteira buscarCarteira(String id) throws ObjetoNaoExisteException;
@@ -49,7 +49,7 @@ public interface IFachada {
 	//despesa comum
 	
 	void cadastrarDespesaComum(DespesaComum despesa) throws ObjetoJaExisteException;
-	void removerDespesaComum(DespesaComum despesa) throws ObjetoJaExisteException;
+	void removerDespesaComum(DespesaComum despesa) throws ObjetoNaoExisteException, ErroAoRemoverException;
 	void atualizarDespesaComum(DespesaComum despesa) throws ErroAoAtualizarException, ObjetoNaoExisteException;
 	ArrayList<DespesaComum> listarDespesaComum();
 	DespesaComum buscarDespesaComum(String descricao) throws ObjetoNaoExisteException;
@@ -57,7 +57,7 @@ public interface IFachada {
 	
 	//Despesa Cartao
 	void cadastrarDespesaCartao(DespesaCartao despesa) throws ObjetoJaExisteException;
-	void removerDespesaCartao(DespesaCartao despesa) throws ObjetoJaExisteException;
+	void removerDespesaCartao(DespesaCartao despesa) throws ObjetoNaoExisteException, ErroAoRemoverException;
 	void atualizarDespesaCartao(DespesaCartao despesa) throws ObjetoNaoExisteException, ErroAoAtualizarException;
 	ArrayList<DespesaCartao> listarDespesaCartao();
 	DespesaCartao buscarDespesaCartao(String descricao) throws ObjetoNaoExisteException;

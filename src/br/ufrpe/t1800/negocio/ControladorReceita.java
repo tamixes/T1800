@@ -66,7 +66,7 @@ public class ControladorReceita {
 		}
 	}
 	
-	public boolean existe(Receita receita) throws ObjetoNaoExisteException{
+	public boolean existe(Receita receita){
 		if(receita == null) {
 			throw new IllegalArgumentException("Inválido");
 		}else {

@@ -52,9 +52,8 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public void atualizarPessoa(Pessoa pessoa) throws ErroAoRemoverException, ObjetoNaoExisteException {
-		this.controladorPessoa.removerPessoa(pessoa);
-		
+	public void atualizarPessoa(Pessoa pessoa) throws ObjetoNaoExisteException, ErroAoAtualizarException {
+		this.controladorPessoa.atualizarPessoa(pessoa);
 	}
 
 	@Override
@@ -112,14 +111,14 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public void removerReceita(Receita receita) throws ObjetoJaExisteException {
-		this.controladorReceita.cadastrarReceita(receita);
+	public void removerReceita(Receita receita) throws ObjetoNaoExisteException, ErroAoRemoverException {
+		this.controladorReceita.removerReceita(receita);
 		
 	}
 
 	@Override
-	public void atualizarReceita(Receita receita) throws ObjetoJaExisteException {
-		this.controladorReceita.cadastrarReceita(receita);
+	public void atualizarReceita(Receita receita) throws ObjetoNaoExisteException, ErroAoAtualizarException {
+		this.controladorReceita.atualizarReceita(receita);
 		
 	}
 
@@ -134,7 +133,7 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public boolean existeReceita(Receita receita) throws ObjetoNaoExisteException {
+	public boolean existeReceita(Receita receita) {
 		return this.controladorReceita.existe(receita);
 	}
 
@@ -145,8 +144,8 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public void removerCarteira(Carteira carteira) throws ObjetoJaExisteException {
-		this.controladorCarteira.cadastrarCarteira(carteira);
+	public void removerCarteira(Carteira carteira) throws  ObjetoNaoExisteException, ErroAoRemoverException {
+		this.controladorCarteira.removerCarteira(carteira);
 		
 	}
 
@@ -178,8 +177,8 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public void removerDespesaComum(DespesaComum despesa) throws ObjetoJaExisteException {
-		this.controladorDespesaComum.cadastrarDespesaC(despesa);
+	public void removerDespesaComum(DespesaComum despesa) throws ObjetoNaoExisteException, ErroAoRemoverException {
+		this.controladorDespesaComum.removerDespesaC(despesa);
 		
 	}
 
@@ -213,8 +212,8 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public void removerDespesaCartao(DespesaCartao despesa) throws ObjetoJaExisteException {
-		this.controladorDespesaCartao.cadastrarDespesaCartao(despesa);
+	public void removerDespesaCartao(DespesaCartao despesa) throws ObjetoNaoExisteException, ErroAoRemoverException {
+		this.controladorDespesaCartao.removerDespesaCartao(despesa);
 		
 	}
 

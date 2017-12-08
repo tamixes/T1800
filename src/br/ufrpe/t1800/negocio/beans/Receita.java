@@ -1,18 +1,21 @@
 package br.ufrpe.t1800.negocio.beans;
 
-import java.time.LocalDate;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Receita {
 	
 	private Carteira id; 
 	private double valor;
-	private LocalDate data;
+	private Date data;
 	private String descricao;
 	private String categoria; 
 	private boolean isPago = true;
 	
 	
-	public Receita(Carteira id, double valor, LocalDate data, String descricao, String categoria, boolean pago) {
+	public Receita(Carteira id, double valor, Date data, String descricao, String categoria, boolean pago) {
 		
 		this.id = id;
 		this.valor = valor;
@@ -46,12 +49,12 @@ public class Receita {
 	}
 
 
-	public LocalDate getData() {
+	public Date getData() {
 		return data;
 	}
 
 
-	public void setData(LocalDate data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 
@@ -97,6 +100,12 @@ public class Receita {
 		return resultado; 
 	//TODO colocar para nao imprir o valor boolean mas sim (sim ou nao)
 	
+	}
+	
+	public void formataData() throws ParseException {
+		String exemplo = "10/12/2000";
+		DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+		Date date =(Date)formatter.parse(exemplo);
 	}
 	
 	public boolean equals(Object obj) {
