@@ -44,7 +44,12 @@ public class CartaoCredito {
 
 
 	public void setDiaF(int diaF) {
-		this.diaF = diaF;
+		if(diaF <= 30 && diaF >= 1) {
+			this.diaF = diaF;
+		}else {
+			System.out.println("Dia inválido!");
+		}
+		
 	}
 
 
@@ -56,7 +61,12 @@ public class CartaoCredito {
 
 
 	public void setDiaP(int diaP) {
-		this.diaP = diaP;
+		if(diaF <= 30 && diaF >= 1) {
+			this.diaP = diaP;
+		}else {
+			System.out.println("Dia inválido!");
+		}
+		
 	}
 
 
@@ -77,7 +87,12 @@ public class CartaoCredito {
 
 
 	public void setValor(double valor) {
-		this.valor = valor;
+		if(valor >= 0.0) {
+			this.valor = valor;
+		}else {
+			System.out.println("Valor inválido!");
+		}
+		
 	}
 
 
@@ -111,7 +126,7 @@ public class CartaoCredito {
 	public boolean equals(Object obj) {
 		CartaoCredito c = (CartaoCredito) obj; 
 		
-		if(this.descricao.equalsIgnoreCase(c.getDescricao()) && this.diaF == c.getDiaF() && this.diaP == c.getDiaP()
+		 if(this.descricao.equalsIgnoreCase(c.getDescricao()) && this.diaF == c.getDiaF() && this.diaP == c.getDiaP()
 				&& this.bandeira.equals(c.getBandeira())) {
 			return true;
 		}

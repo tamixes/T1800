@@ -7,7 +7,7 @@ public class DespesaCartao {
 	private CartaoCredito cartao;
 	private double valor; 
 	private Date dataCompra; 
-	private String descriçao; 
+	private String descricao; 
 	private String tipo; 
 	private int numParcelas;
 	
@@ -17,7 +17,7 @@ public class DespesaCartao {
 		this.cartao = cartao;
 		this.valor = valor;
 		this.dataCompra = data;
-		this.descriçao = descriçao;
+		this.descricao = descriçao;
 		this.tipo = tipo; 
 		this.numParcelas = parcela;
 	}
@@ -52,7 +52,12 @@ public class DespesaCartao {
 
 
 	public void setValor(double valor) {
-		this.valor = valor;
+		if(valor >= 0.0) {
+			this.valor = valor;
+		}else {
+			System.out.println("Valor inválido!");
+		}
+		
 	}
 
 
@@ -67,12 +72,12 @@ public class DespesaCartao {
 
 
 	public String getDescriçao() {
-		return descriçao;
+		return descricao;
 	}
 
 
 	public void setDescriçao(String descriçao) {
-		this.descriçao = descriçao;
+		this.descricao = descriçao;
 	}
 
 
@@ -82,7 +87,12 @@ public class DespesaCartao {
 
 
 	public void setParcela(int parcela) {
-		this.numParcelas = parcela;
+		if(valor > 0) {
+			this.numParcelas = parcela;
+		}else {
+			System.out.println("Valor inválido!");
+		}
+		
 	}
 
 
@@ -104,7 +114,7 @@ public class DespesaCartao {
 	@Override
 	public boolean equals(Object obj) {
 		DespesaCartao d = (DespesaCartao) obj;
-		if(this.dataCompra.equals(d.getDataCompra()) && this.descriçao.equalsIgnoreCase(d.getDescriçao())
+		if(this.dataCompra.equals(d.getDataCompra()) && this.descricao.equalsIgnoreCase(d.getDescriçao())
 				&& this.valor == d.getValor()) {
 			return true;
 		}

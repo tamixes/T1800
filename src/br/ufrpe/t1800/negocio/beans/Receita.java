@@ -45,7 +45,12 @@ public class Receita {
 
 
 	public void setValor(double valor) {
-		this.valor = valor;
+		if(valor >= 0) {
+			this.valor = valor;
+		}else {
+			System.out.println("Valor invalido!");
+		}
+		
 	}
 
 

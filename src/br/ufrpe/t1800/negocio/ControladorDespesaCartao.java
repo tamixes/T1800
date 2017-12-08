@@ -27,7 +27,9 @@ public class ControladorDespesaCartao {
 	}
 	
 	public void cadastrarDespesaCartao(DespesaCartao despesa) throws ObjetoJaExisteException{
-		if(despesa != null && despesa.getValor() >= 0) {
+		
+		
+		if(despesa != null) {
 			repositorio.cadastrarDespesaCartao(despesa);
 			
 		}else if(this.repositorio.existe(despesa)) {
@@ -45,7 +47,7 @@ public class ControladorDespesaCartao {
 		}
 	}
 	public void atualizarDespesaCartao(DespesaCartao despesa) throws ObjetoNaoExisteException, ErroAoAtualizarException{
-		if(despesa != null && despesa.getValor() >= 0) {
+		if(despesa != null ) {
 			this.repositorio.atualizarDespesaCartao(despesa);
 		}else {
 			throw new IllegalArgumentException("Inválido");

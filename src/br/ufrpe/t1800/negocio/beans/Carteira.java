@@ -5,7 +5,7 @@ public class Carteira {
 	private Pessoa pessoa;
 	private double valor; 
 	private String titulo; 
-	private String descriçao;
+	private String descricao;
 	private static long geraId = 10;
 	private String idCarteira;
 	
@@ -16,7 +16,7 @@ public class Carteira {
 		this.pessoa = pessoa;
 		this.valor = valor;
 		this.titulo = titulo;
-		this.descriçao = descriçao;
+		this.descricao = descriçao;
 	}
 
 	public Carteira() {
@@ -38,7 +38,12 @@ public class Carteira {
 
 
 	public void setValor(double valor) {
-		this.valor = valor;
+		if(valor >= 0.0) {
+			this.valor = valor;
+		}else {
+			System.out.println("Valor inválido!");
+		}
+		
 	}
 
 
@@ -53,12 +58,12 @@ public class Carteira {
 
 
 	public String getDescriçao() {
-		return descriçao;
+		return descricao;
 	}
 
 
 	public void setDescriçao(String descriçao) {
-		this.descriçao = descriçao;
+		this.descricao = descriçao;
 	}
 
 
@@ -85,7 +90,7 @@ public class Carteira {
 	@Override
 	public boolean equals(Object obj) {
 		Carteira c = (Carteira) obj;
-		if(this.descriçao.equalsIgnoreCase(c.getDescriçao()) && this.idCarteira.equals(c.getIdCarteira())) {
+		if(this.descricao.equalsIgnoreCase(c.getDescriçao()) && this.idCarteira.equals(c.getIdCarteira())) {
 			return true;
 		}
 		return false; 

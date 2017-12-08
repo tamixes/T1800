@@ -7,7 +7,7 @@ public class DespesaComum {
 	private Carteira id;
 	private double valor; 
 	private Date data;
-	private String descriçao;
+	private String descricao;
 	private String tipo; 
 	private boolean isPago = true;
 	
@@ -17,7 +17,7 @@ public class DespesaComum {
 		this.id = id;
 		this.valor = valor;
 		this.data = data;
-		this.descriçao = descriçao;
+		this.descricao = descriçao;
 		this.tipo = tipo;
 		this.isPago = pago;
 	}
@@ -48,12 +48,12 @@ public class DespesaComum {
 
 
 	public String getDescriçao() {
-		return descriçao;
+		return descricao;
 	}
 
 
 	public void setDescriçao(String descriçao) {
-		this.descriçao = descriçao;
+		this.descricao = descriçao;
 	}
 
 
@@ -105,7 +105,7 @@ public class DespesaComum {
 	@Override
 	public boolean equals(Object obj) {
 		DespesaComum d = (DespesaComum) obj;
-		if(this.data.equals(d.getData()) && this.descriçao.equalsIgnoreCase(d.getDescriçao())
+		if(this.data.equals(d.getData()) && this.descricao.equalsIgnoreCase(d.getDescriçao())
 				&& this.valor == d.getValor()) {
 			return true;
 		}

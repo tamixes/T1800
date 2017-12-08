@@ -723,7 +723,7 @@ public class Menu {
 									deleta = wallet.buscarCartao(busca);
 									
 									
-								System.out.println("\nConfirme se deseja deletar " + deleta.getDescricao()
+								System.out.println("\nConfirme se deseja deletar \n" + deleta.getDescricao()
 										+ "1 - sim\n"
 										+ "2 - nao\n"
 										+ "Opção: ");
@@ -1036,10 +1036,10 @@ public class Menu {
 										System.out.println("Numero de parcelas: \n");
 										int numParcelas = entrada.nextInt();
 										entrada.nextLine();
-										System.out.println("Data da compra (apenas numeros): \n");
+										System.out.println("Data da compra ano/mes/dia: \n");
 										String str = entrada.nextLine();
 										
-										SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+										SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
 										Date data = formato.parse(str);
 										
 										DespesaCartao despesa = new DespesaCartao(cartao, valor, data, descricao, tipo, numParcelas);
@@ -1076,7 +1076,7 @@ public class Menu {
 										remove = wallet.buscarDespesaCartao(busca);
 										
 										
-										System.out.println("Você realmente deseja remover a despesa " + remove.getDescriçao() +"?\n");
+										System.out.println("Você realmente deseja remover a despesa \n" + remove.getDescriçao() +"?\n");
 										System.out.println("1 - sim\n"
 												+ "2 - nao\n"
 												+ "opção: \n");
@@ -1131,10 +1131,10 @@ public class Menu {
 										System.out.println("Numero de parcelas: \n");
 										int nvNumParcelas = entrada.nextInt();
 										entrada.nextLine();
-										System.out.println("Data da compra (apenas numeros): \n");
+										System.out.println("Data da compra ano/mes/dia: \n");
 										String str = entrada.nextLine();
 										
-										SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+										SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
 										Date nvData = formato.parse(str);
 										
 										atualiza.setDataCompra(nvData);

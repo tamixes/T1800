@@ -29,7 +29,8 @@ public class ControladorReceita {
 	}
 	
 	public void cadastrarReceita(Receita receita) throws ObjetoJaExisteException{
-		if(receita != null && receita.getValor() >= 0) {
+	 
+		if(receita != null) {
 			this.repositorio.cadastrarReceita(receita);
 		}else if(this.repositorio.existe(receita)) {
 			throw new ObjetoJaExisteException();
@@ -39,7 +40,7 @@ public class ControladorReceita {
 	}
 	
 	public void atualizarReceita(Receita receita) throws ErroAoAtualizarException, ObjetoNaoExisteException{
-		if(receita != null && receita.getValor() >= 0) {
+		if(receita != null ) {
 			this.repositorio.atualizarReceita(receita);
 		}else {
 			throw new IllegalArgumentException("Inválido");
