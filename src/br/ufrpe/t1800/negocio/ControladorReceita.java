@@ -29,17 +29,17 @@ public class ControladorReceita {
 	}
 	
 	public void cadastrarReceita(Receita receita) throws ObjetoJaExisteException{
-		if(receita == null) {
-			throw new IllegalArgumentException("Inválido");
+		if(receita != null && receita.getValor() >= 0) {
+			this.repositorio.cadastrarReceita(receita);
 		}else if(this.repositorio.existe(receita)) {
 			throw new ObjetoJaExisteException();
 		}else {
-			this.repositorio.cadastrarReceita(receita);
+			throw new IllegalArgumentException("Inválido");
 		}
 	}
 	
 	public void atualizarReceita(Receita receita) throws ErroAoAtualizarException, ObjetoNaoExisteException{
-		if(receita != null) {
+		if(receita != null && receita.getValor() >= 0) {
 			this.repositorio.atualizarReceita(receita);
 		}else {
 			throw new IllegalArgumentException("Inválido");

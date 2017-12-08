@@ -27,12 +27,13 @@ public class ControladorCarteira {
 	
 	
 	public void cadastrarCarteira(Carteira carteira) throws ObjetoJaExisteException{
-		if(carteira == null) {
-			throw new IllegalArgumentException("Inválido");
+		if(carteira != null && carteira.getValor() >= 0) {
+			this.repositorio.cadastrarCarteira(carteira);
 		}else if(this.repositorio.existe(carteira)) {
 			throw new ObjetoJaExisteException();
 		}else {
-			this.repositorio.cadastrarCarteira(carteira);
+			
+			throw new IllegalArgumentException("Inválido");
 		}
 	}
 	
@@ -45,7 +46,7 @@ public class ControladorCarteira {
 	}
 	
 	public void atualizarCarteira(Carteira carteira) throws ObjetoNaoExisteException, ErroAoAtualizarException{
-		if(carteira != null) {
+		if(carteira != null && carteira.getValor() >= 0) {
 			this.repositorio.atualizarCarteira(carteira);
 		}else {
 			throw new IllegalArgumentException("Inválido");

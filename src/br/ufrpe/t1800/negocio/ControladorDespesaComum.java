@@ -27,18 +27,19 @@ public class ControladorDespesaComum {
 	}
 	
 	public void cadastrarDespesaC(DespesaComum despesa) throws ObjetoJaExisteException{
-		if(despesa == null) {
-			throw new IllegalArgumentException("Inválido");
+		if(despesa != null && despesa.getValor() >= 0) {
+			repositorio.cadastraDespesaC(despesa);
 		}else if(this.repositorio.existe(despesa)) {
 			throw new ObjetoJaExisteException();
 		}else {
-			repositorio.cadastraDespesaC(despesa);
+			
+			throw new IllegalArgumentException("Inválido");
 		}
 		
 	}
 	
 	public void atualizarDespesaC(DespesaComum despesa)throws ErroAoAtualizarException, ObjetoNaoExisteException {
-		if(despesa != null) {
+		if(despesa != null && despesa.getValor() >= 0) {
 			this.repositorio.atualizarDespesaC(despesa);
 		}else {
 			throw new IllegalArgumentException("Inválido");
