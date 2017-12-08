@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 import br.ufrpe.t1800.dao.IRepositorioReceita;
 import br.ufrpe.t1800.dao.RepositorioReceita;
+import br.ufrpe.t1800.exceptions.ErroAoAtualizarException;
+import br.ufrpe.t1800.exceptions.ErroAoRemoverException;
+import br.ufrpe.t1800.exceptions.ObjetoJaExisteException;
+import br.ufrpe.t1800.exceptions.ObjetoNaoExisteException;
 import br.ufrpe.t1800.negocio.beans.Receita;
 
 public class ControladorReceita {
@@ -24,29 +28,29 @@ public class ControladorReceita {
 		return instance;
 	}
 	
-	public void cadastrarReceita(Receita receita) {
+	public void cadastrarReceita(Receita receita) throws ObjetoJaExisteException{
 		if(receita == null) {
-			
+			throw new IllegalArgumentException("Inválido");
 		}else if(this.repositorio.existe(receita)) {
-			
+			throw new ObjetoJaExisteException();
 		}else {
 			this.repositorio.cadastrarReceita(receita);
 		}
 	}
 	
-	public void atualizarReceita(Receita receita) {
+	public void atualizarReceita(Receita receita) throws ErroAoAtualizarException, ObjetoNaoExisteException{
 		if(receita != null) {
 			this.repositorio.atualizarReceita(receita);
 		}else {
-			
+			throw new IllegalArgumentException("Inválido");
 		}
 	}
 	
-	public void removerReceita(Receita receita) {
+	public void removerReceita(Receita receita)throws ErroAoRemoverException, ObjetoNaoExisteException {
 		if(receita != null) {
 			this.repositorio.removerReceita(receita);
 		}else {
-			
+			throw new IllegalArgumentException("Inválido");
 		}
 	}
 	
@@ -54,7 +58,7 @@ public class ControladorReceita {
 		return this.repositorio.listarReceita();
 	}
 	
-	Receita buscarReceita(String nome) {
+	Receita buscarReceita(String nome) throws ObjetoNaoExisteException{
 		if(nome != null) {
 			return this.repositorio.buscarReceita(nome);
 		}else {
@@ -62,8 +66,13 @@ public class ControladorReceita {
 		}
 	}
 	
-	public boolean existe(Receita receita) {
-		return this.repositorio.existe(receita);
+	public boolean existe(Receita receita) throws ObjetoNaoExisteException{
+		if(receita == null) {
+			throw new IllegalArgumentException("Inválido");
+		}else {
+			return this.repositorio.existe(receita);
+		}
+		
 	}
 	
 	

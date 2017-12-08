@@ -2,7 +2,9 @@ package br.ufrpe.t1800.dao;
 
 import java.util.ArrayList;
 
-
+import br.ufrpe.t1800.exceptions.ErroAoAtualizarException;
+import br.ufrpe.t1800.exceptions.ErroAoRemoverException;
+import br.ufrpe.t1800.exceptions.ObjetoNaoExisteException;
 import br.ufrpe.t1800.negocio.beans.Receita;
 
 public class RepositorioReceita implements IRepositorioReceita{
@@ -33,7 +35,7 @@ public class RepositorioReceita implements IRepositorioReceita{
 	}
 
 	@Override
-	public Receita buscarReceita(String descricao) {
+	public Receita buscarReceita(String descricao) throws ObjetoNaoExisteException{
 		int i = procurarIndice(descricao);
 		
 		Receita r = new Receita();
@@ -41,32 +43,32 @@ public class RepositorioReceita implements IRepositorioReceita{
 		if(i >= 0) {
 			r = receitas.get(i);
 		}else {
-			throw new IllegalArgumentException("Invalido");
+			throw new ObjetoNaoExisteException();
 		}
 		 return r;
 	}
 
 	@Override
-	public void atualizarReceita(Receita receita) {
+	public void atualizarReceita(Receita receita) throws ObjetoNaoExisteException, ErroAoAtualizarException{
 		int i = procurarIndice(receita.getDescricao());		
 			
 		if(i >= 0) {
 			receitas.set(i, receita);
 		}else {
-			throw new IllegalArgumentException("Invalido");
+			throw new ErroAoAtualizarException();
 		}
 		 
 		
 	}
 
 	@Override
-	public void removerReceita(Receita receita) {
+	public void removerReceita(Receita receita) throws ObjetoNaoExisteException, ErroAoRemoverException{
 		int i = procurarIndice(receita.getDescricao());		
 		
 		if(i >= 0) {
 			receitas.remove(i);
 		}else {
-			throw new IllegalArgumentException("Invalido");
+			throw new ErroAoRemoverException();
 		}
 		
 	}

@@ -2,6 +2,9 @@ package br.ufrpe.t1800.dao;
 
 import java.util.ArrayList;
 
+import br.ufrpe.t1800.exceptions.ErroAoAtualizarException;
+import br.ufrpe.t1800.exceptions.ErroAoRemoverException;
+import br.ufrpe.t1800.exceptions.ObjetoNaoExisteException;
 import br.ufrpe.t1800.negocio.beans.Pessoa;
 
 public class RepositorioPessoa implements IRepositorioPessoa{
@@ -30,7 +33,7 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	}
 
 	@Override
-	public Pessoa procurarPessoa(String nome) {
+	public Pessoa procurarPessoa(String nome) throws ObjetoNaoExisteException {
 		int i = procurarIndice(nome);
 		
 		Pessoa resultado = new Pessoa();
@@ -38,31 +41,31 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 		if(i >= 0) {
 			resultado = pessoas.get(i);
 		}else {
-			
+			throw new ObjetoNaoExisteException();
 		}
 		 return resultado;
 	}
 
 	@Override
-	public void atualizarPessoa(Pessoa pessoa) {
+	public void atualizarPessoa(Pessoa pessoa) throws ErroAoAtualizarException, ObjetoNaoExisteException{
 		int i = procurarIndice(pessoa.getNome());
 		
 		if(i >= 0) {
 			pessoas.set(i, pessoa);
 		}else {
-			
+			throw new ErroAoAtualizarException();
 		}
 		
 	}
 
 	@Override
-	public void removerPessoa(Pessoa pessoa) {
+	public void removerPessoa(Pessoa pessoa) throws ErroAoRemoverException, ObjetoNaoExisteException{
 		int i = procurarIndice(pessoa.getNome());
 		
 		if(i >= 0) {
 			pessoas.remove(i);
 		}else {
-			
+			throw new ErroAoRemoverException();
 		}
 		
 	}

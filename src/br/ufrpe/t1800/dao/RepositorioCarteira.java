@@ -2,6 +2,9 @@ package br.ufrpe.t1800.dao;
 
 import java.util.ArrayList;
 
+import br.ufrpe.t1800.exceptions.ErroAoAtualizarException;
+import br.ufrpe.t1800.exceptions.ErroAoRemoverException;
+import br.ufrpe.t1800.exceptions.ObjetoNaoExisteException;
 import br.ufrpe.t1800.negocio.beans.Carteira;
 
 public class RepositorioCarteira implements IRepositorioCarteira{
@@ -29,25 +32,25 @@ public class RepositorioCarteira implements IRepositorioCarteira{
 	}
 
 	@Override
-	public void removerCarteira(Carteira carteira) {
+	public void removerCarteira(Carteira carteira) throws ObjetoNaoExisteException, ErroAoRemoverException {
 		int i = procurarIndice(carteira.getIdCarteira());
 		
 		if(i >= 0) {
 			carteiras.remove(i);
 		}else {
-			
+			throw new ErroAoRemoverException();
 		}
 		
 	}
 
 	@Override
-	public void atualizarCarteira(Carteira carteira) {
+	public void atualizarCarteira(Carteira carteira) throws ErroAoAtualizarException, ObjetoNaoExisteException{
 		int i = procurarIndice(carteira.getIdCarteira());
 		
 		if(i >= 0) {
 			carteiras.set(i, carteira);
 		}else {
-			
+			throw new ErroAoAtualizarException();
 		}
 		
 	}
@@ -70,7 +73,7 @@ public class RepositorioCarteira implements IRepositorioCarteira{
 	}
 
 	@Override
-	public Carteira buscarCarteira(String id) {
+	public Carteira buscarCarteira(String id) throws ObjetoNaoExisteException{
 		int i = procurarIndice(id);
 		
 		Carteira c = new Carteira();
@@ -78,7 +81,7 @@ public class RepositorioCarteira implements IRepositorioCarteira{
 		if(i >= 0) {
 			c = carteiras.get(i);
 		}else {
-			
+			throw new ObjetoNaoExisteException();
 		}
 		
 		return c;

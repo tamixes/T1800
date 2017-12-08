@@ -2,7 +2,9 @@ package br.ufrpe.t1800.dao;
 
 import java.util.ArrayList;
 
-
+import br.ufrpe.t1800.exceptions.ErroAoAtualizarException;
+import br.ufrpe.t1800.exceptions.ErroAoRemoverException;
+import br.ufrpe.t1800.exceptions.ObjetoNaoExisteException;
 import br.ufrpe.t1800.negocio.beans.DespesaComum;
 
 public class RepositorioDespesaComum implements IRepositorioDespesaComum{
@@ -30,34 +32,36 @@ public class RepositorioDespesaComum implements IRepositorioDespesaComum{
 	}
 
 	@Override
-	public DespesaComum procurarDespesaC(String nome) {
+	public DespesaComum procurarDespesaC(String nome) throws ObjetoNaoExisteException{
 		int i = procurarIndice(nome);
 		
 		DespesaComum d = new DespesaComum();
 		if(i >= 0) {
 			d = despesas.get(i);
+		}else {
+			throw new ObjetoNaoExisteException();
 		}
 		return d;
 	}
 
 	@Override
-	public void atualizarDespesaC(DespesaComum despesa) {
+	public void atualizarDespesaC(DespesaComum despesa) throws ObjetoNaoExisteException, ErroAoAtualizarException{
 		int i = procurarIndice(despesa.getDescriçao());
 		if(i>= 0) {
 			despesas.set(i, despesa);
 		}else {
-			
+			throw new ErroAoAtualizarException();
 		}
 		
 	}
 
 	@Override
-	public void removerDespesaC(DespesaComum despesa) {
+	public void removerDespesaC(DespesaComum despesa) throws ObjetoNaoExisteException, ErroAoRemoverException {
 		int i = procurarIndice(despesa.getDescriçao());
 		if(i >= 0) {
 			despesas.remove(i);
 		}else {
-			
+			throw new ErroAoRemoverException();
 		}
 		
 	}

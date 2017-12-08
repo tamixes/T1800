@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 import br.ufrpe.t1800.dao.IRepositorioCartao;
 import br.ufrpe.t1800.dao.RepositorioCartao;
+import br.ufrpe.t1800.exceptions.ErroAoAtualizarException;
+import br.ufrpe.t1800.exceptions.ErroAoRemoverException;
+import br.ufrpe.t1800.exceptions.ObjetoJaExisteException;
+import br.ufrpe.t1800.exceptions.ObjetoNaoExisteException;
 import br.ufrpe.t1800.negocio.beans.CartaoCredito;
 
 public class ControladorCartao {
@@ -22,30 +26,30 @@ public class ControladorCartao {
 		return instance; 
 	}
 	
-	public void cadastrarCartao(CartaoCredito cartao) {
+	public void cadastrarCartao(CartaoCredito cartao) throws ObjetoJaExisteException {
 		if(cartao == null) {
-			//exceçao 
+			throw new IllegalArgumentException("Inválido!");
 		}else if(this.repositorio.existe(cartao)) {
-			
+			throw new ObjetoJaExisteException();
 		}else {
 			repositorio.cadastrarCartao(cartao);
 		}
 		
 	}
 	
-	public void removerCartao(CartaoCredito cartao) {
+	public void removerCartao(CartaoCredito cartao) throws ErroAoRemoverException, ObjetoNaoExisteException{
 		if(cartao != null) {
 			this.repositorio.removerCartao(cartao);
 		}else {
-			
+			throw new IllegalArgumentException("Inválido");
 		}
 	}
 	
-	public void atualizarCartao(CartaoCredito cartao) {
+	public void atualizarCartao(CartaoCredito cartao) throws ObjetoNaoExisteException, ErroAoAtualizarException {
 		if(cartao != null) {
 			this.repositorio.atualizarCartao(cartao);
 		}else {
-			
+			throw new IllegalArgumentException("Inválido");
 		}
 	}
 	
@@ -53,7 +57,7 @@ public class ControladorCartao {
 		return this.repositorio.listarCartao();
 	}
 	
-	public CartaoCredito buscarCartao(String nome) {
+	public CartaoCredito buscarCartao(String nome) throws ObjetoNaoExisteException{
 	
 		if(nome != null) {
 			return this.repositorio.buscarCartao(nome);

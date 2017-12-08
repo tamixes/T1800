@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 import br.ufrpe.t1800.dao.IRepositorioCarteira;
 import br.ufrpe.t1800.dao.RepositorioCarteira;
+import br.ufrpe.t1800.exceptions.ErroAoAtualizarException;
+import br.ufrpe.t1800.exceptions.ErroAoRemoverException;
+import br.ufrpe.t1800.exceptions.ObjetoJaExisteException;
+import br.ufrpe.t1800.exceptions.ObjetoNaoExisteException;
 import br.ufrpe.t1800.negocio.beans.Carteira;
 
 public class ControladorCarteira {
@@ -22,29 +26,29 @@ public class ControladorCarteira {
 	}
 	
 	
-	public void cadastrarCarteira(Carteira carteira) {
+	public void cadastrarCarteira(Carteira carteira) throws ObjetoJaExisteException{
 		if(carteira == null) {
-			
+			throw new IllegalArgumentException("Inválido");
 		}else if(this.repositorio.existe(carteira)) {
-			
+			throw new ObjetoJaExisteException();
 		}else {
 			this.repositorio.cadastrarCarteira(carteira);
 		}
 	}
 	
-	public void removerCarteira(Carteira carteira) {
+	public void removerCarteira(Carteira carteira) throws ObjetoNaoExisteException, ErroAoRemoverException{
 		if(carteira != null) {
 			this.repositorio.removerCarteira(carteira);
 		}else {
-			
+			throw new IllegalArgumentException("Inválido");
 		}
 	}
 	
-	public void atualizarCarteira(Carteira carteira) {
+	public void atualizarCarteira(Carteira carteira) throws ObjetoNaoExisteException, ErroAoAtualizarException{
 		if(carteira != null) {
 			this.repositorio.atualizarCarteira(carteira);
 		}else {
-			
+			throw new IllegalArgumentException("Inválido");
 		}
 	}
 	
@@ -52,7 +56,7 @@ public class ControladorCarteira {
 		return this.repositorio.listarCarteira();
 	}
 	
-	public Carteira buscarCarteira(String id) {
+	public Carteira buscarCarteira(String id) throws ObjetoNaoExisteException{
 		if(id != null) {
 			return this.repositorio.buscarCarteira(id);
 		}else {
@@ -61,6 +65,11 @@ public class ControladorCarteira {
 	}
 	
 	boolean existe(Carteira carteira) {
-		return this.repositorio.existe(carteira);
+		if(carteira == null) {
+			throw new IllegalArgumentException("Inválido");
+		}else {
+			return this.repositorio.existe(carteira);
+		}
+	
 	}
 }

@@ -2,6 +2,10 @@ package br.ufrpe.t1800.negocio;
 
 import java.util.ArrayList;
 
+import br.ufrpe.t1800.exceptions.ErroAoAtualizarException;
+import br.ufrpe.t1800.exceptions.ErroAoRemoverException;
+import br.ufrpe.t1800.exceptions.ObjetoJaExisteException;
+import br.ufrpe.t1800.exceptions.ObjetoNaoExisteException;
 import br.ufrpe.t1800.negocio.beans.CartaoCredito;
 import br.ufrpe.t1800.negocio.beans.Carteira;
 import br.ufrpe.t1800.negocio.beans.DespesaCartao;
@@ -36,19 +40,19 @@ public class Fachada implements IFachada{
 	}
 	
 	@Override
-	public void cadastrarPessoa(Pessoa pessoa) {
+	public void cadastrarPessoa(Pessoa pessoa) throws ObjetoJaExisteException {
 		this.controladorPessoa.cadastrarPessoa(pessoa);
 		
 	}
 
 	@Override
-	public void removerPessoa(Pessoa pessoa) {
+	public void removerPessoa(Pessoa pessoa) throws ErroAoRemoverException, ObjetoNaoExisteException {
 		this.controladorPessoa.removerPessoa(pessoa);
 		
 	}
 
 	@Override
-	public void atualizarPessoa(Pessoa pessoa) {
+	public void atualizarPessoa(Pessoa pessoa) throws ErroAoRemoverException, ObjetoNaoExisteException {
 		this.controladorPessoa.removerPessoa(pessoa);
 		
 	}
@@ -59,7 +63,7 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public Pessoa buscarPessoa(String nome) {
+	public Pessoa buscarPessoa(String nome) throws ObjetoNaoExisteException {
 		return this.controladorPessoa.procurarPessoa(nome);
 	}
 
@@ -69,19 +73,19 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public void cadastrarCartao(CartaoCredito cartao) {
+	public void cadastrarCartao(CartaoCredito cartao) throws ObjetoJaExisteException {
 		this.controladorCartao.cadastrarCartao(cartao);
 		
 	}
 
 	@Override
-	public void removerCartao(CartaoCredito cartao) {
+	public void removerCartao(CartaoCredito cartao) throws ErroAoRemoverException, ObjetoNaoExisteException {
 		this.controladorCartao.removerCartao(cartao);
 		
 	}
 
 	@Override
-	public void atualizarCartao(CartaoCredito cartao) {
+	public void atualizarCartao(CartaoCredito cartao) throws ObjetoNaoExisteException, ErroAoAtualizarException {
 		this.controladorCartao.atualizarCartao(cartao);
 		
 	}
@@ -92,7 +96,7 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public CartaoCredito buscarCartao(String nome) {
+	public CartaoCredito buscarCartao(String nome) throws ObjetoNaoExisteException {
 		return this.controladorCartao.buscarCartao(nome);
 	}
 
@@ -102,19 +106,19 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public void cadastrarReceita(Receita receita) {
+	public void cadastrarReceita(Receita receita) throws ObjetoJaExisteException {
 		this.controladorReceita.cadastrarReceita(receita);
 		
 	}
 
 	@Override
-	public void removerReceita(Receita receita) {
+	public void removerReceita(Receita receita) throws ObjetoJaExisteException {
 		this.controladorReceita.cadastrarReceita(receita);
 		
 	}
 
 	@Override
-	public void atualizarReceita(Receita receita) {
+	public void atualizarReceita(Receita receita) throws ObjetoJaExisteException {
 		this.controladorReceita.cadastrarReceita(receita);
 		
 	}
@@ -125,29 +129,29 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public Receita buscarReceita(String nome) {
+	public Receita buscarReceita(String nome) throws ObjetoNaoExisteException {
 		return this.controladorReceita.buscarReceita(nome);
 	}
 
 	@Override
-	public boolean existeReceita(Receita receita) {
+	public boolean existeReceita(Receita receita) throws ObjetoNaoExisteException {
 		return this.controladorReceita.existe(receita);
 	}
 
 	@Override
-	public void cadastrarCarteira(Carteira carteira) {
+	public void cadastrarCarteira(Carteira carteira) throws ObjetoJaExisteException {
 		this.controladorCarteira.cadastrarCarteira(carteira);
 		
 	}
 
 	@Override
-	public void removerCarteira(Carteira carteira) {
+	public void removerCarteira(Carteira carteira) throws ObjetoJaExisteException {
 		this.controladorCarteira.cadastrarCarteira(carteira);
 		
 	}
 
 	@Override
-	public void atualizarCarteira(Carteira carteira) {
+	public void atualizarCarteira(Carteira carteira) throws ObjetoNaoExisteException, ErroAoAtualizarException {
 		this.controladorCarteira.atualizarCarteira(carteira);
 		
 	}
@@ -158,7 +162,7 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public Carteira buscarCarteira(String id) {
+	public Carteira buscarCarteira(String id) throws ObjetoNaoExisteException {
 		return this.controladorCarteira.buscarCarteira(id);
 	}
 
@@ -168,19 +172,19 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public void cadastrarDespesaComum(DespesaComum despesa) {
+	public void cadastrarDespesaComum(DespesaComum despesa) throws ObjetoJaExisteException {
 		this.controladorDespesaComum.cadastrarDespesaC(despesa);
 		
 	}
 
 	@Override
-	public void removerDespesaComum(DespesaComum despesa) {
+	public void removerDespesaComum(DespesaComum despesa) throws ObjetoJaExisteException {
 		this.controladorDespesaComum.cadastrarDespesaC(despesa);
 		
 	}
 
 	@Override
-	public void atualizarDespesaComum(DespesaComum despesa) {
+	public void atualizarDespesaComum(DespesaComum despesa) throws ErroAoAtualizarException, ObjetoNaoExisteException {
 		this.controladorDespesaComum.atualizarDespesaC(despesa);
 		
 	}
@@ -191,7 +195,7 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public DespesaComum buscarDespesaComum(String descricao) {
+	public DespesaComum buscarDespesaComum(String descricao) throws ObjetoNaoExisteException {
 		
 		return this.controladorDespesaComum.buscarDespesa(descricao);
 	}
@@ -203,19 +207,19 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public void cadastrarDespesaCartao(DespesaCartao despesa) {
+	public void cadastrarDespesaCartao(DespesaCartao despesa) throws ObjetoJaExisteException {
 		this.controladorDespesaCartao.cadastrarDespesaCartao(despesa);
 		
 	}
 
 	@Override
-	public void removerDespesaCartao(DespesaCartao despesa) {
+	public void removerDespesaCartao(DespesaCartao despesa) throws ObjetoJaExisteException {
 		this.controladorDespesaCartao.cadastrarDespesaCartao(despesa);
 		
 	}
 
 	@Override
-	public void atualizarDespesaCartao(DespesaCartao despesa) {
+	public void atualizarDespesaCartao(DespesaCartao despesa) throws ObjetoNaoExisteException, ErroAoAtualizarException {
 		this.controladorDespesaCartao.atualizarDespesaCartao(despesa);
 		
 	}
@@ -226,7 +230,7 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public DespesaCartao buscarDespesaCartao(String descricao) {
+	public DespesaCartao buscarDespesaCartao(String descricao) throws ObjetoNaoExisteException {
 		return this.controladorDespesaCartao.buscarDespesaCartao(descricao);
 	}
 

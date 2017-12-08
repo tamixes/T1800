@@ -5,6 +5,10 @@ package br.ufrpe.t1800.gui;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+import br.ufrpe.t1800.exceptions.ErroAoAtualizarException;
+import br.ufrpe.t1800.exceptions.ErroAoRemoverException;
+import br.ufrpe.t1800.exceptions.ObjetoJaExisteException;
+import br.ufrpe.t1800.exceptions.ObjetoNaoExisteException;
 import br.ufrpe.t1800.negocio.Fachada;
 import br.ufrpe.t1800.negocio.IFachada;
 import br.ufrpe.t1800.negocio.beans.CartaoCredito;
@@ -24,7 +28,7 @@ public class Menu {
 	
 	
 	
-	public void menuPrincipal() {
+	public void menuPrincipal() throws Exception {
 		while(true) {
 			this.começo(); 
 			System.out.println("---------Menu Princial----------\n\n");
@@ -55,8 +59,8 @@ public class Menu {
 						
 						switch(opc) {
 						case 1:{
-							boolean ok = false; 
-							do {
+							
+							
 								entrada.nextLine();
 								System.out.println("Cadastro\n\n");
 								
@@ -69,93 +73,111 @@ public class Menu {
 								
 								Pessoa p = new Pessoa(nome, email, telefone);
 								
-									wallet.cadastrarPessoa(p);
+									try {
+										wallet.cadastrarPessoa(p);
+									} catch (ObjetoJaExisteException e) {
+										System.out.println(e.getMessage());
+										entrada.nextLine();
+									}
 								
-								ok = true;
+								
 								System.out.println("Cadastro realizado");
 								
 								
-							} while (ok==false);
+							
 						   	break;
 						
 						}case 2:{
 								entrada.nextLine();
 								System.out.println("Atualizar dados Pessoais\n\n");
-								System.out.println("Infome o nome: ");
+								System.out.println("Infome o nome da pessoa que deseja alterar: \n");
 								String busca = entrada.nextLine();
 								
 								Pessoa atualiza = null;
-								
+								try {
 									atualiza = wallet.buscarPessoa(busca);
-								
-								if(atualiza != null) {
-									System.out.println("Preencha os dados\n\n");
-									System.out.println("Nome: ");
-									String novoNome = entrada.nextLine();
-									atualiza.setNome(novoNome);
-									System.out.println("Email: ");
-									String novoEmail = entrada.nextLine();
-									atualiza.setEmail(novoEmail);
-									System.out.println("Telefone: ");
-									String novoTelefone = entrada.nextLine();						
-									atualiza.setTelefone(novoTelefone);
+									System.out.println("Informe os novos dados: \n");
+									System.out.println("Nome: \n");
+									String nvNome = entrada.nextLine();
+									System.out.println("Telefone: \n");
+									String nvTelefone = entrada.nextLine();
+									System.out.println("Email: \n");
+									String nvEmail = entrada.nextLine();
 									
+									atualiza.setNome(nvNome);
+									atualiza.setEmail(nvEmail);
+									atualiza.setTelefone(nvTelefone);
 									
-										System.out.println("\n\nAtualizado!");
+									try {
+										wallet.atualizarPessoa(atualiza);
+										System.out.println("Atualizado com sucesso!");
+									} catch (Exception e) {
+										// TODO: handle exception
 									}
-								else {
-									System.out.println("\nPessoa Invalida");
+									
+								} catch (ObjetoNaoExisteException e) {
+									System.out.println(e.getMessage());
+									entrada.nextLine();
 								}
+									
+								
+									
+								
 								break;
 								
 						}
 						case 3:{
 								entrada.nextLine();
 								System.out.println("Remover Pessoa");
-								System.out.println("\nInfome o nome da pesoa: ");
+								System.out.println("\nInfome o nome da pessoa: \n");
 								String busca = entrada.nextLine();
 								
 								Pessoa apaga = null;
 								
-									apaga = wallet.buscarPessoa(busca);
-								
-									if(apaga != null) {
+									try {
+										apaga = wallet.buscarPessoa(busca);
+										
 										System.out.println("Deseja deletar " + apaga.getNome() +"?\n"
 												+ "1 - Sim\n"
 												+ "2 - Nao\n");
 										int d = entrada.nextInt();
 										switch(d) {
 										case 1: {
-											
+											try {
 												wallet.removerPessoa(apaga);
-											
-											System.out.println("Pessoa removida\n");
+												System.out.println("Pessoa removida\n");
+												entrada.nextLine();
+											} catch (ErroAoRemoverException e) {
+												System.out.println(e.getMessage());
+												entrada.nextLine();											}
+												
 										}
-										}
-											
-									}else {
-										System.out.println("Pessoa nao existe\n");
 									}
-							
-						}
+								}	catch (ObjetoNaoExisteException e) {
+									System.out.println(e.getMessage());
+									entrada.nextLine();		
+								}
+							}
 						break;
+						
 						
 						case 4:{
 							entrada.nextLine(); 
-							System.out.println("Busca de Pessoa");
+							System.out.println("Buscar Pessoa");
 							System.out.println("Nome da pessoa: ");
 							String busca = entrada.nextLine();
 							
 							Pessoa encontra = null;
 							
+							try {
 								encontra = wallet.buscarPessoa(busca);
-							
-							if(encontra != null) {
 								System.out.println("Dados: " + encontra.getNome());
 								System.out.println(encontra);
-							}else {
-								System.out.println("Pessoa nao existe!!");
-							}
+								
+							} catch (ObjetoNaoExisteException e) {
+								System.out.println(e.getMessage());
+								entrada.nextLine();
+							}	
 							
 						}
 						break;	
@@ -205,9 +227,15 @@ public class Menu {
 									System.out.println("\nDigite o nome da pessoa: ");
 									String busca = entrada.nextLine();
 									
-									
+									try {
 										pessoaBusca = wallet.buscarPessoa(busca);
 									
+									} catch (ObjetoNaoExisteException e) {
+										System.out.println(e.getMessage());
+										entrada.nextLine();									
+									}
+									
+										
 									
 								} while (pessoaBusca == null);
 								
@@ -224,15 +252,16 @@ public class Menu {
 								Carteira carteira = new Carteira(pessoaBusca, valor, titulo, descricao);
 								
 								
+								try {
 									wallet.cadastrarCarteira(carteira);
 									System.out.println("\nCarteira cadastrada id: " + carteira.getIdCarteira());
 									ok = true;
 									entrada.nextLine();
-								
-								
-													
-								
-								
+								} catch (ObjetoJaExisteException e) {
+									System.out.println(e.getMessage());
+									entrada.nextLine();
+								}
+																						
 							} while (ok==false);
 							
 							break;
@@ -247,9 +276,8 @@ public class Menu {
 									
 									Carteira buscada = null;
 						
-								
+									try {
 										buscada = wallet.buscarCarteira(busca);
-										
 										
 										
 										System.out.println("Informe os novos dados: \n\n");
@@ -268,10 +296,21 @@ public class Menu {
 										buscada.setValor(novoValor);
 										
 										
+										
+										try {
 											wallet.atualizarCarteira(buscada);
 											System.out.println("Carteira atualizada!");
 											entrada.nextLine();
-											
+										} catch (ErroAoAtualizarException e) {
+											System.out.println(e.getMessage());
+											entrada.nextLine();
+										}
+										
+									} catch (ObjetoNaoExisteException e) {
+										System.out.println(e.getMessage());
+										entrada.nextLine();
+									}
+		
 										
 									}
 									break;	
@@ -284,29 +323,35 @@ public class Menu {
 								
 								Carteira carteira = null;
 								
+									
+								try {
 									carteira = wallet.buscarCarteira(id);
 									
-								
-								
-								if(carteira != null) {
 									System.out.println("Você realmente quer remover esta carteira" + carteira.getDescriçao() +"?\n"
 											+ "1 - sim\n"
 											+ "2 - nao\n"
 											+ "Digite: \n");
 									int esc = entrada.nextInt();
+									
 									switch(esc) {
-									case 1:
-										
-											wallet.removerCarteira(carteira);
-										
-										System.out.println("\nCarteira Removida!");
-									}	
-								}else {
-									System.out.println("\nCarteira nao existe!");
+										case 1:
+											/*try {
+												wallet.removerCarteira(carteira);
+												System.out.println("\nCarteira Removida!");
+												entrada.nextLine();
+											} catch (ErroAoRemoverException e) {
+												System.out.println(e.getMessage());
+												entrada.nextLine();*/
+									}
 								}
-								
+									
+								catch (ObjetoNaoExisteException e) {
+									System.out.println(e.getMessage());
+									entrada.nextLine();
+								}
+							break;		
 						}
-							break;
+							
 							case 4: {
 								System.out.println("\nBuscar Carteira\n\n");
 								System.out.println("Digite o ID da Carteira a ser buscada");
@@ -314,14 +359,16 @@ public class Menu {
 								
 								Carteira busca = null;
 							
-									busca = wallet.buscarCarteira(id);
-								
-								if(busca != null) {
+									try {
+										busca = wallet.buscarCarteira(id);
 									System.out.println("\nDados da Carteira" + busca.getDescriçao() +"\n");
 									System.out.println(busca);
-								}else {
-									System.out.println("\nCarteira nao existe!");
-								}
+									} catch (ObjetoNaoExisteException e) {
+										System.out.println(e.getMessage());
+										entrada.nextLine();
+									}
+								
+								
 								break;
 							}
 							case 5:{
@@ -368,8 +415,15 @@ public class Menu {
 											System.out.println("Digite o ID da carteira: \n");
 											String id = entrada.nextLine();
 											
+											try {
 												busca = wallet.buscarCarteira(id);
 												
+											} catch (ObjetoNaoExisteException e) {
+												System.out.println(e.getMessage());
+												entrada.nextLine();
+											}	
+											
+																						
 											
 										} while (busca == null);
 										
@@ -392,10 +446,15 @@ public class Menu {
 										
 										Receita receita = new Receita(busca, valor, data, descricao, categoria, isPago);
 									
+											try {
 											wallet.cadastrarReceita(receita);
 											System.out.println("Receita cadastrada!\n");
 											ok = true;
-										
+											} catch (ObjetoJaExisteException e) {
+												System.out.println(e.getMessage());
+												entrada.nextLine();
+											}
+											
 									
 									} while (ok==false);
 									
@@ -438,9 +497,13 @@ public class Menu {
 										atualiza.setValor(novoValor);
 										
 										
-											wallet.atualizarReceita(atualiza);
-											System.out.println("Receita atualizada!\n");
-											entrada.nextLine();
+											try {
+												wallet.atualizarReceita(atualiza);
+												System.out.println("Receita atualizada!\n");
+												entrada.nextLine();
+											} catch (ErroAoAtualizarException e) {
+												// TODO: handle exception
+											}
 										
 									break;
 											
@@ -453,22 +516,30 @@ public class Menu {
 									
 									Receita remover = null;
 								
+									try {
 										remover = wallet.buscarReceita(busca);
 										System.out.println("Você realmente quer remover  " + remover.getDescricao()+ "\n"
-												+ "1 - sim\n"
-												+ "2 - nao\n"
-												+ "Opção: \n");
-										int opc = entrada.nextInt();
-										switch(opc) {
-										case 1:
-											
-												wallet.removerReceita(remover);
-												System.out.println("Removido!\n");
-												entrada.nextLine();
-												
-											
-										}
-									
+													+ "1 - sim\n"
+													+ "2 - nao\n"
+													+ "Opção: \n");
+											int opc = entrada.nextInt();
+											switch(opc) {
+												case 1:
+													try {
+													wallet.removerReceita(remover);
+													} catch (ErroAoRemoverException e) {
+														System.out.println(e.getMessage());
+														e.printStackTrace();
+													}
+													
+										
+									}
+									} catch (ObjetoNaoExisteException e) {
+										System.out.println(e.getMessage());
+										entrada.nextLine();
+									}
+					
+				
 									break; 
 								}
 								case 4:{
@@ -476,13 +547,18 @@ public class Menu {
 									System.out.println("\nBuscar receita\n\n");
 									System.out.println("Digite a descrição da receita a ser buscada: \n");
 									String busca = entrada.nextLine();
-									
 									Receita buscada = null;
 									
+									try {
 										buscada = wallet.buscarReceita(busca);
 										System.out.println("Dados da receita " + buscada.getDescricao() + "\n");
 										System.out.println(buscada);
-										
+									} catch (ObjetoNaoExisteException e) {
+										System.out.println(e.getMessage());
+										entrada.nextLine();
+									}
+							
+											
 									
 									break;
 								}
@@ -523,8 +599,14 @@ public class Menu {
 									System.out.println("\nInforme o ID da carteira");
 									String idBuscado = entrada.nextLine();
 									
-									
+									try {
 										buscada = wallet.buscarCarteira(idBuscado);
+										
+									} catch (ObjetoNaoExisteException e) {
+										System.out.println(e.getMessage());
+										entrada.nextLine();
+									}
+										
 									
 								} while (buscada == null);		
 								
@@ -546,10 +628,15 @@ public class Menu {
 								
 								CartaoCredito cartao = new CartaoCredito(buscada, descricao, valor, bandeira, fechamento, pagamento);
 								
-								
+								try {
 									wallet.cadastrarCartao(cartao);
 									System.out.println("\nCartao Cadastrado!\n");
 									ok = true;
+								} catch (ObjetoJaExisteException e) {
+									System.out.println(e.getMessage());
+									entrada.nextLine();
+								}
+									
 									
 								
 							} while (ok == false);
@@ -566,8 +653,9 @@ public class Menu {
 							CartaoCredito buscado = null;
 							
 						
-								buscado = wallet.buscarCartao(busca);
-								
+								try {
+									buscado = wallet.buscarCartao(busca);
+									
 								System.out.println("\nInforme os novos dados para o cartao: \n");
 								
 								System.out.println("\nDescrição: ");
@@ -591,10 +679,19 @@ public class Menu {
 								buscado.setValor(nvValor);
 								
 								
+								try {
 									wallet.atualizarCartao(buscado);
 									System.out.println("\n\nCartao atualizado!");
 									entrada.nextLine();
-									
+								} catch (ErroAoAtualizarException e) {
+									System.out.println(e.getMessage());
+									entrada.nextLine();
+								}
+								} catch (ObjetoNaoExisteException e) {
+									System.out.println(e.getMessage());
+									entrada.nextLine();
+								}
+											
 								
 							
 							break;
@@ -609,10 +706,10 @@ public class Menu {
 							CartaoCredito deleta = null;
 							
 							
-								deleta = wallet.buscarCartao(busca);
-								
-							
-							if(deleta != null) {
+								try {
+									deleta = wallet.buscarCartao(busca);
+									
+									if(deleta != null) {
 								System.out.println("\nConfirme se deseja deletar " + deleta.getDescricao()
 										+ "1 - sim\n"
 										+ "2 - nao\n"
@@ -621,15 +718,27 @@ public class Menu {
 								switch(escolha) {
 								case 1:
 									
-										wallet.removerCartao(deleta);
-										
-									
+										try {
+											wallet.removerCartao(deleta);
+											
+										} catch (ErroAoRemoverException e) {
+											System.out.println(e.getMessage());
+											entrada.nextLine();
+										}
+					
 									System.out.println("\nCartao Removido!\n");
 								}
 								
 							}else {
 								System.out.println("Cartao nao existe!\n");
 							}
+								} catch (ObjetoNaoExisteException e) {
+									System.out.println(e.getMessage());
+									entrada.nextLine();
+								}
+								
+							
+							
 							
 						}
 						break;
@@ -642,17 +751,16 @@ public class Menu {
 							CartaoCredito buscado = null;
 							
 							
-								buscado = wallet.buscarCartao(busca);
-								
+								try {
+									buscado = wallet.buscarCartao(busca);
+									System.out.println("\nDados do cartao " + buscado.getDescricao());
+									System.out.println(buscado);
+								} catch (ObjetoNaoExisteException e) {
+									System.out.println(e.getMessage());
+									entrada.nextLine();
+								}
+				
 							
-							
-							if (buscado != null) {
-								System.out.println("\nDados do cartao " + buscado.getDescricao());
-								System.out.println(buscado);
-								
-							} else {
-								System.out.println("Cartao nao existe!\n");
-							}
 						break;
 						}
 						
@@ -704,40 +812,47 @@ public class Menu {
 											System.out.println("Informe o id da carteira: \n");
 											String id = entrada.nextLine();
 										
-											carteira = wallet.buscarCarteira(id);
+											try {
+												carteira = wallet.buscarCarteira(id);
+												
+											System.out.println("\nDesccrição: \n");
+											String descricao = entrada.nextLine();
+											System.out.println("Data da compra (apenas os numeros)dia/mes/ano\n");
+											int dia = entrada.nextInt();
+											entrada.nextLine();
+											int mes = entrada.nextInt();
+											entrada.nextLine();
+											int ano = entrada.nextInt();
+											entrada.nextLine();
+											LocalDate data = LocalDate.of(ano, mes, dia);
+											System.out.println("Valor: \n");
+											double valor = entrada.nextDouble();
+											entrada.nextLine();
+											System.out.println("Tipo: \n");
+											String tipo = entrada.nextLine();
+											System.out.println("Já foi pago? \n");
+											boolean isPago = entrada.nextBoolean();
+											entrada.nextLine();
+																					
+											DespesaComum despesa = new DespesaComum(carteira, valor, data, descricao, tipo, isPago);
+										
+											try {
+												wallet.cadastrarDespesaComum(despesa);
+												System.out.println("Despesa Cadastrada!\n");
+												ok = true;
+											} catch (ObjetoJaExisteException e) {
+												System.out.println(e.getMessage());
+												entrada.nextLine();
+											}
+											
+											} catch (ObjetoNaoExisteException e) {
+												System.out.println(e.getMessage());
+												entrada.nextLine();
+											}
+											
 										} while (carteira == null);
 										
-										System.out.println("\nDesccrição: \n");
-										String descricao = entrada.nextLine();
-										System.out.println("Data da compra (apenas os numeros)dia/mes/ano\n");
-										int dia = entrada.nextInt();
-										entrada.nextLine();
-										int mes = entrada.nextInt();
-										entrada.nextLine();
-										int ano = entrada.nextInt();
-										entrada.nextLine();
-										LocalDate data = LocalDate.of(ano, mes, dia);
-										System.out.println("Valor: \n");
-										double valor = entrada.nextDouble();
-										entrada.nextLine();
-										System.out.println("Tipo: \n");
-										String tipo = entrada.nextLine();
-										System.out.println("Já foi pago? \n");
-										boolean isPago = entrada.nextBoolean();
-										entrada.nextLine();
-										
-										DespesaComum despesa = new DespesaComum(carteira, valor, data, descricao, tipo, isPago);
-										
-										if(wallet.existeDespesaComum(despesa)) {
-											System.out.println("Despesa já Cadastrada!\n");
-										}else {
-											wallet.cadastrarDespesaComum(despesa);
-											System.out.println("Despesa Cadastrada!\n");
-											ok = true;
-										}
-				
-										
-										
+					
 									} while (ok==false);
 									break;
 								}
@@ -748,8 +863,10 @@ public class Menu {
 									String descricao = entrada.nextLine();
 									
 									DespesaComum remove = null;
-									remove = wallet.buscarDespesaComum(descricao);
-									if(remove != null) {
+									try {
+										remove = wallet.buscarDespesaComum(descricao);
+										
+										if(remove != null) {
 										System.out.println("Deseja remover a despesa "+ remove.getDescriçao()+ "?\n"
 												+ "1 - sim \n"
 												+ "2 - nao \n"
@@ -757,15 +874,24 @@ public class Menu {
 										int opc = entrada.nextInt();
 										switch(opc) {
 										case 1:
-											if(wallet.existeDespesaComum(remove)) {
-												wallet.removerDespesaComum(remove);
-												System.out.println("Despesa removida");
-												entrada.nextLine();
+												try {
+													wallet.removerDespesaComum(remove);
+													
+												} catch (ErroAoRemoverException e) {
+													System.out.println(e.getMessage());
+													entrada.nextLine();
+												}
+												
 											}
+										}else {
+											System.out.println("Despesa removida!");
 										}
 										
-									}else {
-										System.out.println("Despesa nao existe! \n");
+									
+									
+									} catch (ObjetoNaoExisteException e) {
+										System.out.println(e.getMessage());
+										entrada.nextLine();
 									}
 									
 									break;
@@ -778,8 +904,9 @@ public class Menu {
 									
 									DespesaComum atualiza = null;
 									
-									atualiza = wallet.buscarDespesaComum(descricao);
-									if(atualiza != null && wallet.existeDespesaComum(atualiza)) {
+									try {
+										atualiza = wallet.buscarDespesaComum(descricao);
+										
 										System.out.println("Informe os novos dados\n");
 										System.out.println("Descrição: \n");
 										String nvDescricao = entrada.nextLine();
@@ -800,13 +927,22 @@ public class Menu {
 										atualiza.setValor(nvValor);
 										atualiza.setTipo(nvTipo);
 										
-										wallet.atualizarDespesaComum(atualiza);
-										System.out.println("Despesa atualizada!\n");
-										entrada.nextLine();
+										try {
+											wallet.atualizarDespesaComum(atualiza);
+											System.out.println("Despesa atualizada!\n");
+											entrada.nextLine();
+										} catch (ErroAoAtualizarException e) {
+											System.out.println(e.getMessage());
+											entrada.nextLine();
+										}
 										
-									}else {
-										System.out.println("Despesa invalida!\n");
+									} catch (ObjetoNaoExisteException e) {
+										System.out.println(e.getMessage());
+										entrada.nextLine();
 									}
+									
+									
+		
 									break;
 								}
 								case 4:{
@@ -817,15 +953,18 @@ public class Menu {
 									
 									DespesaComum buscada = null;
 									
-									buscada = wallet.buscarDespesaComum(busca);
-									
-									if(buscada != null) {
+									try {
+										buscada = wallet.buscarDespesaComum(busca);
 										System.out.println("Informações sobre " +buscada.getDescriçao()+"\n");
 										System.out.println(buscada);
 										entrada.nextLine();
-									}else {
-										System.out.println("Despesa nao existe!\n");
+										
+									} catch (ObjetoNaoExisteException e) {
+										System.out.println(e.getMessage());
+										entrada.nextLine();
 									}
+									
+									
 									break;
 								}
 								case 5:{
@@ -861,7 +1000,12 @@ public class Menu {
 											System.out.println("Informe a descrição do cartao: \n");
 											String descricao = entrada.nextLine();
 											
-											cartao = wallet.buscarCartao(descricao);
+											try {
+												cartao = wallet.buscarCartao(descricao);
+											} catch (ObjetoNaoExisteException e) {
+												System.out.println(e.getMessage());
+												entrada.nextLine();
+											}
 											
 										} while (cartao == null);
 										
@@ -882,16 +1026,21 @@ public class Menu {
 										
 										DespesaCartao despesa = new DespesaCartao(cartao, valor, data, descricao, tipo, numParcelas);
 										
-										if(wallet.existeDespesaCartao(despesa)) {
-											System.out.println("Despesa já cadastrada!\n");
+										
+											try {
+												wallet.cadastrarDespesaCartao(despesa);
+												System.out.println("Despesa Cadastrada! \n");
+												ok = true;
+												entrada.nextLine();
+												
+											} catch (ObjetoJaExisteException e) {
+												System.out.println(e.getMessage());
+												entrada.nextLine();
+											}
+										
 											
-										}else {
-											wallet.cadastrarDespesaCartao(despesa);
-											System.out.println("Despesa Cadastrada! \n");
-											ok = true;
-											entrada.nextLine();
 											
-										}
+										
 										
 										
 									} while (ok==false);
@@ -905,8 +1054,10 @@ public class Menu {
 									String busca = entrada.nextLine();
 									DespesaCartao remove = null;
 									
-									remove = wallet.buscarDespesaCartao(busca);
-									if(remove != null) {
+									try {
+										remove = wallet.buscarDespesaCartao(busca);
+										
+										if(remove != null) {
 										System.out.println("Você realmente deseja remover a despesa " + remove.getDescriçao() +"?\n");
 										System.out.println("1 - sim\n"
 												+ "2 - nao\n"
@@ -914,17 +1065,26 @@ public class Menu {
 										int opc = entrada.nextInt();
 										switch(opc) {
 										case 1:
-											if(wallet.existeDespesaCartao(remove)) {
-												wallet.removerDespesaCartao(remove);
-												System.out.println("Despesa removida! \n");
-												entrada.nextLine();
-											}
+												try {
+													wallet.removerDespesaCartao(remove);
+													System.out.println("Despesa removida! \n");
+													entrada.nextLine();
+												} catch (ErroAoRemoverException e) {
+													System.out.println(e.getMessage());
+													entrada.nextLine();
+												}
+												
+											
 											}
 										
-										}else {
-											System.out.println("Despesa nao existe!\n");
+										}
 										
+									} catch (ObjetoNaoExisteException e) {
+										System.out.println(e.getMessage());
+										entrada.nextLine();
 									}
+									
+									
 									break;
 								}
 								case 3:{
@@ -934,8 +1094,11 @@ public class Menu {
 									String descricao = entrada.nextLine();
 									
 									DespesaCartao atualiza = null;
-									atualiza = wallet.buscarDespesaCartao(descricao);
-									if(atualiza != null && wallet.existeDespesaCartao(atualiza)) {
+									
+									try {
+										atualiza = wallet.buscarDespesaCartao(descricao);
+										
+										
 										System.out.println("Informe os novos dados: \n");
 										
 										System.out.println("Descrição: \n");
@@ -958,14 +1121,25 @@ public class Menu {
 										atualiza.setTipo(nvTipo);
 										atualiza.setValor(nvValor);
 										
-										wallet.atualizarDespesaCartao(atualiza);
-										System.out.println("Despesa atualizada!\n");
+										try {
+											wallet.atualizarDespesaCartao(atualiza);
+											System.out.println("Despesa atualizada!\n");
+											entrada.nextLine();
+										} catch (ErroAoAtualizarException e) {
+											System.out.println(e.getMessage());
+											entrada.nextLine();
+										}
+									} catch (ObjetoNaoExisteException e) {
+										System.out.println(e.getMessage());
 										entrada.nextLine();
-										
-										
-									}else {
-										System.out.println("Despesa invalida!\n");
 									}
+									
+									
+										
+										
+				
+										
+									
 									break;
 								}
 								case 4:{
@@ -976,15 +1150,19 @@ public class Menu {
 									
 									DespesaCartao buscada = null;
 									
-									buscada = wallet.buscarDespesaCartao(busca);
-									
-									if(buscada != null && wallet.existeDespesaCartao(buscada)) {
+									try {
+										buscada = wallet.buscarDespesaCartao(busca);
+										
 										System.out.println("Informações sobre " +buscada.getDescriçao()+"\n");
 										System.out.println(buscada);
 										entrada.nextLine();
-									}else {
-										System.out.println("Despesa nao existe!\n");
+										
+									} catch (ObjetoNaoExisteException e) {
+										System.out.println(e.getMessage());
+										entrada.nextLine();
 									}
+									
+									
 									break;
 								}
 								case 5:{

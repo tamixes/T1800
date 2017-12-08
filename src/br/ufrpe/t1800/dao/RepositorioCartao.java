@@ -2,6 +2,9 @@ package br.ufrpe.t1800.dao;
 
 import java.util.ArrayList;
 
+import br.ufrpe.t1800.exceptions.ErroAoAtualizarException;
+import br.ufrpe.t1800.exceptions.ErroAoRemoverException;
+import br.ufrpe.t1800.exceptions.ObjetoNaoExisteException;
 import br.ufrpe.t1800.negocio.beans.CartaoCredito;
 
 public class RepositorioCartao implements IRepositorioCartao {
@@ -27,31 +30,31 @@ public class RepositorioCartao implements IRepositorioCartao {
 	}
 
 	@Override
-	public void atualizarCartao(CartaoCredito cartao) {
+	public void atualizarCartao(CartaoCredito cartao) throws ErroAoAtualizarException, ObjetoNaoExisteException{
 		int i = buscarIndice(cartao.getDescricao());
 		
 		if(i >= 0) {
 			cartoes.set(i, cartao);
 		}else {
-			throw new IllegalArgumentException("Invalido");
+			throw new ErroAoAtualizarException();
 		}
 		
 	}
 
 	@Override
-	public void removerCartao(CartaoCredito cartao) {
+	public void removerCartao(CartaoCredito cartao) throws ErroAoRemoverException, ObjetoNaoExisteException{
 		int i = buscarIndice(cartao.getDescricao());
 		
 		if(i >= 0) {
 			cartoes.remove(i);
 		}else {
-			throw new IllegalArgumentException("Invalido");
+			throw new ErroAoRemoverException();
 		}
 		
 	}
 
 	@Override
-	public CartaoCredito buscarCartao(String nome) {
+	public CartaoCredito buscarCartao(String nome) throws ObjetoNaoExisteException{
 		int i = buscarIndice(nome);
 		
 		CartaoCredito c = new CartaoCredito();
@@ -59,7 +62,7 @@ public class RepositorioCartao implements IRepositorioCartao {
 		if(i >= 0) {
 			c = cartoes.get(i);
 		}else {
-			throw new IllegalArgumentException("Invalido");
+			throw new ObjetoNaoExisteException();
 		}
 		
 		return c;

@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 import br.ufrpe.t1800.dao.IRepositorioDespesaCartao;
 import br.ufrpe.t1800.dao.RepositorioDespesaCartao;
+import br.ufrpe.t1800.exceptions.ErroAoAtualizarException;
+import br.ufrpe.t1800.exceptions.ErroAoRemoverException;
+import br.ufrpe.t1800.exceptions.ObjetoJaExisteException;
+import br.ufrpe.t1800.exceptions.ObjetoNaoExisteException;
 import br.ufrpe.t1800.negocio.beans.DespesaCartao;
 
 public class ControladorDespesaCartao {
@@ -22,31 +26,31 @@ public class ControladorDespesaCartao {
 		return instance;
 	}
 	
-	public void cadastrarDespesaCartao(DespesaCartao despesa) {
+	public void cadastrarDespesaCartao(DespesaCartao despesa) throws ObjetoJaExisteException{
 		if(despesa == null) {
-			
-		}else if(repositorio.existe(despesa)) {
-			
+			throw new IllegalArgumentException("Inválido");
+		}else if(this.repositorio.existe(despesa)) {
+			throw new ObjetoJaExisteException();
 		}else {
 			repositorio.cadastrarDespesaCartao(despesa);
 		}
 	}
 	
-	public void removerDespesaCartao(DespesaCartao despesa) {
+	public void removerDespesaCartao(DespesaCartao despesa) throws ObjetoNaoExisteException, ErroAoRemoverException{
 		if(despesa != null) {
 			this.repositorio.removerDespesaCartao(despesa);
 		}else {
-			
+			throw new IllegalArgumentException("Inválido");
 		}
 	}
-	public void atualizarDespesaCartao(DespesaCartao despesa) {
+	public void atualizarDespesaCartao(DespesaCartao despesa) throws ObjetoNaoExisteException, ErroAoAtualizarException{
 		if(despesa != null) {
-			this.repositorio.removerDespesaCartao(despesa);
+			this.repositorio.atualizarDespesaCartao(despesa);
 		}else {
-			
+			throw new IllegalArgumentException("Inválido");
 		}
 	}
-	public DespesaCartao buscarDespesaCartao(String descricao) {
+	public DespesaCartao buscarDespesaCartao(String descricao) throws ObjetoNaoExisteException{
 		if(descricao != null) {
 			return this.repositorio.buscarDespesaCartao(descricao);
 		}else {
@@ -59,7 +63,13 @@ public class ControladorDespesaCartao {
 	}
 	
 	public boolean existe(DespesaCartao despesa) {
-		return this.repositorio.existe(despesa);
+		
+		if(despesa == null) {
+			throw new IllegalArgumentException("Inválido");
+		}else {
+			return this.repositorio.existe(despesa);
+		}
+		
 	}
 	
 }

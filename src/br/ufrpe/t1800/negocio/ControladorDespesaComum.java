@@ -5,6 +5,10 @@ import java.util.ArrayList;
 
 import br.ufrpe.t1800.dao.IRepositorioDespesaComum;
 import br.ufrpe.t1800.dao.RepositorioDespesaComum;
+import br.ufrpe.t1800.exceptions.ErroAoAtualizarException;
+import br.ufrpe.t1800.exceptions.ErroAoRemoverException;
+import br.ufrpe.t1800.exceptions.ObjetoJaExisteException;
+import br.ufrpe.t1800.exceptions.ObjetoNaoExisteException;
 import br.ufrpe.t1800.negocio.beans.DespesaComum;
 
 public class ControladorDespesaComum {
@@ -22,33 +26,34 @@ public class ControladorDespesaComum {
 		return instance; 
 	}
 	
-	public void cadastrarDespesaC(DespesaComum despesa) {
+	public void cadastrarDespesaC(DespesaComum despesa) throws ObjetoJaExisteException{
 		if(despesa == null) {
-			
-		}else if(this.repositorio.existe(despesa));
-			
-		else {
+			throw new IllegalArgumentException("Inválido");
+		}else if(this.repositorio.existe(despesa)) {
+			throw new ObjetoJaExisteException();
+		}else {
 			repositorio.cadastraDespesaC(despesa);
-		}		
+		}
+		
 	}
 	
-	public void atualizarDespesaC(DespesaComum despesa) {
+	public void atualizarDespesaC(DespesaComum despesa)throws ErroAoAtualizarException, ObjetoNaoExisteException {
 		if(despesa != null) {
 			this.repositorio.atualizarDespesaC(despesa);
 		}else {
-			
+			throw new IllegalArgumentException("Inválido");
 		}
 	}
 	
-	public void removerDespesaC(DespesaComum despesa) {
+	public void removerDespesaC(DespesaComum despesa) throws ErroAoRemoverException, ObjetoNaoExisteException{
 		if(despesa != null) {
 			this.repositorio.removerDespesaC(despesa);
 		}else {
-			
+			throw new IllegalArgumentException("Inválido");
 		}
 	}
 	
-	public DespesaComum buscarDespesa(String nome) {
+	public DespesaComum buscarDespesa(String nome) throws ObjetoNaoExisteException{
 		if(nome != null) {
 			return this.repositorio.procurarDespesaC(nome);
 		}else {
@@ -61,7 +66,13 @@ public class ControladorDespesaComum {
 	}
 	
 	public boolean existe(DespesaComum despesa) {
-		return this.repositorio.existe(despesa);
+		
+		if(despesa == null) {
+			throw new IllegalArgumentException("Inválido");
+		}else {
+			return this.repositorio.existe(despesa);
+		}
+		
 	}
 	
 	

@@ -2,6 +2,9 @@ package br.ufrpe.t1800.dao;
 
 import java.util.ArrayList;
 
+import br.ufrpe.t1800.exceptions.ErroAoAtualizarException;
+import br.ufrpe.t1800.exceptions.ErroAoRemoverException;
+import br.ufrpe.t1800.exceptions.ObjetoNaoExisteException;
 import br.ufrpe.t1800.negocio.beans.DespesaCartao;
 
 public class RepositorioDespesaCartao implements IRepositorioDespesaCartao{
@@ -28,35 +31,37 @@ public class RepositorioDespesaCartao implements IRepositorioDespesaCartao{
 	}
 
 	@Override
-	public void atualizarDespesaCartao(DespesaCartao despesa) {
+	public void atualizarDespesaCartao(DespesaCartao despesa) throws ErroAoAtualizarException, ObjetoNaoExisteException{
 		int i = buscarIndice(despesa.getDescriçao());
 		
 		if(i >= 0) {
 			despesas.set(i, despesa);
 		}else {
-			
+			throw new ErroAoAtualizarException();
 		}
 		
 	}
 
 	@Override
-	public void removerDespesaCartao(DespesaCartao despesa) {
+	public void removerDespesaCartao(DespesaCartao despesa) throws ErroAoRemoverException, ObjetoNaoExisteException{
 		int i = buscarIndice(despesa.getDescriçao());
 		if(i >= 0) {
 			despesas.remove(i);
 		}else {
-			
+			throw new ErroAoRemoverException();
 		}
 		
 	}
 
 	@Override
-	public DespesaCartao buscarDespesaCartao(String descricao) {
+	public DespesaCartao buscarDespesaCartao(String descricao) throws ObjetoNaoExisteException{
 		int i = buscarIndice(descricao);
 		 DespesaCartao d = new DespesaCartao();
 		 
 		 if(i >= 0) {
 			 d = despesas.get(i);
+		 }else {
+			 throw new ObjetoNaoExisteException();
 		 }
 		 
 		 return d;

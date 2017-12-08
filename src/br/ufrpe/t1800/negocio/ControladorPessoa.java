@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 import br.ufrpe.t1800.dao.IRepositorioPessoa;
 import br.ufrpe.t1800.dao.RepositorioPessoa;
+import br.ufrpe.t1800.exceptions.ErroAoAtualizarException;
+import br.ufrpe.t1800.exceptions.ErroAoRemoverException;
+import br.ufrpe.t1800.exceptions.ObjetoJaExisteException;
+import br.ufrpe.t1800.exceptions.ObjetoNaoExisteException;
 import br.ufrpe.t1800.negocio.beans.Pessoa;
 
 public class ControladorPessoa {
@@ -21,17 +25,17 @@ public class ControladorPessoa {
 		return instance;
 	}
 
-	public void cadastrarPessoa(Pessoa pessoa) {
+	public void cadastrarPessoa(Pessoa pessoa)throws ObjetoJaExisteException {
 		if (pessoa == null) {
 			throw new IllegalArgumentException("Invalido");
 		}else if(this.repositorio.existe(pessoa)){
-			
+			throw new ObjetoJaExisteException();
 		}else {
 			repositorio.cadastrarPessoa(pessoa);
 		}
 	}
 
-	public Pessoa procurarPessoa(String nome) {
+	public Pessoa procurarPessoa(String nome) throws ObjetoNaoExisteException {
 		if (nome != null) {
 			return this.repositorio.procurarPessoa(nome);
 		} else {
@@ -39,7 +43,7 @@ public class ControladorPessoa {
 		}
 	}
 
-	public void atualizarPessoa(Pessoa pessoa) {
+	public void atualizarPessoa(Pessoa pessoa) throws ObjetoNaoExisteException, ErroAoAtualizarException{
 		if (pessoa != null) {
 			repositorio.atualizarPessoa(pessoa);
 		} else {
@@ -47,7 +51,7 @@ public class ControladorPessoa {
 		}
 	}
 
-	public void removerPessoa(Pessoa pessoa) {
+	public void removerPessoa(Pessoa pessoa) throws ErroAoRemoverException, ObjetoNaoExisteException{
 		if (pessoa != null) {
 			repositorio.removerPessoa(pessoa);
 		} else {
@@ -61,7 +65,12 @@ public class ControladorPessoa {
 	}
 
 	public boolean existe(Pessoa pessoa) {
-		return this.repositorio.existe(pessoa);
+		if(pessoa == null) {
+			throw new IllegalArgumentException("Inválido");
+		}else {
+			return this.repositorio.existe(pessoa);
+		}
+		
 
 	}
 }
