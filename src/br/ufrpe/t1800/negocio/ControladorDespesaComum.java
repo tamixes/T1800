@@ -27,13 +27,13 @@ public class ControladorDespesaComum {
 	}
 	
 	public void cadastrarDespesaC(DespesaComum despesa) throws ObjetoJaExisteException{
-		if(despesa != null) {
-			repositorio.cadastraDespesaC(despesa);
+		if(despesa == null) {
+			throw new IllegalArgumentException("Inválido");
 		}else if(this.repositorio.existe(despesa)) {
 			throw new ObjetoJaExisteException();
 		}else {
+			repositorio.cadastraDespesaC(despesa);
 			
-			throw new IllegalArgumentException("Inválido");
 		}
 		
 	}

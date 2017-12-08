@@ -29,13 +29,14 @@ public class ControladorDespesaCartao {
 	public void cadastrarDespesaCartao(DespesaCartao despesa) throws ObjetoJaExisteException{
 		
 		
-		if(despesa != null) {
-			repositorio.cadastrarDespesaCartao(despesa);
-			
+		if(despesa == null) {
+			throw new IllegalArgumentException("Inválido");
 		}else if(this.repositorio.existe(despesa)) {
 			throw new ObjetoJaExisteException();
 		}else {
-			throw new IllegalArgumentException("Inválido");
+			repositorio.cadastrarDespesaCartao(despesa);
+			
+			
 		}
 	}
 	

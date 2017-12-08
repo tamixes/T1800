@@ -30,12 +30,13 @@ public class ControladorReceita {
 	
 	public void cadastrarReceita(Receita receita) throws ObjetoJaExisteException{
 	 
-		if(receita != null) {
-			this.repositorio.cadastrarReceita(receita);
+		if(receita == null) {
+			throw new IllegalArgumentException("Inválido");
 		}else if(this.repositorio.existe(receita)) {
 			throw new ObjetoJaExisteException();
 		}else {
-			throw new IllegalArgumentException("Inválido");
+			this.repositorio.cadastrarReceita(receita);
+			
 		}
 	}
 	
