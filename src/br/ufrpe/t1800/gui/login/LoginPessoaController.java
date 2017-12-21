@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 public class LoginPessoaController implements Initializable{
 
 	@FXML
-	private JFXButton btn_entrar, btn_voltar;
+	private JFXButton btn_logar, btn_voltar;
 	@FXML
 	private JFXPasswordField senha_login;
 	@FXML
@@ -31,29 +31,13 @@ public class LoginPessoaController implements Initializable{
 	@FXML
 	private Label aviso;
 	
-	@FXML
-	public void btnVoltar(ActionEvent event) {
-		((Node) (event.getSource())).getScene().getWindow().hide();
-		Parent p = null;
-		
-		try {
-			p = FXMLLoader.load(TelaPrincipal.class.getResource("TelaPrincipal.fxml"));
-			Scene scene = new Scene(p);
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.setResizable(false);
-			stage.setTitle("T1800 Finanças Pessoais");
-			stage.show();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-	}
 	
-	@FXML
-	public void btnEntrar(ActionEvent event) {
-		String login, senha; 
-		
 	
+	
+
+	@FXML
+	public void btnLogar(ActionEvent event) {
+	String login, senha; 
 		
 		
 		login = login_pessoa.getText();
@@ -82,10 +66,33 @@ public class LoginPessoaController implements Initializable{
 	}
 	
 	
+	
+	@FXML
+	public void btnVoltar(ActionEvent event) {
+		((Node) (event.getSource())).getScene().getWindow().hide();
+		Parent p = null;
+		
+		try {
+			p = FXMLLoader.load(TelaPrincipal.class.getResource("TelaPrincipal.fxml"));
+			Scene scene = new Scene(p);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.setResizable(false);
+			stage.setTitle("T1800 Finanças Pessoais");
+			stage.show();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
+	
 
 }

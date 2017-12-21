@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="437.0" prefWidth="441.0" style="-fx-background-color: #696969;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.gui.login.CadastroPessoaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="437.0" prefWidth="441.0" style="-fx-background-color: #696969;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.login.CadastroPessoaController">
    <children>
       <JFXTextField fx:id="nome_pessoa" focusColor="WHITE" layoutY="107.0" prefHeight="25.0" prefWidth="180.0" promptText="Nome: " style="-fx-text-inner-color: #2E86AB;" unFocusColor="#2660a4" />
       <JFXTextField fx:id="telefone_pessoa" focusColor="WHITE" layoutX="233.0" layoutY="107.0" prefHeight="25.0" prefWidth="157.0" promptText="Telefone:" style="-fx-text-inner-color: #2E86AB;" unFocusColor="#2660a4" />
@@ -31,7 +31,7 @@
             <Font name="Yu Gothic Bold" size="11.0" />
          </font>
       </Label>
-      <Label fx:id="aviso" layoutX="42.0" layoutY="344.0" prefHeight="40.0" prefWidth="180.0" textFill="RED" />
+      <Label fx:id="aviso" layoutX="42.0" layoutY="344.0" prefHeight="40.0" prefWidth="180.0" textFill="WHITE" />
       <JFXButton fx:id="btn_voltar" buttonType="RAISED" layoutX="321.0" layoutY="371.0" onAction="#btnVoltar" style="-fx-background-color: #2E86AB;" text="Voltar" textFill="WHITE">
          <font>
             <Font name="Tahoma" size="12.0" />

@@ -31,36 +31,39 @@ public class TelaPrincipalController implements Initializable{
 	
 	@FXML
 	public void btnRegister(ActionEvent event) {
-		Parent p1 = null;
+		((Node) (event.getSource())).getScene().getWindow().hide();
+		Parent p = null;
+		
 		try {
-			p1 = FXMLLoader.load(getClass().getResource("CadastroPessoa.fxml"));
-			Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow(); 
-			Scene scene = new Scene(p1);
+			p = FXMLLoader.load(CadastroPessoa.class.getResource("CadastroPessoa.fxml"));
+			Scene scene = new Scene(p);
+			Stage stage = new Stage();
 			stage.setScene(scene);
+			stage.setResizable(false);
 			stage.setTitle("T1800 Finanças Pessoais");
-			
 			stage.show();
 		} catch (Exception e) {
-			e.printStackTrace();	
+			System.out.println(e.getMessage());
 		}
 	}
 	
 	
 	@FXML
 	public void btnLogar(ActionEvent event) {
-		Parent p1 = null;
+		((Node) (event.getSource())).getScene().getWindow().hide();
+		Parent p = null;
+		
 		try {
-			p1 = FXMLLoader.load(getClass().getResource("LoginPessoa.fxml"));
-			Stage stage = (Stage) ((Node) (event.getSource())).getScene().getWindow(); 
-			Scene scene = new Scene(p1);
+			p = FXMLLoader.load(LoginPessoa.class.getResource("LoginPessoa.fxml"));
+			Scene scene = new Scene(p);
+			Stage stage = new Stage();
 			stage.setScene(scene);
+			stage.setResizable(false);
 			stage.setTitle("T1800 Finanças Pessoais");
-			
 			stage.show();
 		} catch (Exception e) {
-			e.printStackTrace();	
+			System.out.println(e.getMessage());
 		}
-		
 	}
 	
 	
