@@ -1,20 +1,29 @@
 package br.ufrpe.t1800.negocio.beans;
 
-public class Pessoa {
+import java.io.Serializable;
+
+public class Pessoa implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5476787932456464261L;
 	private String nome;
 	private String email;
 	private String telefone;
+	private Usuario usuario;
 	
 	
 	
-	public Pessoa(String nome, String email, String telefone) {
-		super();
+	public Pessoa(String nome, String email, String telefone, Usuario usuario) {
+		
 		this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
+		this.usuario = usuario;
 	}
 
+	
 	public Pessoa() {
 		
 	}
@@ -53,6 +62,16 @@ public class Pessoa {
 		this.telefone = telefone;
 	}
 
+
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 
 	@Override

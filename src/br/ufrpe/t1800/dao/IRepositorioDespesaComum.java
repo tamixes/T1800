@@ -15,4 +15,6 @@ public interface IRepositorioDespesaComum {
 	ArrayList<DespesaComum> listarDespesaC();
 	boolean existe(DespesaComum despesa);
 	int procurarIndice(String nome);
+	void salvarArquivo();
 }
+

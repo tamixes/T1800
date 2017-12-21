@@ -6,6 +6,7 @@ import br.ufrpe.t1800.exceptions.ErroAoAtualizarException;
 import br.ufrpe.t1800.exceptions.ErroAoRemoverException;
 import br.ufrpe.t1800.exceptions.ObjetoNaoExisteException;
 import br.ufrpe.t1800.negocio.beans.Pessoa;
+import br.ufrpe.t1800.negocio.beans.Usuario;
 
 public interface IRepositorioPessoa {
 	
@@ -16,5 +17,6 @@ public interface IRepositorioPessoa {
 	ArrayList<Pessoa> listarPessoas();
 	boolean existe(Pessoa pessoa);
 	int procurarIndice(String nome);
-	
+	void salvarArquivo();
+	boolean verificaLogin(Usuario usuario);
 }

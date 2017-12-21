@@ -17,5 +17,5 @@ public interface IRepositorioCartao {
 		int buscarIndice(String nome);
 		ArrayList<CartaoCredito> listarCartao();
 		boolean existe(CartaoCredito cartao);
-		
+		void salvarArquivo();
 }

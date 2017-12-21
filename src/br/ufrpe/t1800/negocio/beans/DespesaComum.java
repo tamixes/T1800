@@ -1,9 +1,14 @@
 package br.ufrpe.t1800.negocio.beans;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class DespesaComum {
+public class DespesaComum implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3110986248390237737L;
 	private Carteira id;
 	private double valor; 
 	private Date data;

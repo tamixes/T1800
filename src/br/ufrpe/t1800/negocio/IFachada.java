@@ -12,6 +12,7 @@ import br.ufrpe.t1800.negocio.beans.DespesaCartao;
 import br.ufrpe.t1800.negocio.beans.DespesaComum;
 import br.ufrpe.t1800.negocio.beans.Pessoa;
 import br.ufrpe.t1800.negocio.beans.Receita;
+import br.ufrpe.t1800.negocio.beans.Usuario;
 
 public interface IFachada {
 	//Pessoa
@@ -21,6 +22,7 @@ public interface IFachada {
 	ArrayList<Pessoa> listarPessoa();
 	Pessoa buscarPessoa(String nome) throws ObjetoNaoExisteException;
 	boolean existePessoa(Pessoa pessoa);
+	boolean verificaLogin(Usuario usuario);
 	
 	//Cartao
 	void cadastrarCartao(CartaoCredito cartao) throws ObjetoJaExisteException;

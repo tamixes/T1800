@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+import br.ufrpe.t1800.colecoes.Bandeira;
 import br.ufrpe.t1800.exceptions.ErroAoAtualizarException;
 import br.ufrpe.t1800.exceptions.ErroAoRemoverException;
 import br.ufrpe.t1800.exceptions.ObjetoJaExisteException;
@@ -19,6 +20,7 @@ import br.ufrpe.t1800.negocio.beans.DespesaCartao;
 import br.ufrpe.t1800.negocio.beans.DespesaComum;
 import br.ufrpe.t1800.negocio.beans.Pessoa;
 import br.ufrpe.t1800.negocio.beans.Receita;
+import br.ufrpe.t1800.negocio.beans.Usuario;
 
 public class Menu {
 	private IFachada wallet = Fachada.getInstance();
@@ -28,7 +30,18 @@ public class Menu {
 		System.out.println("~~~~~~~~~~~~~Carteira Digital T1800~~~~~~~~~~~~~~~~\n\n");
 	}
 	
-	
+	public void login() throws Exception {
+		this.começo(); 
+		
+		System.out.println("\nLogin: ");
+		String login = entrada.nextLine();
+		System.out.println("\nSenha: ");
+		String senha = entrada.nextLine();
+		
+		if(login.equalsIgnoreCase("tami") && senha.equals("1234")) {
+			this.menuPrincipal();
+		}
+	}
 	
 	public void menuPrincipal() throws Exception {
 		while(true) {
@@ -72,8 +85,14 @@ public class Menu {
 								String email = entrada.nextLine();
 								System.out.println("\nTelefone: ");
 								String telefone = entrada.nextLine();
+								System.out.println("\nLogin: ");
+								String login = entrada.nextLine();
+								System.out.println("\nSenha: ");
+								String senha = entrada.nextLine();
 								
-								Pessoa p = new Pessoa(nome, email, telefone);
+								Usuario u = new Usuario(login, senha);
+								
+								Pessoa p = new Pessoa(nome, email, telefone, u);
 								
 									try {
 										wallet.cadastrarPessoa(p);
@@ -105,10 +124,18 @@ public class Menu {
 									String nvTelefone = entrada.nextLine();
 									System.out.println("Email: \n");
 									String nvEmail = entrada.nextLine();
+									System.out.println("\nLogin: ");
+									String nvLogin = entrada.nextLine();
+									System.out.println("\nSenha: ");
+									String nvSenha = entrada.nextLine();
+									
 									
 									atualiza.setNome(nvNome);
 									atualiza.setEmail(nvEmail);
 									atualiza.setTelefone(nvTelefone);
+									atualiza.getUsuario().setLogin(nvLogin);
+									atualiza.getUsuario().setSenha(nvSenha);
+									
 									
 									try {
 										wallet.atualizarPessoa(atualiza);
@@ -638,6 +665,9 @@ public class Menu {
 								System.out.println("\nValor: ");
 								double valor = entrada.nextDouble();
 								entrada.nextLine();
+								
+								
+								
 								
 								CartaoCredito cartao = new CartaoCredito(buscada, descricao, valor, bandeira, fechamento, pagamento);
 								

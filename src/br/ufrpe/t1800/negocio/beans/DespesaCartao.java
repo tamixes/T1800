@@ -1,9 +1,14 @@
 package br.ufrpe.t1800.negocio.beans;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class DespesaCartao {
+public class DespesaCartao implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8869698266227495341L;
 	private CartaoCredito cartao;
 	private double valor; 
 	private Date dataCompra; 

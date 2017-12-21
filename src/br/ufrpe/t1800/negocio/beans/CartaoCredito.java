@@ -1,9 +1,13 @@
 package br.ufrpe.t1800.negocio.beans;
 
+import java.io.Serializable;
 
+import br.ufrpe.t1800.colecoes.Bandeira;
 
-public class CartaoCredito {
+public class CartaoCredito implements Serializable{
 	
+	
+	private static final long serialVersionUID = -7036377364793450281L;
 	private Carteira id; 
 	private int diaF;
 	private int diaP;	

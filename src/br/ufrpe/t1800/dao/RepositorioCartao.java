@@ -1,5 +1,12 @@
 package br.ufrpe.t1800.dao;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import br.ufrpe.t1800.exceptions.ErroAoAtualizarException;
@@ -7,8 +14,10 @@ import br.ufrpe.t1800.exceptions.ErroAoRemoverException;
 import br.ufrpe.t1800.exceptions.ObjetoNaoExisteException;
 import br.ufrpe.t1800.negocio.beans.CartaoCredito;
 
-public class RepositorioCartao implements IRepositorioCartao {
+public class RepositorioCartao implements IRepositorioCartao, Serializable{
 
+
+	private static final long serialVersionUID = 184836574374500028L;
 	private ArrayList<CartaoCredito> cartoes;
 	private static RepositorioCartao instance;
 	
@@ -18,7 +27,7 @@ public class RepositorioCartao implements IRepositorioCartao {
 	
 	public static RepositorioCartao getInstance() {
 		if(instance == null) {
-			instance = new RepositorioCartao();
+			instance =  RepositorioCartao.lerArquivo();
 		}
 		return instance;
 	}
@@ -96,4 +105,64 @@ public class RepositorioCartao implements IRepositorioCartao {
 		return i;
 	}
 
+	// ARQUIVO
+	
+	private static RepositorioCartao lerArquivo() {
+		RepositorioCartao localInstance = null; 
+		
+		File arquivo = new File("repositorioCartao.dat");
+		
+		FileInputStream fis = null; 
+		ObjectInputStream ois = null;
+		
+		try {
+			fis = new FileInputStream(arquivo);
+			ois = new ObjectInputStream(fis);
+			
+			Object o = ois.readObject();
+			localInstance  = (RepositorioCartao) o;
+			
+		} catch (Exception e) {
+			localInstance = new RepositorioCartao();
+		}finally {
+			if(ois != null) {
+				try {
+					ois.close();
+				} catch (IOException e2) {
+					// TODO: handle exception
+				}
+			}
+		}
+		return localInstance;
+	}
+	
+	public void salvarArquivo() {
+		if(instance == null) {
+			return;
+		}
+		File arquivo = new File("repositorioCartao.dat");
+		FileOutputStream fos = null;
+		ObjectOutputStream oos = null;
+		
+		try {
+			if(!arquivo.exists())
+				arquivo.createNewFile();
+			
+			fos = new FileOutputStream(arquivo);
+			oos = new ObjectOutputStream(fos);
+			oos.writeObject(instance);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(oos != null) {
+				try {
+					oos.close();
+				}catch (IOException e) {
+					// TODO: handle exception
+				}
+			}
+		}
+	
+	}
 }

@@ -9,6 +9,7 @@ import br.ufrpe.t1800.exceptions.ErroAoRemoverException;
 import br.ufrpe.t1800.exceptions.ObjetoJaExisteException;
 import br.ufrpe.t1800.exceptions.ObjetoNaoExisteException;
 import br.ufrpe.t1800.negocio.beans.Pessoa;
+import br.ufrpe.t1800.negocio.beans.Usuario;
 
 public class ControladorPessoa {
 	private static ControladorPessoa instance;
@@ -72,5 +73,14 @@ public class ControladorPessoa {
 		}
 		
 
+	}
+	
+	public boolean login(String login, String senha) {
+		Usuario u = new Usuario(login, senha);
+		boolean r = false; 
+		if(this.repositorio.verificaLogin(u)) {
+			r = true;
+		}
+		return r;
 	}
 }

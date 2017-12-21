@@ -1,14 +1,24 @@
 package br.ufrpe.t1800.dao;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import br.ufrpe.t1800.exceptions.ErroAoAtualizarException;
 import br.ufrpe.t1800.exceptions.ErroAoRemoverException;
 import br.ufrpe.t1800.exceptions.ObjetoNaoExisteException;
 import br.ufrpe.t1800.negocio.beans.Pessoa;
+import br.ufrpe.t1800.negocio.beans.Usuario;
 
-public class RepositorioPessoa implements IRepositorioPessoa{
+public class RepositorioPessoa implements IRepositorioPessoa, Serializable{
 
+	
+	private static final long serialVersionUID = -8343281501164085333L;
 	private ArrayList<Pessoa> pessoas;
 	private static RepositorioPessoa instance;
 	
@@ -19,7 +29,7 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 	
 	public static RepositorioPessoa getInstance() {
 		if(instance == null) {
-			instance = new RepositorioPessoa();
+			instance = RepositorioPessoa.lerArquivo();
 		}
 		return instance; 
 	}
@@ -100,6 +110,81 @@ public class RepositorioPessoa implements IRepositorioPessoa{
 		return i;
 	}
 	
+	public boolean verificaLogin(Usuario usuario) {
+		boolean r = false; 
+		
+		for(int i = 0; i<pessoas.size(); i++) {
+			if(this.pessoas.get(i) instanceof Pessoa) {
+				if(((Pessoa) this.pessoas.get(i)).getUsuario().equals(usuario)) {
+					r = true;
+				}
+			}
+		}
+		return r;
+	}
+	
+	
+	
+	// ARQUIVO
+	
+	private static RepositorioPessoa lerArquivo() {
+		RepositorioPessoa localInstance = null; 
+		
+		File arquivo = new File("repositorioPessoa.dat");
+		
+		FileInputStream fis = null; 
+		ObjectInputStream ois = null;
+		
+		try {
+			fis = new FileInputStream(arquivo);
+			ois = new ObjectInputStream(fis);
+			
+			Object o = ois.readObject();
+			localInstance  = (RepositorioPessoa) o;
+			
+		} catch (Exception e) {
+			localInstance = new RepositorioPessoa();
+		}finally {
+			if(ois != null) {
+				try {
+					ois.close();
+				} catch (IOException e2) {
+					// TODO: handle exception
+				}
+			}
+		}
+		return localInstance;
+	}
+	
+	public void salvarArquivo() {
+		if(instance == null) {
+			return;
+		}
+		File arquivo = new File("repositorioPessoa.dat");
+		FileOutputStream fos = null;
+		ObjectOutputStream oos = null;
+		
+		try {
+			if(!arquivo.exists())
+				arquivo.createNewFile();
+			
+			fos = new FileOutputStream(arquivo);
+			oos = new ObjectOutputStream(fos);
+			oos.writeObject(instance);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(oos != null) {
+				try {
+					oos.close();
+				}catch (IOException e) {
+					// TODO: handle exception
+				}
+			}
+		}
+	
+	}
 	
 
 }

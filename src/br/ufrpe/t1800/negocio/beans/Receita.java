@@ -1,12 +1,17 @@
 package br.ufrpe.t1800.negocio.beans;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Receita {
+public class Receita implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6490940002974458392L;
 	private Carteira id; 
 	private double valor;
 	private Date data;

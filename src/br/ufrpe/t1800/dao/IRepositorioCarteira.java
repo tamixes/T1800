@@ -16,4 +16,5 @@ public interface IRepositorioCarteira {
 	int procurarIndice(String id);
 	Carteira buscarCarteira(String id) throws ObjetoNaoExisteException;
 	boolean existe(Carteira carteira);
+	void salvarArquivo();
 }

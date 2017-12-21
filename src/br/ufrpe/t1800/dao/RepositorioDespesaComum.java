@@ -1,5 +1,12 @@
 package br.ufrpe.t1800.dao;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import br.ufrpe.t1800.exceptions.ErroAoAtualizarException;
@@ -7,8 +14,10 @@ import br.ufrpe.t1800.exceptions.ErroAoRemoverException;
 import br.ufrpe.t1800.exceptions.ObjetoNaoExisteException;
 import br.ufrpe.t1800.negocio.beans.DespesaComum;
 
-public class RepositorioDespesaComum implements IRepositorioDespesaComum{
+public class RepositorioDespesaComum implements IRepositorioDespesaComum, Serializable{
 	
+	
+	private static final long serialVersionUID = -1395398091956626856L;
 	private ArrayList<DespesaComum> despesas;
 	private static RepositorioDespesaComum instance;
 	
@@ -19,7 +28,7 @@ public class RepositorioDespesaComum implements IRepositorioDespesaComum{
 	
 	public static RepositorioDespesaComum getInstance() {
 		if(instance == null) {
-			instance = new RepositorioDespesaComum();
+			instance =  RepositorioDespesaComum.lerArquivo();
 		}
 			return instance;
 		
@@ -97,4 +106,65 @@ public class RepositorioDespesaComum implements IRepositorioDespesaComum{
 		return i;
 	}
 
+	
+	// ARQUIVO
+	
+		private static RepositorioDespesaComum lerArquivo() {
+			RepositorioDespesaComum localInstance = null; 
+			
+			File arquivo = new File("repositorioDespesaComum.dat");
+			
+			FileInputStream fis = null; 
+			ObjectInputStream ois = null;
+			
+			try {
+				fis = new FileInputStream(arquivo);
+				ois = new ObjectInputStream(fis);
+				
+				Object o = ois.readObject();
+				localInstance  = (RepositorioDespesaComum) o;
+				
+			} catch (Exception e) {
+				localInstance = new RepositorioDespesaComum();
+			}finally {
+				if(ois != null) {
+					try {
+						ois.close();
+					} catch (IOException e2) {
+						// TODO: handle exception
+					}
+				}
+			}
+			return localInstance;
+		}
+		
+		public void salvarArquivo() {
+			if(instance == null) {
+				return;
+			}
+			File arquivo = new File("repositorioDespesaComum.dat");
+			FileOutputStream fos = null;
+			ObjectOutputStream oos = null;
+			
+			try {
+				if(!arquivo.exists())
+					arquivo.createNewFile();
+				
+				fos = new FileOutputStream(arquivo);
+				oos = new ObjectOutputStream(fos);
+				oos.writeObject(instance);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				if(oos != null) {
+					try {
+						oos.close();
+					}catch (IOException e) {
+						// TODO: handle exception
+					}
+				}
+			}
+		
+		}
 }

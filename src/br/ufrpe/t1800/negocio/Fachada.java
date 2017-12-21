@@ -12,6 +12,7 @@ import br.ufrpe.t1800.negocio.beans.DespesaCartao;
 import br.ufrpe.t1800.negocio.beans.DespesaComum;
 import br.ufrpe.t1800.negocio.beans.Pessoa;
 import br.ufrpe.t1800.negocio.beans.Receita;
+import br.ufrpe.t1800.negocio.beans.Usuario;
 
 public class Fachada implements IFachada{
 		
@@ -236,6 +237,11 @@ public class Fachada implements IFachada{
 	@Override
 	public boolean existeDespesaCartao(DespesaCartao despesa) {
 		return this.controladorDespesaCartao.existe(despesa);
+	}
+
+	@Override
+	public boolean verificaLogin(Usuario usuario) {
+		return this.controladorPessoa.login(usuario.getLogin(), usuario.getSenha());
 	}
 
 }
