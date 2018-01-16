@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="513.0" style="-fx-background-color: #696969;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.CadastroCartaoController">
+   <children>
+      <JFXComboBox fx:id="lista_carteira" focusColor="WHITE" layoutX="217.0" layoutY="293.0" promptText="Carteira" unFocusColor="#2660a4" />
+      <JFXButton fx:id="btn_salvar" buttonType="RAISED" layoutX="388.0" layoutY="340.0" onAction="#btnSalvar" style="-fx-background-color: #2E86AB;" text="Salvar" textFill="WHITE" />
+      <JFXButton fx:id="btn_voltar" buttonType="RAISED" layoutX="451.0" layoutY="340.0" onAction="#btnVoltar" style="-fx-background-color: #2E86AB;" text="Voltar" textFill="WHITE" />
+      <JFXTextField fx:id="dia_paga" focusColor="WHITE" layoutX="192.0" layoutY="152.0" promptText="Pagamento:" unFocusColor="#2660a4" />
+      <JFXTextField fx:id="desc_cart" focusColor="WHITE" layoutX="192.0" layoutY="185.0" promptText="Descrição:" unFocusColor="#2660a4" />
+      <JFXTextField fx:id="dia_fecha" focusColor="WHITE" layoutX="192.0" layoutY="121.0" promptText="Fechamento:" unFocusColor="#2660a4" />
+      <JFXTextField fx:id="valor_cart" focusColor="WHITE" layoutX="192.0" layoutY="220.0" promptText="Valor:" unFocusColor="#2660a4" />
+      <JFXTextField fx:id="bandeira_cart" focusColor="WHITE" layoutX="193.0" layoutY="255.0" promptText="Bandeira:" unFocusColor="#2660a4" />
+      <Label fx:id="aviso" layoutX="30.0" layoutY="330.0" prefHeight="46.0" prefWidth="227.0" textFill="WHITE" />
+      <Label layoutX="189.0" layoutY="31.0" prefHeight="54.0" prefWidth="135.0" text="Cadastro de Cartão" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

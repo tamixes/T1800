@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #696969;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.MenuCarteiraController">
+   <children>
+      <Label layoutX="241.0" layoutY="139.0" prefHeight="75.0" prefWidth="140.0" text="Menu Carteira" textAlignment="RIGHT" textFill="WHITE">
+         <font>
+            <Font name="Yu Gothic Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btn_cadastrar" buttonType="RAISED" layoutX="84.0" layoutY="291.0" onAction="#btnCadastrar" style="-fx-background-color: #2E86AB;" text="Cadastrar" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btn_buscar" buttonType="RAISED" layoutX="222.0" layoutY="291.0" onAction="#btnBuscar" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #2E86AB;" text="Buscar" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btn_alterar" buttonType="RAISED" layoutX="338.0" layoutY="291.0" onAction="#btnAlterar" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #2E86AB;" text="Alterar" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btn_voltar" buttonType="RAISED" layoutX="446.0" layoutY="291.0" onAction="#btnVoltar" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #2E86AB;" text="Voltar" textFill="WHITE" />
+   </children>
+</AnchorPane>

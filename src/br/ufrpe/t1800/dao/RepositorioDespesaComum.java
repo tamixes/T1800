@@ -55,7 +55,7 @@ public class RepositorioDespesaComum implements IRepositorioDespesaComum, Serial
 
 	@Override
 	public void atualizarDespesaC(DespesaComum despesa) throws ObjetoNaoExisteException, ErroAoAtualizarException{
-		int i = procurarIndice(despesa.getDescriçao());
+		int i = procurarIndice(despesa.getDescricao());
 		if(i>= 0) {
 			despesas.set(i, despesa);
 		}else {
@@ -66,7 +66,7 @@ public class RepositorioDespesaComum implements IRepositorioDespesaComum, Serial
 
 	@Override
 	public void removerDespesaC(DespesaComum despesa) throws ObjetoNaoExisteException, ErroAoRemoverException {
-		int i = procurarIndice(despesa.getDescriçao());
+		int i = procurarIndice(despesa.getDescricao());
 		if(i >= 0) {
 			despesas.remove(i);
 		}else {
@@ -98,7 +98,7 @@ public class RepositorioDespesaComum implements IRepositorioDespesaComum, Serial
 	public int procurarIndice(String nome) {
 		int i = -1;
 		for(int j = 0 ; j < despesas.size(); j++) {
-			if(despesas.get(j).getDescriçao().equalsIgnoreCase(nome)){
+			if(despesas.get(j).getDescricao().equalsIgnoreCase(nome)){
 				i = j;
 			}
 		

@@ -16,17 +16,27 @@ public class Carteira implements Serializable{
 	private String idCarteira;
 	
 	
-	public Carteira(Pessoa pessoa, double valor, String titulo, String descriçao) {
+	public Carteira(Pessoa pessoa, double valor, String titulo, String descricao) {
 		this.idCarteira = "T"+ geraId + "WALLET";
 		geraId++;
 		this.pessoa = pessoa;
 		this.valor = valor;
 		this.titulo = titulo;
-		this.descricao = descriçao;
+		this.descricao = descricao;
+		
+		
 	}
 
 	public Carteira() {
 		
+	}
+	
+	public Carteira(String titulo, String descricao, double valor) {
+		
+		
+		this.titulo = titulo;
+		this.descricao = descricao;
+		this.valor = valor;
 	}
 	public Pessoa getPessoa() {
 		return pessoa;
@@ -63,13 +73,13 @@ public class Carteira implements Serializable{
 	}
 
 
-	public String getDescriçao() {
+	public String getDescricao() {
 		return descricao;
 	}
 
 
-	public void setDescriçao(String descriçao) {
-		this.descricao = descriçao;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 
@@ -83,7 +93,7 @@ public class Carteira implements Serializable{
 	public String toString() {
 		String resultado = "\t\tDados da Carteira\n" 
 						+"\t Titulo: " + this.getTitulo() + "\n"
-						+"\t Nome da Carteira: " +this.getDescriçao() + "\n"
+						+"\t Nome da Carteira: " +this.getDescricao() + "\n"
 						+"\t Id da Carteira: " + this.getIdCarteira()+ "\n"
 						+"\t Valor na Carteira: " + this.getValor()+ "\n";
 		
@@ -96,7 +106,7 @@ public class Carteira implements Serializable{
 	@Override
 	public boolean equals(Object obj) {
 		Carteira c = (Carteira) obj;
-		if(this.descricao.equalsIgnoreCase(c.getDescriçao()) && this.idCarteira.equals(c.getIdCarteira())) {
+		if(c != null && this.descricao.equalsIgnoreCase(c.getDescricao()) && this.idCarteira.equals(c.getIdCarteira())) {
 			return true;
 		}
 		return false; 

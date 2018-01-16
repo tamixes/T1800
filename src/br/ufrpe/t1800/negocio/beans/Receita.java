@@ -1,10 +1,7 @@
 package br.ufrpe.t1800.negocio.beans;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Receita implements Serializable{
 	
@@ -14,13 +11,13 @@ public class Receita implements Serializable{
 	private static final long serialVersionUID = -6490940002974458392L;
 	private Carteira id; 
 	private double valor;
-	private Date data;
+	private LocalDate data;
 	private String descricao;
 	private String categoria; 
 	private boolean isPago = true;
 	
 	
-	public Receita(Carteira id, double valor, Date data, String descricao, String categoria, boolean pago) {
+	public Receita(Carteira id, double valor, LocalDate data, String descricao, String categoria, boolean pago) {
 		
 		this.id = id;
 		this.valor = valor;
@@ -32,7 +29,14 @@ public class Receita implements Serializable{
 	public Receita() {
 		
 	}
-
+	
+	public Receita(double valor, LocalDate data, String descricao, String categoria, boolean pago) {
+		this.valor = valor;
+		this.data = data;
+		this.descricao = descricao;
+		this.categoria = categoria;
+		this.isPago = pago;
+	}
 	public Carteira getId() {
 		return id;
 	}
@@ -59,12 +63,12 @@ public class Receita implements Serializable{
 	}
 
 
-	public Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
 
-	public void setData(Date data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 
@@ -112,16 +116,12 @@ public class Receita implements Serializable{
 	
 	}
 	
-	public void formataData() throws ParseException {
-		String exemplo = "10/12/2000";
-		DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-		Date date =(Date)formatter.parse(exemplo);
-	}
+	
 	
 	public boolean equals(Object obj) {
 		Receita r = (Receita) obj;
 		
-		if(this.descricao.equalsIgnoreCase(descricao) && this.valor == r.getValor() && this.data.equals(r.getData())) {
+		if(r != null && this.descricao.equalsIgnoreCase(descricao) && this.valor == r.getValor() && this.data.equals(r.getData())) {
 			return true;
 		}
 		return false; 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="479.0" style="-fx-background-color: #696969;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.AtualizarCarteiraController">
+   <children>
+      <JFXTextField fx:id="tit_cart" alignment="CENTER" focusColor="WHITE" layoutY="106.0" promptText="Titulo" style="-fx-text-inner-color: #2E86AB;" unFocusColor="#2660a4" />
+      <JFXTextField fx:id="valor_cart" alignment="CENTER" focusColor="WHITE" layoutX="162.0" layoutY="106.0" promptText="Valor" style="-fx-text-inner-color: #2E86AB;" unFocusColor="#2660a4" />
+      <JFXTextField fx:id="desc_carteira" alignment="CENTER" focusColor="WHITE" layoutX="323.0" layoutY="106.0" promptText="Descrição" style="-fx-text-inner-color: #2E86AB;" unFocusColor="#2660a4" />
+      <Label layoutX="159.0" layoutY="37.0" text="Cadastro de Carteira" textFill="WHITE">
+         <font>
+            <Font name="Yu Gothic Bold" size="14.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btn_atualizar" buttonType="RAISED" layoutX="403.0" layoutY="222.0" onAction="#btnAtualizar" style="-fx-background-color: #2E86AB;" text="Atualizar" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="btn_remover" buttonType="RAISED" layoutX="403.0" layoutY="258.0" onAction="#btnRemover" style="-fx-background-color: #2E86AB;" text="Remover" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <AnchorPane layoutY="183.0" prefHeight="225.0" prefWidth="395.0">
+         <children>
+            <TableView fx:id="tabela_carteira" prefHeight="213.0" prefWidth="395.0" />
+         </children>
+      </AnchorPane>
+      <Label fx:id="aviso" prefHeight="36.0" prefWidth="135.0" textFill="WHITE" />
+      <JFXButton fx:id="btn_voltar" buttonType="RAISED" layoutX="411.0" layoutY="363.0" onAction="#btnVoltar" style="-fx-background-color: #2E86AB;" text="Voltar" textFill="WHITE" />
+   </children>
+</AnchorPane>

@@ -55,7 +55,7 @@ public class CadastroPessoaController implements Initializable{
 					Fachada.getInstance().cadastrarPessoa(pessoa);
 					RepositorioPessoa.getInstance().salvarArquivo();
 					System.out.println("Salvo!");
-					((Node) (event.getSource())).getScene().getWindow().hide();
+					
 				} catch (ObjetoJaExisteException e) {
 					
 					Alert alert = new Alert(AlertType.WARNING);

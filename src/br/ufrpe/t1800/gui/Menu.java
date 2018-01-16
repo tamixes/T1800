@@ -4,6 +4,8 @@ package br.ufrpe.t1800.gui;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -280,7 +282,7 @@ public class Menu {
 								double valor = entrada.nextDouble();
 								entrada.nextLine();
 								
-								Carteira carteira = new Carteira(pessoaBusca, valor, titulo, descricao);
+								Carteira carteira = new Carteira(titulo, descricao, valor);
 								
 								
 								try {
@@ -322,7 +324,7 @@ public class Menu {
 										entrada.nextLine();
 										
 									
-										buscada.setDescriçao(novaDesc);
+										buscada.setDescricao(novaDesc);
 										buscada.setTitulo(novoTit);
 										buscada.setValor(novoValor);
 										
@@ -358,7 +360,7 @@ public class Menu {
 								try {
 									carteira = wallet.buscarCarteira(id);
 									
-									System.out.println("Você realmente quer remover esta carteira" + carteira.getDescriçao() +"?\n"
+									System.out.println("Você realmente quer remover esta carteira" + carteira.getDescricao() +"?\n"
 											+ "1 - sim\n"
 											+ "2 - nao\n"
 											+ "Digite: \n");
@@ -395,7 +397,7 @@ public class Menu {
 							
 									try {
 										busca = wallet.buscarCarteira(id);
-									System.out.println("\nDados da Carteira" + busca.getDescriçao() +"\n");
+									System.out.println("\nDados da Carteira" + busca.getDescricao() +"\n");
 									System.out.println(busca);
 									} catch (ObjetoNaoExisteException e) {
 										System.out.println(e.getMessage());
@@ -477,8 +479,8 @@ public class Menu {
 										System.out.println("Data ano/mes/dia: \n");
 										String str = entrada.nextLine();
 										
-										SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
-										Date data = formato.parse(str);
+										DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+										LocalDate data = LocalDate.parse(str, formato);
 										
 										
 	
@@ -520,15 +522,15 @@ public class Menu {
 										
 										System.out.println("Data ano/mes/dia: \n");
 										String dt = entrada.nextLine();
-										DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
-										Date nvData = df.parse(dt);
+										DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+										LocalDate data = LocalDate.parse(dt, formato);
 										
 										System.out.println("O valor está pago? true-false\n");
 										boolean novoIsPago = entrada.nextBoolean();
 										entrada.nextLine();
 										
 										atualiza.setCategoria(novaCateg);
-										atualiza.setData(nvData);
+										atualiza.setData(data);
 										atualiza.setDescricao(novaDesc);
 										atualiza.setPago(novoIsPago);
 										atualiza.setValor(novoValor);
@@ -861,8 +863,8 @@ public class Menu {
 											System.out.println("Data da compra ano/mes/dia: \n");
 											String str = entrada.nextLine();
 											
-											SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-											Date data = formato.parse(str);
+											DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+											LocalDate data = LocalDate.parse(str, formato);
 											
 											
 											System.out.println("Valor: \n");
@@ -907,7 +909,7 @@ public class Menu {
 										remove = wallet.buscarDespesaComum(descricao);
 										
 										
-										System.out.println("Deseja remover a despesa "+ remove.getDescriçao()+ "?\n"
+										System.out.println("Deseja remover a despesa "+ remove.getDescricao()+ "?\n"
 												+ "1 - sim \n"
 												+ "2 - nao \n"
 												+ "opçao: \n");
@@ -961,13 +963,13 @@ public class Menu {
 										System.out.println("Data ano/mes/dia ");
 										String str = entrada.nextLine();
 										
-										SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-										Date nvData = formato.parse(str);
+										DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+										LocalDate nvData = LocalDate.parse(str, formato);
 										System.out.println("Valor: \n");
 										double nvValor = entrada.nextDouble();
 										entrada.nextLine();
 										
-										atualiza.setDescriçao(nvDescricao);
+										atualiza.setDescricao(nvDescricao);
 										atualiza.setData(nvData);
 										atualiza.setPago(nvIsPago);
 										atualiza.setValor(nvValor);
@@ -1001,7 +1003,7 @@ public class Menu {
 									
 									try {
 										buscada = wallet.buscarDespesaComum(busca);
-										System.out.println("Informações sobre " +buscada.getDescriçao()+"\n");
+										System.out.println("Informações sobre " +buscada.getDescricao()+"\n");
 										System.out.println(buscada);
 										entrada.nextLine();
 										
@@ -1069,8 +1071,8 @@ public class Menu {
 										System.out.println("Data da compra ano/mes/dia: \n");
 										String str = entrada.nextLine();
 										
-										SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
-										Date data = formato.parse(str);
+										DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+										LocalDate data = LocalDate.parse(str, formato);
 										
 										DespesaCartao despesa = new DespesaCartao(cartao, valor, data, descricao, tipo, numParcelas);
 										
@@ -1163,9 +1165,8 @@ public class Menu {
 										entrada.nextLine();
 										System.out.println("Data da compra ano/mes/dia: \n");
 										String str = entrada.nextLine();
-										
-										SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
-										Date nvData = formato.parse(str);
+										DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+										LocalDate nvData = LocalDate.parse(str, formato);
 										
 										atualiza.setDataCompra(nvData);
 										atualiza.setDescriçao(nvDescricao);

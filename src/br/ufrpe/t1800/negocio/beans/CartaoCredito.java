@@ -2,7 +2,6 @@ package br.ufrpe.t1800.negocio.beans;
 
 import java.io.Serializable;
 
-import br.ufrpe.t1800.colecoes.Bandeira;
 
 public class CartaoCredito implements Serializable{
 	
@@ -130,7 +129,7 @@ public class CartaoCredito implements Serializable{
 	public boolean equals(Object obj) {
 		CartaoCredito c = (CartaoCredito) obj; 
 		
-		 if(this.descricao.equalsIgnoreCase(c.getDescricao()) && this.diaF == c.getDiaF() && this.diaP == c.getDiaP()
+		 if(c != null && this.descricao.equalsIgnoreCase(c.getDescricao()) && this.diaF == c.getDiaF() && this.diaP == c.getDiaP()
 				&& this.bandeira.equals(c.getBandeira())) {
 			return true;
 		}

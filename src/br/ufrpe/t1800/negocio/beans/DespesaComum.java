@@ -1,7 +1,7 @@
 package br.ufrpe.t1800.negocio.beans;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class DespesaComum implements Serializable {
 	
@@ -11,18 +11,18 @@ public class DespesaComum implements Serializable {
 	private static final long serialVersionUID = 3110986248390237737L;
 	private Carteira id;
 	private double valor; 
-	private Date data;
+	private LocalDate data;
 	private String descricao;
 	private String tipo; 
 	private boolean isPago = true;
 	
 	
-	public DespesaComum(Carteira id, double valor, Date data, String descriçao, String tipo, boolean pago) {
+	public DespesaComum(Carteira id, double valor, LocalDate data, String descricao, String tipo, boolean pago) {
 		
 		this.id = id;
 		this.valor = valor;
 		this.data = data;
-		this.descricao = descriçao;
+		this.descricao = descricao;
 		this.tipo = tipo;
 		this.isPago = pago;
 	}
@@ -42,23 +42,23 @@ public class DespesaComum implements Serializable {
 	}
 
 
-	public Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
 
-	public void setData(Date data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 
 
-	public String getDescriçao() {
+	public String getDescricao() {
 		return descricao;
 	}
 
 
-	public void setDescriçao(String descriçao) {
-		this.descricao = descriçao;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 
@@ -98,7 +98,7 @@ public class DespesaComum implements Serializable {
 				+"\t Carteira: " + this.getId().getIdCarteira()+ "\n"
 				+"\t Valor da Compra: " + this.getValor()+ "\n"
 				+"\t Data da Compra: " + this.getData()+ "\n"
-				+"\t Descrição: " + this.getDescriçao()+ "\n"
+				+"\t Descrição: " + this.getDescricao()+ "\n"
 				+"\t Tipo: " + this.getTipo()+ "\n"
 				+"\t Pago: " + this.isPago()+ "\n";
 		
@@ -110,7 +110,7 @@ public class DespesaComum implements Serializable {
 	@Override
 	public boolean equals(Object obj) {
 		DespesaComum d = (DespesaComum) obj;
-		if(this.data.equals(d.getData()) && this.descricao.equalsIgnoreCase(d.getDescriçao())
+		if(this.data.equals(d.getData()) && this.descricao.equalsIgnoreCase(d.getDescricao())
 				&& this.valor == d.getValor()) {
 			return true;
 		}

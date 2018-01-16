@@ -1,7 +1,7 @@
 package br.ufrpe.t1800.negocio.beans;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class DespesaCartao implements Serializable{
 	
@@ -11,13 +11,13 @@ public class DespesaCartao implements Serializable{
 	private static final long serialVersionUID = -8869698266227495341L;
 	private CartaoCredito cartao;
 	private double valor; 
-	private Date dataCompra; 
+	private LocalDate dataCompra; 
 	private String descricao; 
 	private String tipo; 
 	private int numParcelas;
 	
 	
-	public DespesaCartao(CartaoCredito cartao, double valor, Date data, String descriçao, String tipo, int parcela) {
+	public DespesaCartao(CartaoCredito cartao, double valor, LocalDate data, String descriçao, String tipo, int parcela) {
 		
 		this.cartao = cartao;
 		this.valor = valor;
@@ -66,12 +66,12 @@ public class DespesaCartao implements Serializable{
 	}
 
 
-	public Date getDataCompra() {
+	public LocalDate getDataCompra() {
 		return dataCompra;
 	}
 
 
-	public void setDataCompra(Date dataCompra) {
+	public void setDataCompra(LocalDate dataCompra) {
 		this.dataCompra = dataCompra;
 	}
 

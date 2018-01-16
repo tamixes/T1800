@@ -5,7 +5,6 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 
-import br.ufrpe.t1800.gui.login.TelaPrincipal;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,20 +14,42 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class MenuEscolhasController implements Initializable{
+public class MenuReceitaController implements Initializable{
 
+	@FXML
+	private JFXButton btn_cadastrar, btn_alterar, btn_buscar, btn_voltar, btn_listar;
+	
 	
 	@FXML
-	private JFXButton btn_carteira, btn_receita, btn_cartao, btn_despesa, btn_dados, btn_voltar;
-	
-	
-	@FXML
-	public void btnCarteira(ActionEvent event) {
+	public void btnCadastrar(ActionEvent event) {
 		((Node) (event.getSource())).getScene().getWindow().hide();
 		Parent p = null;
 		
 		try {
-			p = FXMLLoader.load(MenuCarteira.class.getResource("MenuCarteira.fxml"));
+			p = FXMLLoader.load(CadastroReceita.class.getResource("CadastroReceita.fxml"));
+			Scene scene = new Scene(p);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.setResizable(false);
+			stage.setTitle("T1800 Finanças Pessoais");
+			stage.show();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	@FXML
+	public void btnAlterar(ActionEvent event) {
+		
+	}
+	
+	@FXML
+	public void btnBuscar(ActionEvent event) {
+		((Node) (event.getSource())).getScene().getWindow().hide();
+		Parent p = null;
+		
+		try {
+			p = FXMLLoader.load(BuscarReceita.class.getResource("BuscarReceita.fxml"));
 			Scene scene = new Scene(p);
 			Stage stage = new Stage();
 			stage.setScene(scene);
@@ -42,12 +63,12 @@ public class MenuEscolhasController implements Initializable{
 	
 	
 	@FXML
-	public void btnReceita(ActionEvent event) {
+	public void btnListar(ActionEvent event) {
 		((Node) (event.getSource())).getScene().getWindow().hide();
 		Parent p = null;
 		
 		try {
-			p = FXMLLoader.load(MenuReceita.class.getResource("MenuReceita.fxml"));
+			p = FXMLLoader.load(ListaReceitas.class.getResource("ListaReceitas.fxml"));
 			Scene scene = new Scene(p);
 			Stage stage = new Stage();
 			stage.setScene(scene);
@@ -59,65 +80,13 @@ public class MenuEscolhasController implements Initializable{
 		}
 	}
 	
-	@FXML
-	public void btnCartao(ActionEvent event) {
-		((Node) (event.getSource())).getScene().getWindow().hide();
-		Parent p = null;
-		
-		try {
-			p = FXMLLoader.load(MenuCartao.class.getResource("MenuCartao.fxml"));
-			Scene scene = new Scene(p);
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.setResizable(false);
-			stage.setTitle("T1800 Finanças Pessoais");
-			stage.show();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-	}
-	
-	@FXML
-	public void btnDespesa(ActionEvent event) {
-		((Node) (event.getSource())).getScene().getWindow().hide();
-		Parent p = null;
-		
-		try {
-			p = FXMLLoader.load(MenuDespesa.class.getResource("MenuDespesa.fxml"));
-			Scene scene = new Scene(p);
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.setResizable(false);
-			stage.setTitle("T1800 Finanças Pessoais");
-			stage.show();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-	}
-	@FXML
-	public void btnDados(ActionEvent event) {
-		((Node) (event.getSource())).getScene().getWindow().hide();
-		Parent p = null;
-		
-		try {
-			p = FXMLLoader.load(AlterarPessoa.class.getResource("AlterarPessoa.fxml"));
-			Scene scene = new Scene(p);
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.setResizable(false);
-			stage.setTitle("T1800 Finanças Pessoais");
-			stage.show();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-	}
 	@FXML
 	public void btnVoltar(ActionEvent event) {
 		((Node) (event.getSource())).getScene().getWindow().hide();
 		Parent p = null;
 		
 		try {
-			p = FXMLLoader.load(TelaPrincipal.class.getResource("TelaPrincipal.fxml"));
+			p = FXMLLoader.load(MenuEscolhas.class.getResource("MenuEscolhas.fxml"));
 			Scene scene = new Scene(p);
 			Stage stage = new Stage();
 			stage.setScene(scene);
@@ -128,9 +97,6 @@ public class MenuEscolhasController implements Initializable{
 			System.out.println(e.getMessage());
 		}
 	}
-	
-	
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
