@@ -8,26 +8,27 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #696969;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.MenuCarteiraController">
    <children>
-      <Label layoutX="241.0" layoutY="139.0" prefHeight="75.0" prefWidth="140.0" text="Menu Carteira" textAlignment="RIGHT" textFill="WHITE">
+      <Label layoutX="230.0" layoutY="14.0" prefHeight="75.0" prefWidth="140.0" text="Menu Carteira" textAlignment="RIGHT" textFill="WHITE">
          <font>
             <Font name="Yu Gothic Bold" size="18.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btn_cadastrar" buttonType="RAISED" layoutX="84.0" layoutY="291.0" onAction="#btnCadastrar" style="-fx-background-color: #2E86AB;" text="Cadastrar" textFill="WHITE">
+      <JFXButton fx:id="btn_cadastrar" buttonType="RAISED" layoutX="151.0" layoutY="273.0" onAction="#btnCadastrar" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Cadastrar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="btn_buscar" buttonType="RAISED" layoutX="222.0" layoutY="291.0" onAction="#btnBuscar" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #2E86AB;" text="Buscar" textFill="WHITE">
+      <JFXButton fx:id="btn_buscar" buttonType="RAISED" layoutX="239.0" layoutY="273.0" onAction="#btnBuscar" prefHeight="38.0" prefWidth="64.0" style="-fx-background-color: #2E86AB;" text="Buscar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="btn_alterar" buttonType="RAISED" layoutX="338.0" layoutY="291.0" onAction="#btnAlterar" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #2E86AB;" text="Alterar" textFill="WHITE">
+      <JFXButton fx:id="btn_alterar" buttonType="RAISED" layoutX="406.0" layoutY="272.0" onAction="#btnAlterar" prefHeight="38.0" prefWidth="64.0" style="-fx-background-color: #2E86AB;" text="Atualizar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="btn_voltar" buttonType="RAISED" layoutX="446.0" layoutY="291.0" onAction="#btnVoltar" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #2E86AB;" text="Voltar" textFill="WHITE" />
+      <JFXButton fx:id="btn_voltar" buttonType="RAISED" layoutX="522.0" layoutY="355.0" onAction="#btnVoltar" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #2E86AB;" text="Voltar" textFill="WHITE" />
+      <JFXButton fx:id="btn_remover" buttonType="RAISED" layoutX="320.0" layoutY="272.0" onAction="#btnRemover" prefHeight="38.0" prefWidth="64.0" style="-fx-background-color: #2E86AB;" text="Remover" textFill="WHITE" />
    </children>
 </AnchorPane>

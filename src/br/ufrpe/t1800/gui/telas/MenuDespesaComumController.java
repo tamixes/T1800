@@ -18,7 +18,7 @@ public class MenuDespesaComumController	implements Initializable {
 
 	
 	@FXML
-	private JFXButton btn_cadastrar, btn_voltar,btn_alterar, btn_buscar;
+	private JFXButton btn_cadastrar, btn_voltar,btn_alterar, btn_buscar, btn_listar, btn_remover;
 	
 	@FXML
 	public void btnCadastrar(ActionEvent event) {
@@ -41,6 +41,42 @@ public class MenuDespesaComumController	implements Initializable {
 	@FXML
 	public void btnAlterar(ActionEvent event) {
 		
+	}
+	
+	@FXML
+	public void btnListar(ActionEvent event) {
+		((Node) (event.getSource())).getScene().getWindow().hide();
+		Parent p = null;
+		
+		try {
+			p = FXMLLoader.load(ListaDespesaComum.class.getResource("ListaDespesaComum.fxml"));
+			Scene scene = new Scene(p);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.setResizable(false);
+			stage.setTitle("T1800 Finanças Pessoais");
+			stage.show();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	@FXML
+	public void btnRemover(ActionEvent event) {
+		((Node) (event.getSource())).getScene().getWindow().hide();
+		Parent p = null;
+		
+		try {
+			p = FXMLLoader.load(RemoverDespesaComum.class.getResource("RemoverDespesaComum.fxml"));
+			Scene scene = new Scene(p);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.setResizable(false);
+			stage.setTitle("T1800 Finanças Pessoais");
+			stage.show();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	@FXML

@@ -46,6 +46,14 @@ public class ControladorCarteira {
 		}
 	}
 	
+	
+	public void removerCarteira(String codigo) throws ObjetoNaoExisteException, ErroAoRemoverException{
+		if(codigo!= null) {
+			repositorio.removeCarteira(codigo);
+		}else {
+			throw new IllegalArgumentException("Invalido");
+		}
+	}
 	public void atualizarCarteira(Carteira carteira) throws ObjetoNaoExisteException, ErroAoAtualizarException{
 		if(carteira != null ) {
 			this.repositorio.atualizarCarteira(carteira);

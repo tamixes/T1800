@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 public class MenuCarteiraController implements Initializable{
 
 	@FXML
-	private JFXButton btn_cadastrar, btn_buscar, btn_alterar, btn_voltar;
+	private JFXButton btn_cadastrar, btn_buscar, btn_alterar, btn_voltar, btn_remover;
 	
 	@FXML
 	public void btnCadastrar(ActionEvent event) {
@@ -93,6 +93,24 @@ public class MenuCarteiraController implements Initializable{
 		}
 	}
 	
+	
+	@FXML
+	public void btnRemover(ActionEvent event) {
+		((Node) (event.getSource())).getScene().getWindow().hide();
+		Parent p = null;
+		
+		try {
+			p = FXMLLoader.load(RemoverCarteira.class.getResource("RemoverCarteira.fxml"));
+			Scene scene = new Scene(p);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.setResizable(false);
+			stage.setTitle("T1800 Finanças Pessoais");
+			stage.show();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

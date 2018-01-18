@@ -167,4 +167,14 @@ public class RepositorioReceita implements IRepositorioReceita, Serializable{
 			}
 		
 		}
+		@Override
+		public void removeReceita(String descricao) throws ObjetoNaoExisteException, ErroAoRemoverException {
+			int indice = procurarIndice(descricao);
+			if(indice >= 0) {
+				receitas.remove(indice);
+			}else {
+				throw new ErroAoRemoverException();
+			}
+			
+		}
 }

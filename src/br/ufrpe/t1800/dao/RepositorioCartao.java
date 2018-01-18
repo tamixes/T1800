@@ -165,4 +165,16 @@ public class RepositorioCartao implements IRepositorioCartao, Serializable{
 		}
 	
 	}
+
+	@Override
+	public void removeCartao(String descricao) throws ErroAoRemoverException, ObjetoNaoExisteException {
+		int indice = buscarIndice(descricao);
+		
+		if(indice >= 0) {
+			cartoes.remove(indice);
+		}else {
+			throw new ErroAoRemoverException();
+		}
+		
+	}
 }

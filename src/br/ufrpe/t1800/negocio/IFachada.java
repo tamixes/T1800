@@ -31,6 +31,7 @@ public interface IFachada {
 	ArrayList<CartaoCredito> listarCartao();
 	CartaoCredito buscarCartao(String nome) throws ObjetoNaoExisteException;
 	boolean existeCartao(CartaoCredito cartao);
+	void removeCartao(String descricao) throws ErroAoRemoverException, ObjetoNaoExisteException;
 	
 	//Receita
 	void cadastrarReceita(Receita receita) throws ObjetoJaExisteException;
@@ -39,6 +40,8 @@ public interface IFachada {
 	ArrayList<Receita> listarReceita();
 	Receita buscarReceita(String nome) throws ObjetoNaoExisteException;
 	boolean existeReceita(Receita receita);
+	void removeReceita(String descricao) throws ObjetoNaoExisteException, ErroAoRemoverException;
+	
 	
 	//Carteira
 	void cadastrarCarteira(Carteira carteira) throws ObjetoJaExisteException;
@@ -47,6 +50,7 @@ public interface IFachada {
 	ArrayList<Carteira> listarCarteira();
 	Carteira buscarCarteira(String id) throws ObjetoNaoExisteException;
 	boolean existeCarteira(Carteira carteira);
+	void removeCarteira(String codigo) throws ObjetoNaoExisteException, ErroAoRemoverException;
 	
 	//despesa comum
 	
@@ -56,6 +60,7 @@ public interface IFachada {
 	ArrayList<DespesaComum> listarDespesaComum();
 	DespesaComum buscarDespesaComum(String descricao) throws ObjetoNaoExisteException;
 	boolean existeDespesaComum(DespesaComum despesa);
+	void removeDespesa(String descricao) throws ErroAoRemoverException, ObjetoNaoExisteException;
 	
 	//Despesa Cartao
 	void cadastrarDespesaCartao(DespesaCartao despesa) throws ObjetoJaExisteException;
@@ -64,4 +69,5 @@ public interface IFachada {
 	ArrayList<DespesaCartao> listarDespesaCartao();
 	DespesaCartao buscarDespesaCartao(String descricao) throws ObjetoNaoExisteException;
 	boolean existeDespesaCartao(DespesaCartao despesa);
+	void removeDespesaCartao(String descricao) throws ErroAoRemoverException, ObjetoNaoExisteException;
 }

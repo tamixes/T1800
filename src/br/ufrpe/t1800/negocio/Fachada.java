@@ -244,4 +244,34 @@ public class Fachada implements IFachada{
 		return this.controladorPessoa.login(usuario.getLogin(), usuario.getSenha());
 	}
 
+	@Override
+	public void removeCarteira(String codigo) throws ObjetoNaoExisteException, ErroAoRemoverException {
+		this.controladorCarteira.removerCarteira(codigo);
+		
+	}
+
+	@Override
+	public void removeCartao(String descricao) throws ErroAoRemoverException, ObjetoNaoExisteException {
+		this.controladorCartao.removeCartao(descricao);
+		
+	}
+
+	@Override
+	public void removeReceita(String descricao) throws ObjetoNaoExisteException, ErroAoRemoverException {
+		this.controladorReceita.removeReceita(descricao);
+		
+	}
+
+	@Override
+	public void removeDespesa(String descricao) throws ErroAoRemoverException, ObjetoNaoExisteException {
+		this.controladorDespesaComum.removeDespesa(descricao);
+		
+	}
+
+	@Override
+	public void removeDespesaCartao(String descricao) throws ErroAoRemoverException, ObjetoNaoExisteException {
+		this.controladorDespesaCartao.removeDespesa(descricao);
+		
+	}
+
 }

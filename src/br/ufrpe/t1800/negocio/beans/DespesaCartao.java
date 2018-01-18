@@ -119,7 +119,7 @@ public class DespesaCartao implements Serializable{
 	@Override
 	public boolean equals(Object obj) {
 		DespesaCartao d = (DespesaCartao) obj;
-		if(this.dataCompra.equals(d.getDataCompra()) && this.descricao.equalsIgnoreCase(d.getDescriçao())
+		if(d != null && this.dataCompra.equals(d.getDataCompra()) && this.descricao.equalsIgnoreCase(d.getDescriçao())
 				&& this.valor == d.getValor()) {
 			return true;
 		}

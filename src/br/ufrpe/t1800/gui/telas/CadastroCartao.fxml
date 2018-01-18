@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="513.0" style="-fx-background-color: #696969;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.CadastroCartaoController">
    <children>
-      <JFXComboBox fx:id="lista_carteira" focusColor="WHITE" layoutX="217.0" layoutY="293.0" promptText="Carteira" unFocusColor="#2660a4" />
+      <JFXComboBox fx:id="lista_carteira" focusColor="WHITE" layoutX="217.0" layoutY="293.0" unFocusColor="#2660a4" />
       <JFXButton fx:id="btn_salvar" buttonType="RAISED" layoutX="388.0" layoutY="340.0" onAction="#btnSalvar" style="-fx-background-color: #2E86AB;" text="Salvar" textFill="WHITE" />
       <JFXButton fx:id="btn_voltar" buttonType="RAISED" layoutX="451.0" layoutY="340.0" onAction="#btnVoltar" style="-fx-background-color: #2E86AB;" text="Voltar" textFill="WHITE" />
       <JFXTextField fx:id="dia_paga" focusColor="WHITE" layoutX="192.0" layoutY="152.0" promptText="Pagamento:" unFocusColor="#2660a4" />

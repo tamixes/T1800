@@ -77,6 +77,13 @@ public class ControladorReceita {
 		
 	}
 	
+	public void removeReceita(String descricao) throws ErroAoRemoverException, ObjetoNaoExisteException{
+		if(descricao != null) {
+			this.repositorio.removeReceita(descricao);
+		}else {
+			throw new IllegalArgumentException("Invalido");
+		}
+	}
 	
 	
 	

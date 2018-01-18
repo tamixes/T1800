@@ -17,4 +17,5 @@ public interface IRepositorioDespesaCartao {
 	ArrayList<DespesaCartao> listarDespesa ();
 	boolean existe(DespesaCartao despesa);
 	void salvarArquivo();
+	void removeDespesa(String descricao) throws ErroAoRemoverException, ObjetoNaoExisteException;
 }

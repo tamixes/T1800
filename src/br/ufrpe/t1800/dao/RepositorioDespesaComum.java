@@ -74,7 +74,15 @@ public class RepositorioDespesaComum implements IRepositorioDespesaComum, Serial
 		}
 		
 	}
-
+	@Override
+	public void removeDespesa(String descricao) throws ObjetoNaoExisteException, ErroAoRemoverException{
+		int i = procurarIndice(descricao);
+		if(i >= 0) {
+			despesas.remove(i);
+		}else {
+			throw new ErroAoRemoverException();
+		}
+	}
 	@Override
 	public ArrayList<DespesaComum> listarDespesaC() {
 	

@@ -54,6 +54,13 @@ public class ControladorDespesaComum {
 		}
 	}
 	
+	public void removeDespesa(String descricao) throws ErroAoRemoverException, ObjetoNaoExisteException{
+		if(descricao != null) {
+			this.repositorio.removeDespesa(descricao);
+		}else {
+			throw new IllegalArgumentException("Inválido");
+		}
+	}
 	public DespesaComum buscarDespesa(String nome) throws ObjetoNaoExisteException{
 		if(nome != null) {
 			return this.repositorio.procurarDespesaC(nome);

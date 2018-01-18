@@ -16,5 +16,6 @@ public interface IRepositorioDespesaComum {
 	boolean existe(DespesaComum despesa);
 	int procurarIndice(String nome);
 	void salvarArquivo();
+	void removeDespesa(String descricao) throws ObjetoNaoExisteException, ErroAoRemoverException;
 }
 

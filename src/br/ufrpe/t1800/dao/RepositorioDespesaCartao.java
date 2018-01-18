@@ -61,7 +61,16 @@ public class RepositorioDespesaCartao implements IRepositorioDespesaCartao, Seri
 		}
 		
 	}
-
+	@Override
+	public void removeDespesa(String descricao) throws ErroAoRemoverException, ObjetoNaoExisteException{
+		int i = buscarIndice(descricao);
+		if(i >= 0) {
+			despesas.remove(i);
+		}else {
+			throw new ErroAoRemoverException();
+		}
+		
+	}
 	@Override
 	public DespesaCartao buscarDespesaCartao(String descricao) throws ObjetoNaoExisteException{
 		int i = buscarIndice(descricao);

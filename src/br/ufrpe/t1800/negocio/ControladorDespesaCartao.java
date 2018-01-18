@@ -47,6 +47,13 @@ public class ControladorDespesaCartao {
 			throw new IllegalArgumentException("Inválido");
 		}
 	}
+	public void removeDespesa(String descricao) throws ObjetoNaoExisteException, ErroAoRemoverException{
+		if(descricao != null) {
+			this.repositorio.removeDespesa(descricao);
+		}else {
+			throw new IllegalArgumentException("Inválido");
+		}
+	}
 	public void atualizarDespesaCartao(DespesaCartao despesa) throws ObjetoNaoExisteException, ErroAoAtualizarException{
 		if(despesa != null ) {
 			this.repositorio.atualizarDespesaCartao(despesa);

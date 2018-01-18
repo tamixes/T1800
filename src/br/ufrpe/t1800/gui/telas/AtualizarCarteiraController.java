@@ -92,8 +92,7 @@ public class AtualizarCarteiraController implements Initializable{
 		
 		
 		});
-		
-	}
+			}
 	
 	@FXML
 	public void btnAtualizar(ActionEvent event) {

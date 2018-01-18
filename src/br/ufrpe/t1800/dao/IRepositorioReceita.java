@@ -17,4 +17,5 @@ public interface IRepositorioReceita {
 	boolean existe(Receita receita);
 	int procurarIndice(String descricao);
 	void salvarArquivo();
+	void removeReceita(String descricao) throws ObjetoNaoExisteException, ErroAoRemoverException;
 }

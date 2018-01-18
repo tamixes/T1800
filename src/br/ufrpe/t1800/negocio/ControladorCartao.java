@@ -45,6 +45,8 @@ public class ControladorCartao {
 		}
 	}
 	
+		
+	
 	public void atualizarCartao(CartaoCredito cartao) throws ObjetoNaoExisteException, ErroAoAtualizarException {
 		if(cartao != null) {
 			this.repositorio.atualizarCartao(cartao);
@@ -66,7 +68,13 @@ public class ControladorCartao {
 		}
 	}
 	
-	
+	public void removeCartao(String descricao) throws ObjetoNaoExisteException, ErroAoRemoverException{
+		if(descricao != null) {
+			this.repositorio.removeCartao(descricao);
+		}else {
+			throw new IllegalArgumentException("Invalido");
+		}
+	}
 	
 	public boolean existe(CartaoCredito cartao) {
 		

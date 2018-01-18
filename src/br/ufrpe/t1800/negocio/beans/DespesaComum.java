@@ -110,7 +110,7 @@ public class DespesaComum implements Serializable {
 	@Override
 	public boolean equals(Object obj) {
 		DespesaComum d = (DespesaComum) obj;
-		if(this.data.equals(d.getData()) && this.descricao.equalsIgnoreCase(d.getDescricao())
+		if(d != null && this.data.equals(d.getData()) && this.descricao.equalsIgnoreCase(d.getDescricao())
 				&& this.valor == d.getValor()) {
 			return true;
 		}

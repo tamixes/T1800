@@ -14,7 +14,7 @@
       <JFXTextField fx:id="v_desp" focusColor="WHITE" layoutX="186.0" layoutY="178.0" promptText="Valor:" unFocusColor="#2660a4" />
       <JFXTextField fx:id="desc_desp" focusColor="WHITE" layoutX="28.0" layoutY="127.0" promptText="Descrição" unFocusColor="#2660a4" />
       <JFXTextField fx:id="tipo_desp" focusColor="WHITE" layoutX="27.0" layoutY="176.0" promptText="Categoria:" unFocusColor="#2660a4" />
-      <JFXComboBox fx:id="lista_carteira" layoutX="475.0" layoutY="164.0" promptText="Carteira" unFocusColor="#2660a4" />
+      <JFXComboBox fx:id="lista_carteira" layoutX="475.0" layoutY="164.0" unFocusColor="#2660a4" />
       <JFXCheckBox fx:id="is_pago" layoutX="375.0" layoutY="169.0" text="pago" unCheckedColor="#2660a4" />
       <JFXDatePicker fx:id="data_desp" defaultColor="#2660a4" layoutX="183.0" layoutY="126.0" promptText="Data" />
       <JFXButton fx:id="btn_salvar" buttonType="RAISED" layoutX="428.0" layoutY="327.0" onAction="#btnSalvar" style="-fx-background-color: #2E86AB;" text="Salvar" textFill="WHITE" />

@@ -168,4 +168,15 @@ public class RepositorioCarteira implements IRepositorioCarteira, Serializable{
 			}
 		
 		}
+
+		@Override
+		public void removeCarteira(String codigo) throws ObjetoNaoExisteException, ErroAoRemoverException {
+			int indice = procurarIndice(codigo);
+			
+			if(indice >= 0) {
+				carteiras.remove(indice);
+			}else {
+				throw new ErroAoRemoverException();
+			}
+		}
 }

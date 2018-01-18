@@ -43,10 +43,7 @@ public class AlterarPessoaController implements Initializable{
 	private TableColumn<Pessoa, String> telefone;
 	@FXML
 	private TableColumn<Pessoa, String> email;
-	@FXML
-	private TableColumn<Pessoa, String> login;
-	@FXML
-	private TableColumn<Pessoa, String> senha;
+	
 	
 	private ObservableList<Pessoa> pessoas;
 	private Pessoa p;
@@ -68,22 +65,19 @@ public class AlterarPessoaController implements Initializable{
 		email = new TableColumn<>("Email");
 		email.setResizable(true);
 		
-		login = new TableColumn<>("Login");
-		login.setResizable(true);
 		
 		
-		
-		lista_pessoa.getColumns().addAll(nome, telefone, email, login);
+		lista_pessoa.getColumns().addAll(nome, telefone, email);
 		
 		nome.setCellValueFactory(new PropertyValueFactory<Pessoa, String>("Nome"));
 		telefone.setCellValueFactory(new PropertyValueFactory<Pessoa, String>("Telefone"));
 		email.setCellValueFactory(new PropertyValueFactory<Pessoa, String>("Email"));
-		login.setCellValueFactory(new PropertyValueFactory<Pessoa, String>("Login"));
+	
 		
 		
 		lista_pessoa.setItems(pessoas);
 		
-		/*lista_pessoa.setOnMouseClicked(e -> {
+		lista_pessoa.setOnMouseClicked(e -> {
 			
 			
 			p = lista_pessoa.getSelectionModel().getSelectedItem();
@@ -97,14 +91,10 @@ public class AlterarPessoaController implements Initializable{
 			email_pessoa.setText(p.getTelefone());
 			email_pessoa.setEditable(true);
 			
-			login_pessoa.setText(p.getUsuario().getLogin());
-			login_pessoa.setEditable(true);
-			
-			senha_pessoa.setText(p.getUsuario().getSenha());
-			login_pessoa.setEditable(true);
 			
 			
-		});*/
+			
+		});
 		
 		
 	

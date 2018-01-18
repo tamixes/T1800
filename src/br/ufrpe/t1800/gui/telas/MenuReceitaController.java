@@ -40,7 +40,20 @@ public class MenuReceitaController implements Initializable{
 	
 	@FXML
 	public void btnAlterar(ActionEvent event) {
+		((Node) (event.getSource())).getScene().getWindow().hide();
+		Parent p = null;
 		
+		try {
+			p = FXMLLoader.load(AlterarReceita.class.getResource("AlterarReceita.fxml"));
+			Scene scene = new Scene(p);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.setResizable(false);
+			stage.setTitle("T1800 Finanças Pessoais");
+			stage.show();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	@FXML
@@ -97,6 +110,25 @@ public class MenuReceitaController implements Initializable{
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	@FXML
+	public void btnRemover(ActionEvent event) {
+		((Node) (event.getSource())).getScene().getWindow().hide();
+		Parent p = null;
+		
+		try {
+			p = FXMLLoader.load(RemoverReceita.class.getResource("RemoverReceita.fxml"));
+			Scene scene = new Scene(p);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.setResizable(false);
+			stage.setTitle("T1800 Finanças Pessoais");
+			stage.show();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
