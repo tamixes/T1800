@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #696969;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.CadastroDespesaCartaoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.CadastroDespesaCartaoController">
    <children>
       <JFXComboBox fx:id="lista_cartao" focusColor="WHITE" layoutX="413.0" layoutY="175.0" unFocusColor="#2660a4" />
       <JFXTextField fx:id="valor_despesa" focusColor="WHITE" layoutX="28.0" layoutY="130.0" promptText="Valor:" unFocusColor="#2660a4" />
@@ -18,11 +18,11 @@
       <JFXTextField fx:id="num_parcelas" focusColor="WHITE" layoutX="413.0" layoutY="130.0" promptText="Numero de Parcelas:" unFocusColor="#2660a4" />
       <JFXButton fx:id="btn_salvar" buttonType="RAISED" layoutX="426.0" layoutY="314.0" onAction="#btnSalvar" style="-fx-background-color: #2E86AB;" text="Salvar" textFill="WHITE" />
       <JFXButton fx:id="btn_voltar" buttonType="RAISED" layoutX="491.0" layoutY="313.0" onAction="#btnVoltar" style="-fx-background-color: #2E86AB;" text="Voltar" textFill="WHITE" />
-      <Label layoutX="228.0" layoutY="49.0" text="Cadastro de Despesa Cartao" textFill="WHITE">
+      <Label layoutX="177.0" layoutY="37.0" text="Cadastro de Despesa Cartao">
          <font>
-            <Font size="14.0" />
+            <Font name="Yu Gothic Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="aviso" layoutX="65.0" layoutY="251.0" prefHeight="75.0" prefWidth="251.0" textFill="WHITE" />
+      <Label fx:id="aviso" layoutX="65.0" layoutY="251.0" prefHeight="75.0" prefWidth="251.0" textFill="RED" />
    </children>
 </AnchorPane>

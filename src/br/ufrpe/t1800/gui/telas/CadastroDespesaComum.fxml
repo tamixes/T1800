@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #696969;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.CadastroDespesaComumController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.CadastroDespesaComumController">
    <children>
       <JFXTextField fx:id="v_desp" focusColor="WHITE" layoutX="186.0" layoutY="178.0" promptText="Valor:" unFocusColor="#2660a4" />
       <JFXTextField fx:id="desc_desp" focusColor="WHITE" layoutX="28.0" layoutY="127.0" promptText="Descrição" unFocusColor="#2660a4" />
@@ -19,11 +19,11 @@
       <JFXDatePicker fx:id="data_desp" defaultColor="#2660a4" layoutX="183.0" layoutY="126.0" promptText="Data" />
       <JFXButton fx:id="btn_salvar" buttonType="RAISED" layoutX="428.0" layoutY="327.0" onAction="#btnSalvar" style="-fx-background-color: #2E86AB;" text="Salvar" textFill="WHITE" />
       <JFXButton fx:id="btn_voltar" buttonType="RAISED" layoutX="491.0" layoutY="327.0" onAction="#btnVoltar" style="-fx-background-color: #2E86AB;" text="Voltar" textFill="WHITE" />
-      <Label layoutX="212.0" layoutY="37.0" text="Cadastro de Despesa Comum" textFill="WHITE">
+      <Label layoutX="163.0" layoutY="34.0" text="Cadastro de Despesa Comum">
          <font>
-            <Font size="14.0" />
+            <Font name="Yu Gothic Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="54.0" layoutY="269.0" prefHeight="83.0" prefWidth="264.0" textFill="WHITE" />
+      <Label layoutX="54.0" layoutY="269.0" prefHeight="83.0" prefWidth="264.0" textFill="RED" />
    </children>
 </AnchorPane>

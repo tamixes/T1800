@@ -6,17 +6,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #696969;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.BuscarReceitaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #A9A9A9 #A9A9A9;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.BuscarReceitaController">
    <children>
       <JFXButton fx:id="btn_pesquisa" buttonType="RAISED" layoutX="83.0" layoutY="148.0" onAction="#btnPesquisa" style="-fx-background-color: #2E86AB;" text="Pesquisar" textFill="WHITE" />
       <JFXTextField fx:id="nome_receita" focusColor="WHITE" layoutX="38.0" layoutY="104.0" prefHeight="25.0" prefWidth="157.0" unFocusColor="#2660a4" />
       <JFXButton fx:id="btn_voltar" buttonType="RAISED" layoutX="93.0" layoutY="188.0" onAction="#btnVoltar" style="-fx-background-color: #2E86AB;" text="voltar" textFill="WHITE" />
-      <Label layoutX="250.0" layoutY="34.0" text="Buscar Receita" textFill="WHITE">
+      <Label layoutX="243.0" layoutY="33.0" text="Buscar Receita">
          <font>
-            <Font size="14.0" />
+            <Font name="Yu Gothic Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="printa" layoutX="250.0" layoutY="63.0" prefHeight="323.0" prefWidth="336.0" textFill="WHITE" />
+      <Label fx:id="printa" layoutX="250.0" layoutY="88.0" prefHeight="298.0" prefWidth="318.0" textFill="RED" />
       <Label fx:id="aviso" layoutX="23.0" layoutY="237.0" prefHeight="57.0" prefWidth="187.0" />
    </children>
 </AnchorPane>

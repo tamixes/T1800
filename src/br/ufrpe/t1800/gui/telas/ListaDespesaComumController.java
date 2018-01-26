@@ -56,7 +56,7 @@ public class ListaDespesaComumController implements Initializable {
 		descricao = new TableColumn<>("Descricao");
 		descricao.setResizable(true);
 		
-		tabela_despesa.getColumns().addAll(valor);
+		tabela_despesa.getColumns().addAll(valor, tipo, pago, descricao);
 		
 		
 		valor.setCellValueFactory(new PropertyValueFactory<DespesaComum, Double>("Valor"));

@@ -26,8 +26,8 @@ public class ListaReceitasController implements Initializable{
 
 	@FXML
 	private TableView<Receita> lista_receitas;
-	//@FXML
-	//private TableColumn<Receita, String> descricao;
+	@FXML
+	private TableColumn<Receita, String> descricao;
 	@FXML
 	private TableColumn<Receita, String> categoria;
 	@FXML
@@ -49,8 +49,8 @@ public class ListaReceitasController implements Initializable{
 		lista_receitas.setEditable(false);
 		receitas = FXCollections.observableArrayList(controller.listarReceita());
 		
-		//descricao = new TableColumn<>("Descrição");
-		//descricao.setResizable(true);
+		descricao = new TableColumn<>("Descricao");
+		descricao.setResizable(true);
 		
 		categoria = new TableColumn<>("Categoria");
 		categoria.setResizable(true);
@@ -64,11 +64,11 @@ public class ListaReceitasController implements Initializable{
 		pago = new TableColumn<>("Pago");
 		pago.setResizable(true);
 		
-		lista_receitas.getColumns().addAll( categoria, valor, data, pago);
+		lista_receitas.getColumns().addAll(descricao, categoria, valor, data, pago);
 		
 		pago.setCellValueFactory(new PropertyValueFactory<Receita, Boolean>("Pago"));
 		categoria.setCellValueFactory(new PropertyValueFactory<Receita, String>("categoria"));
-		//descricao.setCellValueFactory(new PropertyValueFactory<Receita, String>("Descrição"));
+		descricao.setCellValueFactory(new PropertyValueFactory<Receita, String>("Descricao"));
 		valor.setCellValueFactory(new PropertyValueFactory<Receita, Double>("Valor"));
 		data.setCellValueFactory(new PropertyValueFactory<Receita, LocalDate>("Data"));
 		

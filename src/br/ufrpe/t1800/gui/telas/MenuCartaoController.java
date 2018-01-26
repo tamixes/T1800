@@ -40,7 +40,20 @@ public class MenuCartaoController implements Initializable{
 	
 	@FXML
 	public void btnAlterar(ActionEvent event) {
+		((Node) (event.getSource())).getScene().getWindow().hide();
+		Parent p = null;
 		
+		try {
+			p = FXMLLoader.load(AlterarCartao.class.getResource("AlterarCartao.fxml"));
+			Scene scene = new Scene(p);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.setResizable(false);
+			stage.setTitle("T1800 Finanças Pessoais");
+			stage.show();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	@FXML

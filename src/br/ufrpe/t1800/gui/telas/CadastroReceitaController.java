@@ -15,6 +15,7 @@ import br.ufrpe.t1800.dao.RepositorioReceita;
 import br.ufrpe.t1800.exceptions.ObjetoJaExisteException;
 import br.ufrpe.t1800.negocio.Fachada;
 import br.ufrpe.t1800.negocio.beans.Carteira;
+import br.ufrpe.t1800.negocio.beans.Pdf;
 import br.ufrpe.t1800.negocio.beans.Receita;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -78,6 +79,12 @@ public class CadastroReceitaController implements Initializable{
 					} catch (Exception e) {
 						System.out.println(e.getMessage());
 						e.getStackTrace();
+					}
+					
+					try {
+						Pdf.Gerador(receita);
+					} catch (Exception e) {
+						System.out.println("Erro ao salvar PDF: " + e.getMessage());
 					}
 				} catch (ObjetoJaExisteException e) {
 					Alert alert = new Alert(AlertType.WARNING);

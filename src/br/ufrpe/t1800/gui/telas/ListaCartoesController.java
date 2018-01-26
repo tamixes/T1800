@@ -45,7 +45,41 @@ public class ListaCartoesController implements Initializable{
 	private Fachada controller;
 	
 	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
+		controller = Fachada.getInstance();
+		lista_cartoes.setEditable(false);
+		cartoes = FXCollections.observableArrayList(controller.listarCartao());
+		
+		descricao = new TableColumn<>("Descricao");
+		descricao.setResizable(true);
+		
+		bandeira = new TableColumn<>("Bandeira");
+		bandeira.setResizable(true);
+		
+		fechamento = new TableColumn<>("Fechamento");
+		fechamento.setResizable(true);
+		
+		pagamento = new TableColumn<>("Pagamento");
+		pagamento.setResizable(true);
+		
+		valor = new TableColumn<>("Valor");
+		valor.setResizable(true);
+		
+		lista_cartoes.getColumns().addAll(descricao, bandeira, fechamento, pagamento, valor);
+		
+		descricao.setCellValueFactory(new PropertyValueFactory<CartaoCredito, String>("Descricao"));
+		bandeira.setCellValueFactory(new PropertyValueFactory<CartaoCredito, String>("Bandeira"));
+		fechamento.setCellValueFactory(new PropertyValueFactory<CartaoCredito, Integer>("Fechamento"));
+		pagamento.setCellValueFactory(new PropertyValueFactory<CartaoCredito, Integer>("Pagamento"));
+		valor.setCellValueFactory(new PropertyValueFactory<CartaoCredito, Double>("Valor"));
+		
+		lista_cartoes.setItems(cartoes);
+		
 	
+		
+	}
 	
 	
 	@FXML
@@ -66,39 +100,6 @@ public class ListaCartoesController implements Initializable{
 		}
 	}
 	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		
-		
-		controller = Fachada.getInstance();
-		lista_cartoes.setEditable(false);
-		cartoes = FXCollections.observableArrayList(controller.listarCartao());
-		
-		descricao = new TableColumn<>("Descrição");
-		descricao.setResizable(true);
-		
-		bandeira = new TableColumn<>("Bandeira");
-		bandeira.setResizable(true);
-		
-		valor = new TableColumn<>("Valor");
-		valor.setResizable(true);
-		
-		fechamento = new TableColumn<>("Fechamento");
-		fechamento.setResizable(true);
-		
-		pagamento = new TableColumn<>("Pagamento");
-		pagamento.setResizable(true);
-		
-		lista_cartoes.getColumns().addAll(descricao, bandeira, valor, fechamento, pagamento);
-		
-		pagamento.setCellValueFactory(new PropertyValueFactory<CartaoCredito, Integer>("Pagamento"));
-		bandeira.setCellValueFactory(new PropertyValueFactory<CartaoCredito, String>("Bandeira"));
-		descricao.setCellValueFactory(new PropertyValueFactory<CartaoCredito, String>("Descrição"));
-		valor.setCellValueFactory(new PropertyValueFactory<CartaoCredito, Double>("Valor"));
-		fechamento.setCellValueFactory(new PropertyValueFactory<CartaoCredito, Integer>("Fechamento"));
-		
-		lista_cartoes.setItems(cartoes);
-		
-	}
+
 
 }

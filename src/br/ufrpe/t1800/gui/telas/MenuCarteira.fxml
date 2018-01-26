@@ -3,32 +3,39 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #696969;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.MenuCarteiraController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="381.0" prefWidth="571.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.MenuCarteiraController">
    <children>
-      <Label layoutX="230.0" layoutY="14.0" prefHeight="75.0" prefWidth="140.0" text="Menu Carteira" textAlignment="RIGHT" textFill="WHITE">
+      <Label layoutX="193.0" layoutY="32.0" prefHeight="49.0" prefWidth="185.0" text="Menu Carteira" textAlignment="RIGHT">
          <font>
-            <Font name="Yu Gothic Bold" size="18.0" />
+            <Font name="Yu Gothic Bold" size="24.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btn_cadastrar" buttonType="RAISED" layoutX="151.0" layoutY="273.0" onAction="#btnCadastrar" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Cadastrar" textFill="WHITE">
+      <JFXButton fx:id="btn_cadastrar" buttonType="RAISED" layoutX="133.0" layoutY="271.0" onAction="#btnCadastrar" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Cadastrar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="btn_buscar" buttonType="RAISED" layoutX="239.0" layoutY="273.0" onAction="#btnBuscar" prefHeight="38.0" prefWidth="64.0" style="-fx-background-color: #2E86AB;" text="Buscar" textFill="WHITE">
+      <JFXButton fx:id="btn_buscar" buttonType="RAISED" layoutX="221.0" layoutY="271.0" onAction="#btnBuscar" prefHeight="38.0" prefWidth="64.0" style="-fx-background-color: #2E86AB;" text="Buscar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="btn_alterar" buttonType="RAISED" layoutX="406.0" layoutY="272.0" onAction="#btnAlterar" prefHeight="38.0" prefWidth="64.0" style="-fx-background-color: #2E86AB;" text="Atualizar" textFill="WHITE">
+      <JFXButton fx:id="btn_alterar" buttonType="RAISED" layoutX="388.0" layoutY="270.0" onAction="#btnAlterar" prefHeight="38.0" prefWidth="64.0" style="-fx-background-color: #2E86AB;" text="Atualizar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <JFXButton fx:id="btn_voltar" buttonType="RAISED" layoutX="522.0" layoutY="355.0" onAction="#btnVoltar" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #2E86AB;" text="Voltar" textFill="WHITE" />
-      <JFXButton fx:id="btn_remover" buttonType="RAISED" layoutX="320.0" layoutY="272.0" onAction="#btnRemover" prefHeight="38.0" prefWidth="64.0" style="-fx-background-color: #2E86AB;" text="Remover" textFill="WHITE" />
+      <JFXButton fx:id="btn_voltar" buttonType="RAISED" layoutX="499.0" layoutY="342.0" onAction="#btnVoltar" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #2E86AB;" text="Voltar" textFill="WHITE" />
+      <JFXButton fx:id="btn_remover" buttonType="RAISED" layoutX="302.0" layoutY="270.0" onAction="#btnRemover" prefHeight="38.0" prefWidth="64.0" style="-fx-background-color: #2E86AB;" text="Remover" textFill="WHITE" />
+      <ImageView fitHeight="157.0" fitWidth="149.0" layoutX="211.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/wallet_icon-icons.com_65116.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

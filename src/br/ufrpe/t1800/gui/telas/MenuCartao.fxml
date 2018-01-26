@@ -3,10 +3,12 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #696969;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.MenuCartaoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.MenuCartaoController">
    <children>
       <JFXButton fx:id="btn_cadastrar" buttonType="RAISED" layoutX="123.0" layoutY="270.0" onAction="#btnCadastrar" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Cadastrar" textFill="WHITE">
          <cursor>
@@ -24,9 +26,9 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>
-      <Label layoutX="216.0" layoutY="49.0" text="Menu Cartão" textFill="WHITE">
+      <Label layoutX="212.0" layoutY="41.0" text="Menu Cartão">
          <font>
-            <Font name="Yu Gothic Regular" size="28.0" />
+            <Font name="Yu Gothic Bold" size="28.0" />
          </font>
       </Label>
       <JFXButton fx:id="btn_listar" buttonType="RAISED" layoutX="358.0" layoutY="270.0" onAction="#btnListar" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Listar" textFill="WHITE">
@@ -37,5 +39,10 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="230.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/creditcard_78919.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

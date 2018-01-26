@@ -7,21 +7,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="457.0" prefWidth="675.0" style="-fx-background-color: #696969;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.ListaCarteirasController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="457.0" prefWidth="675.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.ListaCarteirasController">
    <children>
-      <ScrollPane layoutX="14.0" layoutY="43.0" prefHeight="400.0" prefWidth="600.0">
+      <ScrollPane layoutX="14.0" layoutY="58.0" prefHeight="360.0" prefWidth="577.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="392.0" prefWidth="599.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="375.0" prefWidth="574.0">
                <children>
-                  <TableView fx:id="lista_carteiras" layoutY="-4.0" prefHeight="400.0" prefWidth="600.0" />
+                  <TableView fx:id="lista_carteiras" layoutY="-4.0" prefHeight="375.0" prefWidth="569.0" />
                </children>
             </AnchorPane>
         </content>
       </ScrollPane>
-      <JFXButton fx:id="btn_voltar" layoutX="621.0" layoutY="418.0" onAction="#btnVoltar" style="-fx-background-color: #2E86AB;" text="Voltar" textFill="WHITE" />
-      <Label layoutX="281.0" layoutY="14.0" text="Lista de Carteiras" textFill="WHITE">
+      <JFXButton fx:id="btn_voltar" buttonType="RAISED" layoutX="613.0" layoutY="412.0" onAction="#btnVoltar" style="-fx-background-color: #2E86AB;" text="Voltar" textFill="WHITE" />
+      <Label layoutX="251.0" layoutY="14.0" text="Lista de Carteiras">
          <font>
-            <Font size="14.0" />
+            <Font name="Yu Gothic Bold" size="20.0" />
          </font>
       </Label>
    </children>

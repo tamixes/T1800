@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="397.0" prefWidth="459.0" style="-fx-background-color: #696969;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.CadastroCarteiraController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="397.0" prefWidth="459.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.CadastroCarteiraController">
    <children>
-      <JFXTextField fx:id="titulo_cart" alignment="CENTER" focusColor="WHITE" layoutX="162.0" layoutY="122.0" promptText="Titulo" style="-fx-text-inner-color: #2E86AB;" unFocusColor="#2660a4" />
-      <JFXTextField fx:id="valor_cart" alignment="CENTER" focusColor="WHITE" layoutX="162.0" layoutY="160.0" promptText="Valor" style="-fx-text-inner-color: #2E86AB;" unFocusColor="#2660a4" />
-      <JFXTextField fx:id="descricao_cart" alignment="CENTER" focusColor="WHITE" layoutX="162.0" layoutY="199.0" promptText="Descrição" style="-fx-text-inner-color: #2E86AB;" unFocusColor="#2660a4" />
-      <Label layoutX="159.0" layoutY="37.0" text="Cadastro de Carteira" textFill="WHITE">
+      <JFXTextField fx:id="titulo_cart" alignment="CENTER" focusColor="WHITE" layoutX="162.0" layoutY="122.0" promptText="Titulo" style="-fx-text-inner-color: black;" unFocusColor="#2660a4" />
+      <JFXTextField fx:id="valor_cart" alignment="CENTER" focusColor="WHITE" layoutX="162.0" layoutY="160.0" promptText="Valor" style="-fx-text-inner-color: black;" unFocusColor="#2660a4" />
+      <JFXTextField fx:id="descricao_cart" alignment="CENTER" focusColor="WHITE" layoutX="162.0" layoutY="199.0" promptText="Descrição" style="-fx-text-inner-color: black;" unFocusColor="#2660a4" />
+      <Label layoutX="136.0" layoutY="29.0" text="Cadastro de Carteira">
          <font>
-            <Font name="Yu Gothic Bold" size="14.0" />
+            <Font name="Yu Gothic Bold" size="20.0" />
          </font>
       </Label>
       <JFXButton fx:id="btn_salvar" buttonType="RAISED" layoutX="299.0" layoutY="334.0" onAction="#btnSalvar" style="-fx-background-color: #2E86AB;" text="Salvar" textFill="WHITE">

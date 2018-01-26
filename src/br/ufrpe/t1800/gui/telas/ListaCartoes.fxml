@@ -2,27 +2,18 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="457.0" prefWidth="675.0" style="-fx-background-color: #696969;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.ListaCartoesController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="457.0" prefWidth="675.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.ListaCartoesController">
    <children>
-      <ScrollPane layoutX="32.0" layoutY="64.0" prefHeight="314.0" prefWidth="512.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="313.0" prefWidth="512.0">
-               <children>
-                  <TableView fx:id="lista_cartoes" fixedCellSize="1.0" layoutX="-6.0" layoutY="-7.0" prefHeight="314.0" prefWidth="503.0" />
-               </children>
-            </AnchorPane>
-        </content>
-      </ScrollPane>
-      <JFXButton fx:id="btn_voltar" layoutX="611.0" layoutY="409.0" onAction="#btnVoltar" style="-fx-background-color: #2E86AB;" text="Voltar" textFill="WHITE" />
-      <Label layoutX="281.0" layoutY="14.0" text="Lista de Cartões" textFill="WHITE">
+      <JFXButton fx:id="btn_voltar" buttonType="RAISED" layoutX="611.0" layoutY="409.0" onAction="#btnVoltar" style="-fx-background-color: #2E86AB;" text="Voltar" textFill="WHITE" />
+      <Label layoutX="258.0" layoutY="14.0" text="Lista de Cartões">
          <font>
-            <Font size="14.0" />
+            <Font name="Yu Gothic Bold" size="20.0" />
          </font>
       </Label>
+      <TableView fx:id="lista_cartoes" fixedCellSize="1.0" layoutX="48.0" layoutY="86.0" prefHeight="307.0" prefWidth="497.0" />
    </children>
 </AnchorPane>
