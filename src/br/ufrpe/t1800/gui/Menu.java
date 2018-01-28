@@ -1108,7 +1108,7 @@ public class Menu {
 										remove = wallet.buscarDespesaCartao(busca);
 										
 										
-										System.out.println("Você realmente deseja remover a despesa \n" + remove.getDescriçao() +"?\n");
+										System.out.println("Você realmente deseja remover a despesa \n" + remove.getDescricao() +"?\n");
 										System.out.println("1 - sim\n"
 												+ "2 - nao\n"
 												+ "opção: \n");
@@ -1169,7 +1169,7 @@ public class Menu {
 										LocalDate nvData = LocalDate.parse(str, formato);
 										
 										atualiza.setDataCompra(nvData);
-										atualiza.setDescriçao(nvDescricao);
+										atualiza.setDescricao(nvDescricao);
 										atualiza.setParcela(nvNumParcelas);
 										atualiza.setTipo(nvTipo);
 										atualiza.setValor(nvValor);
@@ -1206,7 +1206,7 @@ public class Menu {
 									try {
 										buscada = wallet.buscarDespesaCartao(busca);
 										
-										System.out.println("Informações sobre " +buscada.getDescriçao()+"\n");
+										System.out.println("Informações sobre " +buscada.getDescricao()+"\n");
 										System.out.println(buscada);
 										entrada.nextLine();
 										

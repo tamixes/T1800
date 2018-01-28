@@ -84,6 +84,14 @@ public class AlterarPessoaController implements Initializable{
 		login.setCellValueFactory(new PropertyValueFactory<Pessoa, String>("Login"));
 		
 		lista_pessoas.setItems(pessoas);
+		
+		
+		lista_pessoas.setOnMouseClicked(e ->{
+			nome_pessoa.setText(p.getNome());
+			telefone_pessoa.setText(p.getTelefone());
+			email_pessoa.setText(p.getEmail());
+			login.setText(p.getUsuario().getLogin());
+		});
 	}	
 	
 	@FXML

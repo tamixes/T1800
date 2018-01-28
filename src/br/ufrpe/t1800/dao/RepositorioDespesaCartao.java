@@ -41,7 +41,7 @@ public class RepositorioDespesaCartao implements IRepositorioDespesaCartao, Seri
 
 	@Override
 	public void atualizarDespesaCartao(DespesaCartao despesa) throws ErroAoAtualizarException, ObjetoNaoExisteException{
-		int i = buscarIndice(despesa.getDescriçao());
+		int i = buscarIndice(despesa.getDescricao());
 		
 		if(i >= 0) {
 			despesas.set(i, despesa);
@@ -53,7 +53,7 @@ public class RepositorioDespesaCartao implements IRepositorioDespesaCartao, Seri
 
 	@Override
 	public void removerDespesaCartao(DespesaCartao despesa) throws ErroAoRemoverException, ObjetoNaoExisteException{
-		int i = buscarIndice(despesa.getDescriçao());
+		int i = buscarIndice(despesa.getDescricao());
 		if(i >= 0) {
 			despesas.remove(i);
 		}else {
@@ -89,7 +89,7 @@ public class RepositorioDespesaCartao implements IRepositorioDespesaCartao, Seri
 	public int buscarIndice(String descricao) {
 		int i = -1;
 		for(int j = 0; j < despesas.size(); j++) {
-			if(despesas.get(j).getDescriçao().equalsIgnoreCase(descricao)) {
+			if(despesas.get(j).getDescricao().equalsIgnoreCase(descricao)) {
 				i = j;
 			}
 		}

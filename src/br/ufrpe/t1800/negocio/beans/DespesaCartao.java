@@ -17,12 +17,12 @@ public class DespesaCartao implements Serializable{
 	private int numParcelas;
 	
 	
-	public DespesaCartao(CartaoCredito cartao, double valor, LocalDate data, String descriçao, String tipo, int parcela) {
+	public DespesaCartao(CartaoCredito cartao, double valor, LocalDate data, String descricao, String tipo, int parcela) {
 		
 		this.cartao = cartao;
 		this.valor = valor;
 		this.dataCompra = data;
-		this.descricao = descriçao;
+		this.descricao = descricao;
 		this.tipo = tipo; 
 		this.numParcelas = parcela;
 	}
@@ -76,13 +76,13 @@ public class DespesaCartao implements Serializable{
 	}
 
 
-	public String getDescriçao() {
+	public String getDescricao() {
 		return descricao;
 	}
 
 
-	public void setDescriçao(String descriçao) {
-		this.descricao = descriçao;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 
@@ -107,7 +107,7 @@ public class DespesaCartao implements Serializable{
 						+"\t Cartão: " + this.getCartao().getDescricao()+ "\n"
 						+"\t Valor da Compra: " + this.getValor()+ "\n"
 						+"\t Data da Compra: " + this.getDataCompra()+ "\n"
-						+"\t Descrição: " + this.getDescriçao()+ "\n"
+						+"\t Descrição: " + this.getDescricao()+ "\n"
 						+"\t Tipo: " + this.getTipo()+ "\n"
 						+"\t Parcelas: " + this.getParcela() + "\n";
 		
@@ -119,7 +119,7 @@ public class DespesaCartao implements Serializable{
 	@Override
 	public boolean equals(Object obj) {
 		DespesaCartao d = (DespesaCartao) obj;
-		if(d != null && this.dataCompra.equals(d.getDataCompra()) && this.descricao.equalsIgnoreCase(d.getDescriçao())
+		if(d != null && this.dataCompra.equals(d.getDataCompra()) && this.descricao.equalsIgnoreCase(d.getDescricao())
 				&& this.valor == d.getValor()) {
 			return true;
 		}
