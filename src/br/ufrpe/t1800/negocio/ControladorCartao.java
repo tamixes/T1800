@@ -82,5 +82,8 @@ public class ControladorCartao {
 		
 	}
 	
+	public long contadorCartao() {
+		return this.repositorio.contadorCartao();
+	}
 	
 }

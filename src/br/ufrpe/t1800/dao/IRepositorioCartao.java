@@ -19,4 +19,6 @@ public interface IRepositorioCartao {
 		boolean existe(CartaoCredito cartao);
 		void salvarArquivo();
 		void removeCartao(String descricao) throws ErroAoRemoverException, ObjetoNaoExisteException;
+		long contadorCartao();
+
 }

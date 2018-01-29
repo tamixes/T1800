@@ -44,5 +44,15 @@
             <Image url="@../img/creditcard_78919.png" />
          </image>
       </ImageView>
+      <Label fx:id="num_cartoes" layoutX="493.0" layoutY="67.0" prefHeight="75.0" prefWidth="70.0" style="-fx-background-color: white;" textAlignment="CENTER" textFill="#4989c9">
+         <font>
+            <Font name="Tahoma Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="472.0" layoutY="50.0" text="Numero de Cartoes">
+         <font>
+            <Font name="Yu Gothic Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

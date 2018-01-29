@@ -104,7 +104,11 @@ public class Fachada implements IFachada{
 	public boolean existeCartao(CartaoCredito cartao) {
 		return this.controladorCartao.existe(cartao);
 	}
-
+	
+	@Override
+	public long contadorCartao() {
+		return this.controladorCartao.contadorCartao();
+	}
 	@Override
 	public void cadastrarReceita(Receita receita) throws ObjetoJaExisteException {
 		this.controladorReceita.cadastrarReceita(receita);

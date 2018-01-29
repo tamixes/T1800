@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 
+import br.ufrpe.t1800.negocio.Fachada;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class MenuCartaoController implements Initializable{
@@ -19,6 +22,8 @@ public class MenuCartaoController implements Initializable{
 	
 	@FXML
 	private JFXButton btn_cadastrar, btn_voltar,btn_alterar, btn_buscar, btn_remover;
+	@FXML
+	private Label num_cartoes;
 	
 	@FXML
 	public void btnCadastrar(ActionEvent event) {
@@ -128,7 +133,7 @@ public class MenuCartaoController implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+		this.num_cartoes.setText(String.valueOf(Fachada.getInstance().contadorCartao()));
 		
 	}
 

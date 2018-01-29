@@ -32,7 +32,7 @@ public interface IFachada {
 	CartaoCredito buscarCartao(String nome) throws ObjetoNaoExisteException;
 	boolean existeCartao(CartaoCredito cartao);
 	void removeCartao(String descricao) throws ErroAoRemoverException, ObjetoNaoExisteException;
-	
+	long contadorCartao();
 	//Receita
 	void cadastrarReceita(Receita receita) throws ObjetoJaExisteException;
 	void removerReceita(Receita receita) throws ErroAoRemoverException, ObjetoNaoExisteException;

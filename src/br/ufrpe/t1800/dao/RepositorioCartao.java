@@ -104,7 +104,16 @@ public class RepositorioCartao implements IRepositorioCartao, Serializable{
 		}
 		return i;
 	}
-
+	
+	public long contadorCartao() {
+		long cont = 0;
+		for(CartaoCredito c : cartoes) {
+			if(c instanceof CartaoCredito)
+				cont++;
+		}
+		return cont;
+	}
+	
 	// ARQUIVO
 	
 	private static RepositorioCartao lerArquivo() {
