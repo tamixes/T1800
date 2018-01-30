@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 
+import br.ufrpe.t1800.negocio.Fachada;
+import br.ufrpe.t1800.negocio.beans.Pdf;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,8 +21,17 @@ public class MenuDespesaCartaoController implements Initializable{
 	
 
 	@FXML
-	private JFXButton btn_cadastrar, btn_voltar,btn_alterar, btn_buscar, btn_listar, btn_remover;
+	private JFXButton btn_cadastrar, btn_voltar,btn_alterar, btn_buscar, btn_listar, btn_remover, relatorio_geral;
 	
+	
+	@FXML
+	public void relatorioGeral(ActionEvent event) {
+		try {
+			Pdf.geradorDespesaCartao(Fachada.getInstance().listarDespesaCartao());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 	@FXML
 	public void btnCadastrar(ActionEvent event) {
 		((Node) (event.getSource())).getScene().getWindow().hide();

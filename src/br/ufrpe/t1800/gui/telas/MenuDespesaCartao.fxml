@@ -25,5 +25,6 @@
             <Image url="@../img/credit-or-debit-card-front_icon-icons.com_56178.png" />
          </image>
       </ImageView>
+      <JFXButton fx:id="relatorio_geral" layoutX="467.0" layoutY="124.0" onAction="#relatorioGeral" style="-fx-background-color: #851c8e;" text="Relatorio Geral" textFill="WHITE" />
    </children>
 </AnchorPane>

@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 
 import br.ufrpe.t1800.negocio.Fachada;
+import br.ufrpe.t1800.negocio.beans.Pdf;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +25,8 @@ public class MenuCartaoController implements Initializable{
 	private JFXButton btn_cadastrar, btn_voltar,btn_alterar, btn_buscar, btn_remover;
 	@FXML
 	private Label num_cartoes;
+	
+	
 	
 	@FXML
 	public void btnCadastrar(ActionEvent event) {

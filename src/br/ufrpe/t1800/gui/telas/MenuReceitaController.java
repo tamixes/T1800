@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 
+import br.ufrpe.t1800.negocio.Fachada;
+import br.ufrpe.t1800.negocio.beans.Pdf;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,9 +19,16 @@ import javafx.stage.Stage;
 public class MenuReceitaController implements Initializable{
 
 	@FXML
-	private JFXButton btn_cadastrar, btn_alterar, btn_buscar, btn_voltar, btn_listar;
+	private JFXButton btn_cadastrar, btn_alterar, btn_buscar, btn_voltar, btn_listar, relatorio_geral;
 	
-	
+	@FXML
+	public void relatorioGeral(ActionEvent event) {
+		try {
+			Pdf.geradorReceita(Fachada.getInstance().listarReceita());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 	@FXML
 	public void btnCadastrar(ActionEvent event) {
 		((Node) (event.getSource())).getScene().getWindow().hide();

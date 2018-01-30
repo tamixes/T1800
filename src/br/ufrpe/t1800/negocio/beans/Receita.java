@@ -109,7 +109,7 @@ public class Receita implements Serializable{
 					+"\tData: " + this.getData()+ "\n"
 					+"\tDescrição: " + this.getDescricao() +"\n"
 					+"\tCategoria: " + this.getCategoria()+ "\n"
-					+"\tPago: " + this.isPago()+ "\n";
+					+"\tPago: " + this.isPago()+ "\n\n\n";
 		
 		return resultado; 
 	//TODO colocar para nao imprir o valor boolean mas sim (sim ou nao)

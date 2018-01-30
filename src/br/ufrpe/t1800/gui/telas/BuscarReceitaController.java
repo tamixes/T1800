@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXTextField;
 import br.ufrpe.t1800.exceptions.ObjetoNaoExisteException;
 import br.ufrpe.t1800.negocio.Fachada;
 import br.ufrpe.t1800.negocio.beans.Carteira;
+import br.ufrpe.t1800.negocio.beans.Pdf;
 import br.ufrpe.t1800.negocio.beans.Receita;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,9 +47,11 @@ public class BuscarReceitaController implements Initializable {
 		}else {
 			try {
 				Receita r = Fachada.getInstance().buscarReceita(this.nome_receita.getText());
-				//codigo = nome_receita.getText();
+				
 				this.aviso.setText("");
+			
 				this.printa.setText(r.toString());
+				
 				
 			} catch (ObjetoNaoExisteException e) {
 				System.out.println(e.getMessage());
@@ -56,6 +59,7 @@ public class BuscarReceitaController implements Initializable {
 			}
 		}
 	}
+	
 	
 	@FXML
 	public void btnVoltar(ActionEvent event) {
@@ -81,8 +85,7 @@ public class BuscarReceitaController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-		
+			
 	}
 
 }

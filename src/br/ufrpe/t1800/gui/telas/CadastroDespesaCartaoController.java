@@ -14,6 +14,7 @@ import br.ufrpe.t1800.exceptions.ObjetoJaExisteException;
 import br.ufrpe.t1800.negocio.Fachada;
 import br.ufrpe.t1800.negocio.beans.CartaoCredito;
 import br.ufrpe.t1800.negocio.beans.DespesaCartao;
+import br.ufrpe.t1800.negocio.beans.Pdf;
 import br.ufrpe.t1800.negocio.beans.Pessoa;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -74,6 +75,8 @@ public class CadastroDespesaCartaoController implements Initializable{
 						System.out.println(e.getMessage());
 						e.getStackTrace();
 					}
+						
+					
 				} catch (ObjetoJaExisteException e) {
 					Alert alert = new Alert(AlertType.WARNING);
 					alert.setTitle("Warning");

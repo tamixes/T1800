@@ -11,6 +11,7 @@ import br.ufrpe.t1800.dao.RepositorioCarteira;
 import br.ufrpe.t1800.exceptions.ObjetoNaoExisteException;
 import br.ufrpe.t1800.negocio.Fachada;
 import br.ufrpe.t1800.negocio.beans.CartaoCredito;
+import br.ufrpe.t1800.negocio.beans.Pdf;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

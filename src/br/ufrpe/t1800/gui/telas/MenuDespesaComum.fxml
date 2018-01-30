@@ -25,5 +25,6 @@
             <Image url="@../img/data_bars_low_down_business_finance_icon-icons.com_76293.png" />
          </image>
       </ImageView>
+      <JFXButton fx:id="relatorio_geral" layoutX="467.0" layoutY="157.0" onAction="#relatorioGeral" style="-fx-background-color: #851c8e;" text="Relatório Geral" textFill="WHITE" />
    </children>
 </AnchorPane>

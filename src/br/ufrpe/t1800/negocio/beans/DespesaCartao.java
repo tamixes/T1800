@@ -109,7 +109,7 @@ public class DespesaCartao implements Serializable{
 						+"\t Data da Compra: " + this.getDataCompra()+ "\n"
 						+"\t Descrição: " + this.getDescricao()+ "\n"
 						+"\t Tipo: " + this.getTipo()+ "\n"
-						+"\t Parcelas: " + this.getParcela() + "\n";
+						+"\t Parcelas: " + this.getParcela() + "\n\n\n";
 		
 		return resultado; 
 	}

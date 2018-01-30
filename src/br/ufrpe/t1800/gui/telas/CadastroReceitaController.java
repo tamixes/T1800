@@ -81,11 +81,7 @@ public class CadastroReceitaController implements Initializable{
 						e.getStackTrace();
 					}
 					
-					try {
-						Pdf.Gerador(receita);
-					} catch (Exception e) {
-						System.out.println("Erro ao salvar PDF: " + e.getMessage());
-					}
+					
 				} catch (ObjetoJaExisteException e) {
 					Alert alert = new Alert(AlertType.WARNING);
 					alert.setTitle("Warning");
