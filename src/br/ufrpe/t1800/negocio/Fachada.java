@@ -122,7 +122,7 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public void atualizarReceita(Receita receita) throws ObjetoNaoExisteException, ErroAoAtualizarException {
+	public void atualizarReceita(Receita receita) throws ObjetoNaoExisteException {
 		this.controladorReceita.atualizarReceita(receita);
 		
 	}
@@ -155,7 +155,7 @@ public class Fachada implements IFachada{
 	}
 
 	@Override
-	public void atualizarCarteira(Carteira carteira) throws ObjetoNaoExisteException, ErroAoAtualizarException {
+	public void atualizarCarteira(Carteira carteira) throws ObjetoNaoExisteException {
 		this.controladorCarteira.atualizarCarteira(carteira);
 		
 	}

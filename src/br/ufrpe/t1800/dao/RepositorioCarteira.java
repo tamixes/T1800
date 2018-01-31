@@ -53,13 +53,13 @@ public class RepositorioCarteira implements IRepositorioCarteira, Serializable{
 	}
 
 	@Override
-	public void atualizarCarteira(Carteira carteira) throws ErroAoAtualizarException, ObjetoNaoExisteException{
+	public void atualizarCarteira(Carteira carteira) throws  ObjetoNaoExisteException{
 		int i = procurarIndice(carteira.getIdCarteira());
 		
 		if(i >= 0) {
 			carteiras.set(i, carteira);
 		}else {
-			throw new ErroAoAtualizarException();
+			throw new ObjetoNaoExisteException();
 		}
 		
 	}

@@ -9,17 +9,16 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.MenuDespesaCartaoController">
    <children>
-      <JFXButton fx:id="btn_cadastrar" buttonType="RAISED" layoutX="105.0" layoutY="236.0" onAction="#btnCadastrar" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Cadastrar" textFill="WHITE" />
-      <JFXButton fx:id="btn_alterar" buttonType="RAISED" layoutX="183.0" layoutY="236.0" onAction="#btnAlterar" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Alterar" textFill="WHITE" />
+      <JFXButton fx:id="btn_cadastrar" buttonType="RAISED" layoutX="147.0" layoutY="239.0" onAction="#btnCadastrar" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Cadastrar" textFill="WHITE" />
+      <JFXButton fx:id="btn_alterar" buttonType="RAISED" layoutX="225.0" layoutY="239.0" onAction="#btnAlterar" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Alterar" textFill="WHITE" />
       <JFXButton fx:id="btn_voltar" buttonType="RAISED" layoutX="514.0" layoutY="346.0" onAction="#btnVoltar" style="-fx-background-color: #2E86AB;" text="Voltar" textFill="WHITE" />
-      <JFXButton fx:id="btn_buscar" buttonType="RAISED" layoutX="263.0" layoutY="236.0" onAction="#btnBuscar" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Buscar" textFill="WHITE" />
+      <JFXButton fx:id="btn_buscar" buttonType="RAISED" layoutX="305.0" layoutY="239.0" onAction="#btnBuscar" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Buscar" textFill="WHITE" />
       <Label layoutX="185.0" layoutY="33.0" text="Menu Despesa Cartão">
          <font>
             <Font name="Yu Gothic Bold" size="21.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btn_remover" buttonType="RAISED" layoutX="342.0" layoutY="236.0" onAction="#btnRemover" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Remover" textFill="WHITE" />
-      <JFXButton fx:id="btn_listar" buttonType="RAISED" layoutX="421.0" layoutY="236.0" onAction="#btnListar" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Listar" textFill="WHITE" />
+      <JFXButton fx:id="btn_remover" buttonType="RAISED" layoutX="384.0" layoutY="239.0" onAction="#btnRemover" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Remover" textFill="WHITE" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="223.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/credit-or-debit-card-front_icon-icons.com_56178.png" />

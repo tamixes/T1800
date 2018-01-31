@@ -45,7 +45,7 @@ public class AlterarDespesaComumController implements Initializable{
 	@FXML
 	private Label aviso;
 	@FXML
-	private TableView<DespesaComum> lista_despesas;
+	private TableView<DespesaComum> tabela_despesa;
 	@FXML
 	private TableColumn<DespesaComum, String> descricao;
 	@FXML
@@ -68,10 +68,10 @@ public class AlterarDespesaComumController implements Initializable{
  	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		controller = Fachada.getInstance();
-		lista_despesas.setEditable(false);
+		tabela_despesa.setEditable(false);
 		despesas = FXCollections.observableArrayList(controller.listarDespesaComum());
 		
-		descricao = new TableColumn<>("Descricao");
+		descricao = new TableColumn<>("Descricao");	
 		descricao.setResizable(true);
 		
 		tipo = new TableColumn<>("Tipo");
@@ -86,7 +86,7 @@ public class AlterarDespesaComumController implements Initializable{
 		data = new TableColumn<>("Data");
 		data.setResizable(true);
 		
-		lista_despesas.getColumns().addAll(descricao, tipo, pago, valor, data);
+		tabela_despesa.getColumns().addAll(descricao, tipo, pago, valor, data);
 		
 		descricao.setCellValueFactory(new PropertyValueFactory<DespesaComum, String>("Descricao"));
 		tipo.setCellValueFactory(new PropertyValueFactory<DespesaComum, String>("Tipo"));
@@ -94,11 +94,11 @@ public class AlterarDespesaComumController implements Initializable{
 		valor.setCellValueFactory(new PropertyValueFactory<DespesaComum, Double>("Valor"));
 		data.setCellValueFactory(new PropertyValueFactory<DespesaComum, LocalDate>("Data"));
 		
-		lista_despesas.setItems(despesas);
+		tabela_despesa.setItems(despesas);
 		
 		
-		lista_despesas.setOnMouseClicked(e ->{
-			d = lista_despesas.getSelectionModel().getSelectedItem();
+		tabela_despesa.setOnMouseClicked(e ->{
+			d = tabela_despesa.getSelectionModel().getSelectedItem();
 			
 			desc_desp.setText(d.getDescricao());
 			v_desp.setText(Double.toString(d.getValor()));

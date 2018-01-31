@@ -26,6 +26,6 @@
          </font>
       </Label>
       <Label layoutX="383.0" layoutY="72.0" prefHeight="49.0" prefWidth="204.0" textFill="RED" />
-      <TableView fx:id="lista_despesas" fixedCellSize="1.0" layoutX="14.0" layoutY="247.0" prefHeight="186.0" prefWidth="392.0" />
+      <TableView fx:id="tabela_despesa" fixedCellSize="1.0" layoutX="14.0" layoutY="247.0" prefHeight="186.0" prefWidth="392.0" />
    </children>
 </AnchorPane>

@@ -334,7 +334,7 @@ public class Menu {
 											wallet.atualizarCarteira(buscada);
 											System.out.println("Carteira atualizada!");
 											entrada.nextLine();
-										} catch (ErroAoAtualizarException e) {
+										} catch (Exception e) {
 											System.out.println(e.getMessage());
 											entrada.nextLine();
 										}
@@ -539,7 +539,7 @@ public class Menu {
 												wallet.atualizarReceita(atualiza);
 												System.out.println("Receita atualizada!\n");
 												entrada.nextLine();
-										} catch (ErroAoAtualizarException e) {
+										} catch (Exception e) {
 											System.out.println(e.getMessage());
 											entrada.nextLine();
 										}

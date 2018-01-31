@@ -54,7 +54,7 @@ public class ControladorCarteira {
 			throw new IllegalArgumentException("Invalido");
 		}
 	}
-	public void atualizarCarteira(Carteira carteira) throws ObjetoNaoExisteException, ErroAoAtualizarException{
+	public void atualizarCarteira(Carteira carteira) throws ObjetoNaoExisteException{
 		if(carteira != null ) {
 			this.repositorio.atualizarCarteira(carteira);
 		}else {

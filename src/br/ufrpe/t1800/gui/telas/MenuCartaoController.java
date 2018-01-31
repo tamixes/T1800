@@ -81,23 +81,7 @@ public class MenuCartaoController implements Initializable{
 			System.out.println(e.getMessage());
 		}
 	}
-	@FXML
-	public void btnListar(ActionEvent event) {
-		((Node) (event.getSource())).getScene().getWindow().hide();
-		Parent p = null;
-		
-		try {
-			p = FXMLLoader.load(ListaCartoes.class.getResource("ListaCartoes.fxml"));
-			Scene scene = new Scene(p);
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.setResizable(false);
-			stage.setTitle("T1800 Finanças Pessoais");
-			stage.show();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-	}
+	
 	@FXML
 	public void btnVoltar(ActionEvent event) {
 		((Node) (event.getSource())).getScene().getWindow().hide();

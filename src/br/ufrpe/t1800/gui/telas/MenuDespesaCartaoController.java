@@ -21,7 +21,7 @@ public class MenuDespesaCartaoController implements Initializable{
 	
 
 	@FXML
-	private JFXButton btn_cadastrar, btn_voltar,btn_alterar, btn_buscar, btn_listar, btn_remover, relatorio_geral;
+	private JFXButton btn_cadastrar, btn_voltar,btn_alterar, btn_buscar, btn_remover, relatorio_geral;
 	
 	
 	@FXML
@@ -67,10 +67,7 @@ public class MenuDespesaCartaoController implements Initializable{
 			System.out.println(e.getMessage());
 		}
 	}
-	@FXML
-	public void btnListar(ActionEvent event) {
-		
-	}
+	
 	
 	@FXML
 	public void btnRemover(ActionEvent event) {

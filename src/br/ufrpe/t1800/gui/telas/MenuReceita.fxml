@@ -41,6 +41,6 @@
             <Image url="@../img/analytics_78917.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="relatorio_geral" layoutX="474.0" layoutY="129.0" onAction="#relatorioGeral" style="-fx-background-color: #ba19c2;" text="Relatório Geral" textFill="WHITE" />
+      <JFXButton fx:id="relatorio_geral" layoutX="474.0" layoutY="129.0" onAction="#relatorioGeral" style="-fx-background-color: #851c8e;" text="Relatório Geral" textFill="WHITE" />
    </children>
 </AnchorPane>

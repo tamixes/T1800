@@ -63,14 +63,13 @@ public class AlterarPessoaController implements Initializable{
 		lista_pessoas.setEditable(false);
 		pessoas = FXCollections.observableArrayList(controller.listarPessoa());
 		
-		
 		nome = new TableColumn<>("Nome");
 		nome.setResizable(true);
 		
 		telefone = new TableColumn<>("Telefone");
 		telefone.setResizable(true);
 		
-		email = new TableColumn<>("Email");
+		email = new TableColumn<>("email");
 		email.setResizable(true);
 		
 		login = new TableColumn<>("Login");
@@ -79,8 +78,8 @@ public class AlterarPessoaController implements Initializable{
 		lista_pessoas.getColumns().addAll(nome, telefone, email, login);
 		
 		nome.setCellValueFactory(new PropertyValueFactory<Pessoa, String>("Nome"));
-		email.setCellValueFactory(new PropertyValueFactory<Pessoa, String>("Email"));
 		telefone.setCellValueFactory(new PropertyValueFactory<Pessoa, String>("Telefone"));
+		email.setCellValueFactory(new PropertyValueFactory<Pessoa, String>("Email"));
 		login.setCellValueFactory(new PropertyValueFactory<Pessoa, String>("Login"));
 		
 		lista_pessoas.setItems(pessoas);

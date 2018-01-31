@@ -58,13 +58,13 @@ public class RepositorioReceita implements IRepositorioReceita, Serializable{
 	}
 
 	@Override
-	public void atualizarReceita(Receita receita) throws ObjetoNaoExisteException, ErroAoAtualizarException{
+	public void atualizarReceita(Receita receita) throws ObjetoNaoExisteException{
 		int i = procurarIndice(receita.getDescricao());		
 			
 		if(i >= 0) {
 			receitas.set(i, receita);
 		}else {
-			throw new ErroAoAtualizarException();
+			throw new ObjetoNaoExisteException();
 		}
 		 
 		

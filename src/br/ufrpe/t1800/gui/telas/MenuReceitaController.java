@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 public class MenuReceitaController implements Initializable{
 
 	@FXML
-	private JFXButton btn_cadastrar, btn_alterar, btn_buscar, btn_voltar, btn_listar, relatorio_geral;
+	private JFXButton btn_cadastrar, btn_alterar, btn_buscar, btn_voltar, btn_listar, relatorio_geral, btn_remover;
 	
 	@FXML
 	public void relatorioGeral(ActionEvent event) {

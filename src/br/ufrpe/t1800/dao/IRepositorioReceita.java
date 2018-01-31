@@ -12,7 +12,7 @@ public interface IRepositorioReceita {
 	void cadastrarReceita(Receita receita);
 	ArrayList<Receita> listarReceita();
 	Receita buscarReceita(String descricao) throws ObjetoNaoExisteException;
-	void atualizarReceita(Receita receita) throws ObjetoNaoExisteException, ErroAoAtualizarException;
+	void atualizarReceita(Receita receita) throws ObjetoNaoExisteException;
 	void removerReceita(Receita receita) throws ObjetoNaoExisteException, ErroAoRemoverException;
 	boolean existe(Receita receita);
 	int procurarIndice(String descricao);

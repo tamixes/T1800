@@ -70,7 +70,7 @@ public class ControladorDespesaComum {
 	}
 	
 	public ArrayList<DespesaComum> listar(){
-		return null;
+		return this.repositorio.listarDespesaC();
 	}
 	
 	public boolean existe(DespesaComum despesa) {

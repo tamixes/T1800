@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.ListaDespesaComumController">
    <children>
-      <ScrollPane layoutX="31.0" layoutY="74.0" prefHeight="280.0" prefWidth="484.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="275.0" prefWidth="483.0">
-               <children>
-                  <TableView fx:id="tabela_despesa" prefHeight="264.0" prefWidth="466.0" />
-               </children>
-            </AnchorPane>
-        </content>
-      </ScrollPane>
       <Label layoutX="205.0" layoutY="23.0" text="Lista Despesa Comum">
          <font>
             <Font name="Yu Gothic Bold" size="20.0" />
          </font>
       </Label>
+      <TableView fx:id="tabela_despesa" layoutX="82.0" layoutY="82.0" prefHeight="264.0" prefWidth="466.0" />
+      <JFXButton fx:id="btn_voltar" buttonType="RAISED" layoutX="534.0" layoutY="361.0" onAction="#btnVoltar" style="-fx-background-color: #2E86AB;" text="Voltar" textFill="WHITE" />
    </children>
 </AnchorPane>

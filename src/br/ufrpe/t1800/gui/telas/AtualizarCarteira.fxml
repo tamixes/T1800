@@ -37,7 +37,5 @@
       </ScrollPane>
       <JFXTextField fx:id="valor_carteira" focusColor="WHITE" layoutX="320.0" layoutY="219.0" promptText="Valor" unFocusColor="#2660a4" />
       <JFXComboBox fx:id="lista_pessoas" focusColor="WHITE" layoutX="478.0" layoutY="123.0" prefHeight="121.0" prefWidth="135.0" unFocusColor="#2660a4" />
-      <JFXTextField fx:id="id_carteira" alignment="CENTER" focusColor="WHITE" layoutX="68.0" layoutY="110.0" promptText="ID DA CARTEIRA" unFocusColor="#2660a4" />
-      <JFXButton fx:id="btn_buscar" buttonType="RAISED" layoutX="226.0" layoutY="110.0" onAction="#btnBuscar" style="-fx-background-color: #2E86AB;" text="Buscar" textFill="WHITE" />
    </children>
 </AnchorPane>

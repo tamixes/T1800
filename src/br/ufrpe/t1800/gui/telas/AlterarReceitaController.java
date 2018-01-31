@@ -126,7 +126,7 @@ public class AlterarReceitaController implements Initializable{
 			}
 			
 		};
-		
+		//lista_carteira.setItems(FXCollections.observableArrayList(Fachada.getInstance().listarCarteira()));
 		lista_carteira.setCellFactory(f);
 		lista_carteira.setButtonCell(f.call(null));
 		
@@ -171,7 +171,7 @@ public class AlterarReceitaController implements Initializable{
 					}
 					
 					
-				} catch (ErroAoAtualizarException e) {
+				} catch (ObjetoNaoExisteException e) {
 					Alert alert = new Alert(AlertType.WARNING);
 					alert.setTitle("Warning");
 					alert.setHeaderText("Erro ao atualizar!");

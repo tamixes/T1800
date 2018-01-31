@@ -10,11 +10,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.t1800.gui.telas.MenuCartaoController">
    <children>
-      <JFXButton fx:id="btn_cadastrar" buttonType="RAISED" layoutX="123.0" layoutY="270.0" onAction="#btnCadastrar" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Cadastrar" textFill="WHITE">
+      <JFXButton fx:id="btn_cadastrar" buttonType="RAISED" layoutX="148.0" layoutY="270.0" onAction="#btnCadastrar" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Cadastrar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>
-      <JFXButton fx:id="btn_alterar" buttonType="RAISED" layoutX="202.0" layoutY="270.0" onAction="#btnAlterar" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Alterar" textFill="WHITE">
+      <JFXButton fx:id="btn_alterar" buttonType="RAISED" layoutX="227.0" layoutY="270.0" onAction="#btnAlterar" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Alterar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>
@@ -22,7 +22,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>
-      <JFXButton fx:id="btn_buscar" buttonType="RAISED" layoutX="281.0" layoutY="270.0" onAction="#btnBuscar" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Buscar" textFill="WHITE">
+      <JFXButton fx:id="btn_buscar" buttonType="RAISED" layoutX="306.0" layoutY="270.0" onAction="#btnBuscar" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Buscar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>
@@ -31,11 +31,7 @@
             <Font name="Yu Gothic Bold" size="28.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btn_listar" buttonType="RAISED" layoutX="358.0" layoutY="270.0" onAction="#btnListar" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Listar" textFill="WHITE">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></JFXButton>
-      <JFXButton fx:id="btn_remover" buttonType="RAISED" layoutX="437.0" layoutY="270.0" onAction="#btnRemover" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Remover" textFill="WHITE">
+      <JFXButton fx:id="btn_remover" buttonType="RAISED" layoutX="392.0" layoutY="270.0" onAction="#btnRemover" prefHeight="38.0" prefWidth="70.0" style="-fx-background-color: #2E86AB;" text="Remover" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>
@@ -44,7 +40,7 @@
             <Image url="@../img/creditcard_78919.png" />
          </image>
       </ImageView>
-      <Label fx:id="num_cartoes" layoutX="493.0" layoutY="67.0" prefHeight="75.0" prefWidth="70.0" style="-fx-background-color: white;" textAlignment="CENTER" textFill="#4989c9">
+      <Label fx:id="num_cartoes" layoutX="503.0" layoutY="66.0" prefHeight="75.0" prefWidth="70.0" style="-fx-background-color: #A9A9A9;" textAlignment="CENTER" textFill="#4989c9">
          <font>
             <Font name="Tahoma Bold" size="25.0" />
          </font>

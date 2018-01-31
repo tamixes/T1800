@@ -40,7 +40,7 @@ public class ControladorReceita {
 		}
 	}
 	
-	public void atualizarReceita(Receita receita) throws ErroAoAtualizarException, ObjetoNaoExisteException{
+	public void atualizarReceita(Receita receita) throws  ObjetoNaoExisteException{
 		if(receita != null ) {
 			this.repositorio.atualizarReceita(receita);
 		}else {

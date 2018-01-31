@@ -39,9 +39,9 @@ import javafx.util.Callback;
 public class AtualizarCarteiraController implements Initializable{
 
 	@FXML
-	private JFXButton btn_atualizar, btn_voltar, btn_buscar;
+	private JFXButton btn_atualizar, btn_voltar;
 	@FXML
-	private JFXTextField tit_cart, desc_carteira, valor_carteira, id_carteira;
+	private JFXTextField tit_cart, desc_carteira, valor_carteira ;
 	@FXML
 	private Label aviso;
 	@FXML
@@ -108,11 +108,7 @@ public class AtualizarCarteiraController implements Initializable{
 		
 		});
 		
-		btn_buscar.setOnAction( e ->{
-			tit_cart.setText(this.buscarCarteira().getTitulo());
-			valor_carteira.setText(Double.toString(this.buscarCarteira().getValor()));
-			descricao.setText(this.buscarCarteira().getDescricao());
-		});
+		
 		
 		
 
@@ -167,10 +163,10 @@ public class AtualizarCarteiraController implements Initializable{
 						System.out.println(e.getMessage());
 						e.getStackTrace();
 					}
-				} catch (ErroAoAtualizarException e) {
+				} catch (ObjetoNaoExisteException e) {
 					Alert alert = new Alert(AlertType.WARNING);
 					alert.setTitle("Warning");
-					alert.setHeaderText("Erro ao atualizar!");
+					alert.setHeaderText("Carteira nao existe!");
 					alert.setContentText("Não foi possível atualizar!");
 					alert.showAndWait();
 				}
@@ -183,26 +179,9 @@ public class AtualizarCarteiraController implements Initializable{
 	
 	}
 	
-		
-	@FXML
-	public void btnBuscar(ActionEvent event) {
-		
-	}
 	
-	@FXML
-	public Carteira buscarCarteira () {
-		Carteira c = null; 
-		
-			try {
-			Fachada.getInstance().buscarCarteira(id_carteira.getText());
-			
-		} catch (ObjetoNaoExisteException e) {
-			System.out.println(e.getMessage());
-			this.aviso.setText("Não encontrado!");		}
-		
-		
-		return c;
-	}
+	
+	
 	
 	@FXML
 	public void btnVoltar(ActionEvent event) {

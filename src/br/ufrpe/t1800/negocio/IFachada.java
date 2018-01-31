@@ -36,7 +36,7 @@ public interface IFachada {
 	//Receita
 	void cadastrarReceita(Receita receita) throws ObjetoJaExisteException;
 	void removerReceita(Receita receita) throws ErroAoRemoverException, ObjetoNaoExisteException;
-	void atualizarReceita(Receita receita) throws ObjetoNaoExisteException, ErroAoAtualizarException;
+	void atualizarReceita(Receita receita) throws ObjetoNaoExisteException;
 	ArrayList<Receita> listarReceita();
 	Receita buscarReceita(String nome) throws ObjetoNaoExisteException;
 	boolean existeReceita(Receita receita);
@@ -46,7 +46,7 @@ public interface IFachada {
 	//Carteira
 	void cadastrarCarteira(Carteira carteira) throws ObjetoJaExisteException;
 	void removerCarteira(Carteira carteira) throws ObjetoNaoExisteException, ErroAoRemoverException;
-	void atualizarCarteira(Carteira carteira) throws ObjetoNaoExisteException, ErroAoAtualizarException;
+	void atualizarCarteira(Carteira carteira) throws ObjetoNaoExisteException;
 	ArrayList<Carteira> listarCarteira();
 	Carteira buscarCarteira(String id) throws ObjetoNaoExisteException;
 	boolean existeCarteira(Carteira carteira);

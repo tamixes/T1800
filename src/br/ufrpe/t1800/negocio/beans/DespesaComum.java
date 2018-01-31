@@ -100,7 +100,7 @@ public class DespesaComum implements Serializable {
 				+"\t Data da Compra: " + this.getData()+ "\n"
 				+"\t Descrição: " + this.getDescricao()+ "\n"
 				+"\t Tipo: " + this.getTipo()+ "\n"
-				+"\t Pago: " + this.isPago()+ "\n";
+				+"\t Pago: " + this.isPago()+ "\n\n\n";
 		
 		return resultado; 
 		
